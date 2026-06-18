@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitra Nurmayadi - Portofolio Embedded Systems & IoT</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-mode">
+    <!-- Background Elements -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- Header / Nav -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-accent">&lt;</span>Fitra Nurmayadi<span class="logo-accent"> /&gt;</span>
+            </a>
+            <div class="nav-actions">
+                <a href="https://github.com/fitranurmayadi" target="_blank" class="nav-icon-link" title="GitHub Profile">
+                    <i class="fab fa-github"></i>
+                </a>
+                <button id="theme-toggle" class="theme-toggle-btn" title="Ganti Tema">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">Embedded Systems & IoT Engineer</span>
+            <h1>Merancang Solusi Masa Depan Lewat Elektronika & Kode</h1>
+            <p class="hero-lead">Selamat datang di portofolio saya. Di sini saya membagikan berbagai proyek perangkat keras (hardware) dan perangkat lunak (software) di bidang Robotika, Internet of Things (IoT), Embedded Systems, dan Life Science.</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="stats-projects-count">18</span>
+                    <span class="stat-label">Total Proyek</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4+</span>
+                    <span class="stat-label">Kategori Riset</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">PCB</span>
+                    <span class="stat-label">Design & Assembly</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Section -->
+    <section class="projects-section">
+        <div class="section-header">
+            <h2>Galeri Portofolio Proyek</h2>
+            <p>Telusuri diagram rangkaian, file PCB, kode program, dan dokumentasi lengkap di bawah ini.</p>
+        </div>
+
+        <!-- Search and Filters -->
+        <div class="search-filter-container">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="search-input" placeholder="Cari nama proyek atau mikrokontroler (ESP32, STM32, Arduino)...">
+                <button id="search-clear-btn" class="search-clear-btn" style="display: none;"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="filter-group" id="filter-tabs">
+                <button class="filter-btn active" data-category="all">Semua</button>
+                <button class="filter-btn" data-category="Embedded Systems">Embedded Systems</button>
+                <button class="filter-btn" data-category="IoT">IoT</button>
+                <button class="filter-btn" data-category="Robotics">Robotics</button>
+                <button class="filter-btn" data-category="Life Science">Life Science</button>
+            </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projects-grid">
+            <!-- Loading State -->
+            <div class="loading-state">
+                <i class="fas fa-circle-notch fa-spin loading-icon"></i>
+                <p>Memuat data proyek portofolio...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2026 Fitra Nurmayadi. Migrasi dari WordPress ke GitHub Pages.</p>
+            <p class="footer-sub">Dibuat menggunakan HTML, CSS, dan JS Vanilla yang dioptimalkan untuk kecepatan maksimum.</p>
+        </div>
+    </footer>
+
+    <!-- Modal Detail Proyek -->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal-container">
+            <button class="modal-close" id="modal-close-btn" title="Tutup">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content">
+                <!-- Bagian Kiri: Carousel Gambar -->
+                <div class="modal-gallery">
+                    <div class="carousel-container">
+                        <button class="carousel-nav prev" id="carousel-prev-btn" title="Gambar Sebelumnya">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="carousel-slides" id="carousel-slides">
+                            <!-- Diisi oleh JS -->
+                        </div>
+                        <button class="carousel-nav next" id="carousel-next-btn" title="Gambar Selanjutnya">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="carousel-dots" id="carousel-dots">
+                        <!-- Diisi oleh JS -->
+                    </div>
+                </div>
+
+                <!-- Bagian Kanan: Info Lengkap Proyek -->
+                <div class="modal-info">
+                    <span class="modal-tag" id="modal-project-category">Kategori</span>
+                    <h3 class="modal-title" id="modal-project-title">Judul Proyek</h3>
+                    
+                    <div class="modal-description" id="modal-project-description">
+                        <!-- Diisi paragraf deskripsi oleh JS -->
+                    </div>
+
+                    <div class="modal-meta-links" id="modal-project-links">
+                        <!-- Diisi link kode program oleh JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>

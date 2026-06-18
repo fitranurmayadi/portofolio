@@ -1,0 +1,3 @@
+# Build / Migration scripts (not needed for deployment)
+migrate.py
+add_github_projects.py

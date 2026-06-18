@@ -1,0 +1,281 @@
+[
+  {
+    "id": "ideasteam",
+    "title": "ideaSTEAM",
+    "category": "Embedded Systems",
+    "description_paragraphs": [
+      "ideaSTEAM eXperiment Board version 1 (XB1)",
+      "In this project, i create an electronics programming learning board based on ESP32 Microcontroller and several electronic components, such as buttons, buzzers, RGB LEDs, OLED displays, temperature sensor, light sensor, and motors driver.",
+      "Here is a link for some sample code that can be used for this learning board:"
+    ],
+    "github_links": [
+      "https://github.com/fitranurmayadi/ideasteam-test-code"
+    ],
+    "images": [
+      "assets/images/ideasteam_1.jpg",
+      "assets/images/ideasteam_2.jpg",
+      "assets/images/ideasteam_3.png",
+      "assets/images/ideasteam_4.png",
+      "assets/images/ideasteam_5.png",
+      "assets/images/ideasteam_6.jpg",
+      "assets/images/ideasteam_7.jpg"
+    ]
+  },
+  {
+    "id": "stemi-robotika",
+    "title": "STEMI ROBOTIKA",
+    "category": "Robotics",
+    "description_paragraphs": [
+      "Line Follower and Obstacle Avoidance Robots.",
+      "In this project, i create line follower robot and obstacle avoidance robot for robotic learning. The robot consists of a photodiode-based line sensor, ultrasonic-based distance sensor, Arduino Nano microcontroller, DC motor, and Bluetooth for communication to smartphones."
+    ],
+    "github_links": [
+      "https://github.com/fitranurmayadi/stemi-robotika/tree/main"
+    ],
+    "images": [
+      "assets/images/stemi-robotika_1.jpeg",
+      "assets/images/stemi-robotika_2.png",
+      "assets/images/stemi-robotika_3.png",
+      "assets/images/stemi-robotika_4.png",
+      "assets/images/stemi-robotika_5.jpeg",
+      "assets/images/stemi-robotika_6.png",
+      "assets/images/stemi-robotika_7.png",
+      "assets/images/stemi-robotika_8.png",
+      "assets/images/stemi-robotika_9.jpeg"
+    ]
+  },
+  {
+    "id": "ostrxb2",
+    "title": "OSTRXB2",
+    "category": "Robotics",
+    "description_paragraphs": [
+      "Open Source Turtle Robot eXperiment Board version 2",
+      "This is the pcb board for the OSTR robot, with the replacement of the microcontroller to the cheaper Arduino Nano."
+    ],
+    "github_links": [],
+    "images": [
+      "assets/images/ostrxb2_1.png",
+      "assets/images/ostrxb2_2.png"
+    ]
+  },
+  {
+    "id": "line-follower",
+    "title": "Line Follower",
+    "category": "Robotics",
+    "description_paragraphs": [
+      "Schematic and PCB of Line Follower Robot"
+    ],
+    "github_links": [],
+    "images": [
+      "assets/images/line-follower_1.png",
+      "assets/images/line-follower_2.png",
+      "assets/images/line-follower_3.jpeg"
+    ]
+  },
+  {
+    "id": "esp01-ir-air-conditioner",
+    "title": "ESP01_IR_Air_Conditioner",
+    "category": "IoT",
+    "description_paragraphs": [
+      "In this project, I made an internet of things based air conditioner (AC) controller. the device can regulate the AC temperature through the Infra Red (IR) LED which is controlled by the ESP8266 Microcontroller which is remotely connected to Firebase and controlled using the Android Application."
+    ],
+    "github_links": [],
+    "images": [
+      "assets/images/esp01-ir-air-conditioner_1.jpg",
+      "assets/images/esp01-ir-air-conditioner_2.png",
+      "assets/images/esp01-ir-air-conditioner_3.jpeg"
+    ]
+  },
+  {
+    "id": "low-power-weather-parameters-monitoring-device",
+    "title": "Low Power Weather Parameters Monitoring Device",
+    "category": "IoT",
+    "description_paragraphs": [
+      "This is my bachelor of engineering thesis project, which is to make a low power weather parameter monitoring device.",
+      "I created three separate systems, namely:",
+      "1. Low-power weather parameter monitoring device, as a Node. This device works by measuring the parameter values ​​of temperature, humidity and pressure, using the BME280 sensor, which then the sensor data values ​​are processed by the STM32F103C8T6 microcontroller, then the data is sent to the Gateway via the SX1278 LoRa communication module. As a power source, the device is powered by a Lithium Ion 18650 battery.",
+      "2. The Gateway device for handling data transfer from the LoRa communication system using the LoRa SX1278 is handled by ESP32 with sufficient capability to embed RTOS-based multitread processing. ESP32 is also used because it can connect to the internet using Wi-Fi and with the MQTT protocol, this device is suitable as a Gateway.",
+      "3. Server Systems. I made my own server system instead of using an existing one, in order to better understand end-to-end communication in the Internet of Things concept. The server consists of the Ubuntu 18.04 Linux Operating System which is installed by MQTT broker to handle data from the Gateway, then Node-RED is used to manage the flow of data from MQTT (as a subscriber) to the Influx DB database storage. On the monitoring side, I use Grafana to set the data graph display from the weather parameter monitoring device.",
+      "With the three systems above integrated, I finally created a weather parameter monitoring system, which not only got an integrated system based on the internet of things, but also the main goal in this project, which is a low-power weather monitoring device with sensors BME280, STM32F103, LoRa SX1278, with support only a 18650 Li-ion battery that lasts for 15 months (estimated calculation) and 9 months (measurement results)."
+    ],
+    "github_links": [],
+    "images": [
+      "assets/images/low-power-weather-parameters-monitoring-device_1.png",
+      "assets/images/low-power-weather-parameters-monitoring-device_2.png",
+      "assets/images/low-power-weather-parameters-monitoring-device_3.png",
+      "assets/images/low-power-weather-parameters-monitoring-device_4.jpg",
+      "assets/images/low-power-weather-parameters-monitoring-device_5.png",
+      "assets/images/low-power-weather-parameters-monitoring-device_6.jpeg",
+      "assets/images/low-power-weather-parameters-monitoring-device_7.png",
+      "assets/images/low-power-weather-parameters-monitoring-device_8.png",
+      "assets/images/low-power-weather-parameters-monitoring-device_9.jpeg"
+    ]
+  },
+  {
+    "id": "fish-feeder",
+    "title": "Fish Feeder",
+    "category": "IoT",
+    "description_paragraphs": [],
+    "github_links": [],
+    "images": [
+      "assets/images/fish-feeder_1.png",
+      "assets/images/fish-feeder_2.png",
+      "assets/images/fish-feeder_3.jpeg"
+    ]
+  },
+  {
+    "id": "mushrooms-watering-system",
+    "title": "Mushrooms Watering System",
+    "category": "IoT",
+    "description_paragraphs": [],
+    "github_links": [],
+    "images": [
+      "assets/images/mushrooms-watering-system_1.png",
+      "assets/images/mushrooms-watering-system_2.png"
+    ]
+  },
+  {
+    "id": "air-quality-monitoring",
+    "title": "Air Quality Monitoring",
+    "category": "IoT",
+    "description_paragraphs": [],
+    "github_links": [],
+    "images": [
+      "assets/images/air-quality-monitoring_1.jpg",
+      "assets/images/air-quality-monitoring_2.png",
+      "assets/images/air-quality-monitoring_3.png"
+    ]
+  },
+  {
+    "id": "air-temperature-and-humidity-monitoring",
+    "title": "Air Temperature and Humidity Monitoring",
+    "category": "IoT",
+    "description_paragraphs": [],
+    "github_links": [],
+    "images": [
+      "assets/images/air-temperature-and-humidity-monitoring_1.jpeg",
+      "assets/images/air-temperature-and-humidity-monitoring_2.png",
+      "assets/images/air-temperature-and-humidity-monitoring_3.png",
+      "assets/images/air-temperature-and-humidity-monitoring_4.jpeg",
+      "assets/images/air-temperature-and-humidity-monitoring_5.jpeg",
+      "assets/images/air-temperature-and-humidity-monitoring_6.jpeg"
+    ]
+  },
+  {
+    "id": "aquascape-monitoring",
+    "title": "Aquascape Monitoring",
+    "category": "IoT",
+    "description_paragraphs": [],
+    "github_links": [],
+    "images": [
+      "assets/images/aquascape-monitoring_1.jpeg",
+      "assets/images/aquascape-monitoring_2.png",
+      "assets/images/aquascape-monitoring_3.jpeg",
+      "assets/images/aquascape-monitoring_4.jpeg",
+      "assets/images/aquascape-monitoring_5.jpeg",
+      "assets/images/aquascape-monitoring_6.jpeg"
+    ]
+  },
+  {
+    "id": "myo-to-arm-robot",
+    "title": "Myo to Arm Robot",
+    "category": "Robotics",
+    "description_paragraphs": [],
+    "github_links": [],
+    "images": [
+      "assets/images/myo-to-arm-robot_1.jpeg",
+      "assets/images/myo-to-arm-robot_2.jpeg",
+      "assets/images/myo-to-arm-robot_3.jpeg",
+      "assets/images/myo-to-arm-robot_4.png"
+    ]
+  },
+  {
+    "id": "power-monitoring",
+    "title": "Power Monitoring",
+    "category": "IoT",
+    "description_paragraphs": [],
+    "github_links": [],
+    "images": [
+      "assets/images/power-monitoring_1.jpeg",
+      "assets/images/power-monitoring_2.jpeg"
+    ]
+  },
+  {
+    "id": "diy-robot",
+    "title": "DIY ROBOT",
+    "category": "Robotics",
+    "description_paragraphs": [],
+    "github_links": [],
+    "images": [
+      "assets/images/diy-robot_1.jpeg",
+      "assets/images/diy-robot_2.jpeg",
+      "assets/images/diy-robot_3.jpeg",
+      "assets/images/diy-robot_4.jpeg",
+      "assets/images/diy-robot_5.jpeg",
+      "assets/images/diy-robot_6.jpeg"
+    ]
+  },
+  {
+    "id": "biofloc-fish-pond",
+    "title": "Biofloc Fish Pond",
+    "category": "Life Science",
+    "description_paragraphs": [],
+    "github_links": [],
+    "images": [
+      "assets/images/biofloc-fish-pond_1.jpeg",
+      "assets/images/biofloc-fish-pond_2.jpeg",
+      "assets/images/biofloc-fish-pond_3.jpeg"
+    ]
+  },
+  {
+    "id": "vertical-hidroponic",
+    "title": "Vertical Hidroponic",
+    "category": "Life Science",
+    "description_paragraphs": [],
+    "github_links": [],
+    "images": [
+      "assets/images/vertical-hidroponic_1.jpeg",
+      "assets/images/vertical-hidroponic_2.jpeg",
+      "assets/images/vertical-hidroponic_3.jpeg",
+      "assets/images/vertical-hidroponic_4.jpeg"
+    ]
+  },
+  {
+    "id": "edge-impulse-esp32s3-animals",
+    "title": "TinyML Object Classification on ESP32S3 Xiao with Edge Impulse",
+    "category": "Embedded Systems",
+    "description_paragraphs": [
+      "TinyML project focused on real-time object classification using Edge Impulse on ESP32 platforms! This project explores the integration of TinyML, particularly a MobileNet V2 model with 96x96 input, and Edge Impulse for efficient object classification.",
+      "In this project, I leveraged the Animals-10 dataset, curating a balanced subset for training the model. The implementation is demonstrated on AI Thinker ESP32-CAM and Seeed Studio XIAO ESP32S3 Sense boards, enhanced with an ST7789 display for real-time visual feedback.",
+      "Key Features include object classification using TinyML and Edge Impulse, hardware implementation on ESP32-CAM and XIAO ESP32S3 Sense, and a balanced dataset from Animals-10 with additional room background images."
+    ],
+    "github_links": [
+      "https://github.com/fitranurmayadi/Edge-Impulse-ESP32S3-Animals-10-with-ST7789"
+    ],
+    "images": [
+      "assets/images/edge-impulse-esp32s3-animals_1.png"
+    ]
+  },
+  {
+    "id": "smarthome-iot-dlcb",
+    "title": "IoT Smart Home Control Panel (DLCB)",
+    "category": "IoT",
+    "description_paragraphs": [
+      "Proyek ini merupakan implementasi panel kontrol IoT bertemakan Smart Home, dikembangkan sebagai bagian dari konten pembelajaran berbasis Internet of Things (IoT). Sistem ini terdiri dari beberapa modul yang saling terintegrasi dan dikendalikan melalui Home Assistant pada Raspberry Pi 4.",
+      "Modul-modul sistem terdiri dari:\n1. Sistem Kontrol Utama (ESP32-S3): Sensor suhu/kelembaban DHT22, Relay 8 Channel untuk kontrol 5 lampu utama, Kipas, Buzzer, dan Solenoid, serta OLED SSD1306.\n2. Sistem Monitoring Daya (ESP32-C3): Sensor daya PZEM-004T v3.0 dan OLED SSD1306 untuk memonitor parameter kelistrikan.\n3. Sistem Pembaca RFID (ESP32-C6): Modul RFID PN532 dan LED RGB sebagai indikator akses keamanan pintu masuk.",
+      "Semua data dikirim dan diproses melalui Server Raspberry Pi 4 yang menjalankan Home Assistant OS, terintegrasi menggunakan protokol komunikasi MQTT dengan dukungan fitur Auto-Discovery."
+    ],
+    "github_links": [
+      "https://github.com/fitranurmayadi/smarthome-iot-dlcb"
+    ],
+    "images": [
+      "assets/images/smarthome-iot-dlcb_1.jpeg",
+      "assets/images/smarthome-iot-dlcb_2.jpeg",
+      "assets/images/smarthome-iot-dlcb_3.jpeg",
+      "assets/images/smarthome-iot-dlcb_4.jpeg",
+      "assets/images/smarthome-iot-dlcb_5.jpeg",
+      "assets/images/smarthome-iot-dlcb_6.jpeg",
+      "assets/images/smarthome-iot-dlcb_7.jpeg"
+    ]
+  }
+]
