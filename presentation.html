@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitra Nurmayadi - Technical Portfolio Presentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --card-bg: #151d2e;
+            --card-border: #25324b;
+            --text-white: #f8fafc;
+            --text-light: #cbd5e1;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --accent-cyan: #38bdf8;
+            --accent-green: #34d399;
+            --accent-amber: #f59e0b;
+            --accent-purple: #a855f7;
+            --accent-blue: #60a5fa;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-light);
+            font-family: var(--font-sans);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            user-select: none;
+        }
+
+        /* Top Bar */
+        .deck-header {
+            height: 52px;
+            background: rgba(11, 15, 25, 0.95);
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            z-index: 100;
+        }
+
+        .deck-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-white);
+        }
+
+        .deck-pill {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .deck-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-deck {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-light);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            transition: all 0.15s ease;
+        }
+
+        .btn-deck:hover {
+            border-color: var(--accent-cyan);
+            color: var(--text-white);
+        }
+
+        .btn-download {
+            background: rgba(56, 189, 248, 0.15);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .btn-download:hover {
+            background: var(--accent-cyan);
+            color: #0b0f19;
+        }
+
+        /* Slide Stage */
+        .stage {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 100%;
+            max-width: 1320px;
+            aspect-ratio: 16 / 9;
+            max-height: 82vh;
+            background: var(--bg);
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            transform: scale(0.99);
+            padding: 2.2rem 2.8rem;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: scale(1);
+        }
+
+        /* Slide Header Typography */
+        .slide-tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            letter-spacing: 0.08em;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .slide-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--text-white);
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .slide-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Slide Components */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-white);
+        }
+
+        .divider {
+            height: 2px;
+            margin-bottom: 12px;
+            border-radius: 2px;
+        }
+
+        .list-unstyled {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .list-unstyled li {
+            font-size: 0.86rem;
+            line-height: 1.45;
+            color: var(--text-light);
+            display: flex;
+            gap: 8px;
+        }
+
+        .list-unstyled li::before {
+            content: "•";
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        /* Hero Slide 1 */
+        .hero-slide {
+            justify-content: center;
+            border-left: 6px solid var(--accent-cyan);
+            padding-left: 3rem;
+        }
+
+        .hero-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+
+        .hero-name {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--text-white);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .hero-role {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .hero-pillars {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+
+        .hero-pillar-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .pillar-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+        }
+
+        /* 4 Columns Grid */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            flex: 1;
+        }
+
+        /* 2 Columns Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 20px;
+            flex: 1;
+        }
+
+        /* 2x2 Grid */
+        .grid-2x2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 14px;
+            flex: 1;
+        }
+
+        /* 3 Columns Grid */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            flex: 1;
+        }
+
+        .point-item {
+            margin-bottom: 12px;
+        }
+
+        .point-label {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 2px;
+        }
+
+        .point-desc {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
+        .chart-frame {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .chart-frame img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        /* Bottom Controls */
+        .deck-footer {
+            height: 52px;
+            background: rgba(11, 15, 25, 0.95);
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            z-index: 100;
+        }
+
+        .progress-bar-container {
+            flex: 1;
+            max-width: 400px;
+            height: 4px;
+            background: var(--card-border);
+            border-radius: 2px;
+            margin: 0 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--accent-cyan);
+            width: 8%;
+            transition: width 0.2s ease;
+        }
+
+        .counter-badge {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .nav-arrows {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-arrow {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-white);
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .btn-arrow:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .btn-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            border-color: var(--card-border);
+            color: var(--text-dim);
+        }
+
+        /* Print styles for exporting to PDF */
+        @media print {
+            body {
+                height: auto;
+                overflow: visible;
+                background: #0b0f19 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .deck-header, .deck-footer {
+                display: none;
+            }
+            .stage {
+                padding: 0;
+                display: block;
+            }
+            .slide-container {
+                max-width: 100%;
+                aspect-ratio: auto;
+                box-shadow: none;
+                border: none;
+            }
+            .slide {
+                position: relative !important;
+                opacity: 1 !important;
+                transform: none !important;
+                page-break-after: always;
+                height: 100vh;
+                display: flex !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <header class="deck-header">
+        <div class="deck-brand">
+            <span>FITRA NURMAYADI</span>
+            <span class="deck-pill">PORTFOLIO PRESENTATION</span>
+        </div>
+        <div class="deck-actions">
+            <a href="index.html" class="btn-deck" title="Back to Portfolio Site">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                <span>Back to Site</span>
+            </a>
+            <a href="Fitra_Nurmayadi_Technical_Portfolio.pptx" download class="btn-deck btn-download" title="Download editable Microsoft PowerPoint PPTX">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                <span>Download .PPTX</span>
+            </a>
+            <button id="btn-fullscreen" class="btn-deck" title="Toggle Fullscreen (F)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+                <span>Fullscreen</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Slide Presentation Stage -->
+    <main class="stage">
+        <div class="slide-container">
+
+            <!-- SLIDE 1: Hero Cover -->
+            <section class="slide hero-slide active" data-slide="1">
+                <div class="hero-tag">TECHNICAL PORTFOLIO & RESEARCH SHOWCASE</div>
+                <h1 class="hero-name">FITRA NURMAYADI</h1>
+                <p class="hero-role">Computer & Embedded Systems Engineer</p>
+                <div class="hero-pillars">
+                    <div class="hero-pillar-item">
+                        <span class="pillar-dot" style="background: var(--accent-cyan);"></span>
+                        <span><strong>Edge AI & Benchmarking:</strong> Hailo-8L NPU (13 TOPS), Jetson Orin Nano, On-Chip INT8 LLMs</span>
+                    </div>
+                    <div class="hero-pillar-item">
+                        <span class="pillar-dot" style="background: var(--accent-amber);"></span>
+                        <span><strong>Robotics & Dynamic Control:</strong> 6-DOF Manipulators, Inverted Pendulum BLDC, High-Speed PID</span>
+                    </div>
+                    <div class="hero-pillar-item">
+                        <span class="pillar-dot" style="background: var(--accent-purple);"></span>
+                        <span><strong>Reinforcement Learning & Simulation:</strong> PyBullet 6-DOF VTVL, MuJoCo, PPO/SAC/TD3, Sim-to-Real</span>
+                    </div>
+                    <div class="hero-pillar-item">
+                        <span class="pillar-dot" style="background: var(--accent-green);"></span>
+                        <span><strong>Custom Hardware & IoT:</strong> ESP32-S3/C3 RISC-V, FreeRTOS, LoRa Telemetry, CAN-Bus, KiCad PCBs</span>
+                    </div>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-cyan); display: flex; gap: 20px;">
+                    <span>🌐 fitranurmayadi.github.io</span>
+                    <span>💻 github.com/fitranurmayadi</span>
+                </div>
+            </section>
+
+            <!-- SLIDE 2: Core Engineering Pillars -->
+            <section class="slide" data-slide="2">
+                <div class="slide-tag">Core Competencies</div>
+                <h2 class="slide-title">Engineering Overview & Technical Architecture</h2>
+                <p class="slide-subtitle">Bridging on-device intelligence, high-frequency dynamic control loops, and custom PCB hardware.</p>
+                <div class="grid-4">
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-cyan);">Edge AI & NPU Benchmarking</div>
+                        <div class="divider" style="background: var(--accent-cyan);"></div>
+                        <ul class="list-unstyled">
+                            <li>Empirical benchmarking across SBCs & NPUs</li>
+                            <li>Hailo-8L (13 TOPS), Jetson Orin Nano, RK3588</li>
+                            <li>1.84M INT8 Generative LLM on ESP32-S3</li>
+                            <li>Flash-mapped RAG & Vector Embeddings</li>
+                            <li>Latency, Wattage & Thermal profiling</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-amber);">Robotics & Autonomous Systems</div>
+                        <div class="divider" style="background: var(--accent-amber);"></div>
+                        <ul class="list-unstyled">
+                            <li>3-DOF Manipulator with YOLOv11 Visual Sorting</li>
+                            <li>Inverse Kinematics & coordinate transformation</li>
+                            <li>Two-Wheeled Self-Balancing Robot (BLDC)</li>
+                            <li>High-speed optical quadrature velocity loops</li>
+                            <li>FreeRTOS dual-core multitasking control loops</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-purple);">RL & Physics Simulation</div>
+                        <div class="divider" style="background: var(--accent-purple);"></div>
+                        <ul class="list-unstyled">
+                            <li>PyBullet 6-DOF Falcon 9 VTVL Simulator</li>
+                            <li>Aerodynamic crosswinds & TVC gimbal dynamics</li>
+                            <li>Deep RL algorithms: PPO, SAC, TD3, DDPG</li>
+                            <li>MuJoCo dynamic balancing environments</li>
+                            <li>Sim-to-Real policy transfer & ONNX deployment</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-green);">Custom Hardware & IoT</div>
+                        <div class="divider" style="background: var(--accent-green);"></div>
+                        <ul class="list-unstyled">
+                            <li>KiCad 2-layer PCB layout & component assembly</li>
+                            <li>ideaSTEAM XB1: ESP32 development board</li>
+                            <li>Automotive ISO 11898 CAN-Bus telemetry</li>
+                            <li>Long-range solar LoRa wireless sensor networks</li>
+                            <li>Industrial power & environmental telemetry</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 3: YOLO11-OBB Benchmark -->
+            <section class="slide" data-slide="3">
+                <div class="slide-tag">Flagship Research · Master's Thesis</div>
+                <h2 class="slide-title">YOLO11-OBB SBC & Edge NPU Benchmark Suite</h2>
+                <p class="slide-subtitle">Empirical cross-platform evaluation of oriented object detection on edge silicon.</p>
+                <div class="grid-2">
+                    <div class="card" style="justify-content: center;">
+                        <div class="point-item">
+                            <div class="point-label">▶ Evaluated Hardware Platforms</div>
+                            <div class="point-desc">Raspberry Pi 5 (Cortex-A76), Raspberry Pi AI Kit with Hailo-8L NPU (13 TOPS via PCIe Gen2), NVIDIA Jetson Orin Nano (40 TOPS GPU/NVDLA), and Khadas Edge 2 (RK3588S, 6 TOPS NPU).</div>
+                        </div>
+                        <div class="point-item">
+                            <div class="point-label">▶ Model & Workload</div>
+                            <div class="point-desc">YOLO11-OBB (Oriented Bounding Box) for aerial and arbitrary-oriented target detection, converted across native runtime backends: Hailo HEF, TensorRT, RKNN, and ONNX.</div>
+                        </div>
+                        <div class="point-item">
+                            <div class="point-label">▶ Multi-Metric Empirical Suite</div>
+                            <div class="point-desc">Evaluated inference latency (ms), frame throughput (FPS), active power draw (Watts via hardware USB power meter), Joules-per-frame energy cost, and thermal throttling under continuous 15-minute load.</div>
+                        </div>
+                        <div class="point-item">
+                            <div class="point-label">▶ Key Conclusion</div>
+                            <div class="point-desc">Dedicated NPUs (Hailo-8L & RK3588) provide up to 5.4x higher energy efficiency (FPS/Watt) compared to host CPU inference while maintaining sub-20ms latency.</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <div class="chart-frame" style="flex: 1;">
+                            <img src="assets/images/obb_benchmark_fps.png" alt="OBB Benchmark FPS">
+                        </div>
+                        <div class="chart-frame" style="flex: 1;">
+                            <img src="assets/images/obb_benchmark_latency.png" alt="OBB Benchmark Latency">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 4: ESP32 Micro-LM -->
+            <section class="slide" data-slide="4">
+                <div class="slide-tag">Edge AI & Embedded Intelligence</div>
+                <h2 class="slide-title">ESP32 Micro-LM: 1.84M On-Chip Generative Language Model</h2>
+                <p class="slide-subtitle">100% disconnected on-device token generation with flash-mapped RAG on ESP32-S3.</p>
+                <div class="grid-3">
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-cyan);">Hardware Constraints</div>
+                        <div class="divider" style="background: var(--accent-cyan);"></div>
+                        <ul class="list-unstyled">
+                            <li><strong>SoC Target:</strong> ESP32-S3 (Dual-Core Xtensa LX7 @ 240 MHz)</li>
+                            <li><strong>Octal PSRAM:</strong> 8MB memory for KV-cache and intermediate activations</li>
+                            <li><strong>SPI Flash:</strong> 16MB mapped via MMU for zero-copy weight execution</li>
+                            <li><strong>Power Envelope:</strong> 3.3V, &lt; 240mA active consumption</li>
+                            <li><strong>Firmware:</strong> Pure ESP-IDF (C++) with FreeRTOS dual-core task affinity</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-green);">Quantization & Pipeline</div>
+                        <div class="divider" style="background: var(--accent-green);"></div>
+                        <ul class="list-unstyled">
+                            <li><strong>Parameter Scale:</strong> 1.84M parameters customized for telemetry queries</li>
+                            <li><strong>INT8 W8A32:</strong> Signed 8-bit integer weights, 32-bit accumulators</li>
+                            <li><strong>Dual-Core Pipelining:</strong> Core 0 handles token decoding; Core 1 handles stream buffering & OLED display</li>
+                            <li><strong>SIMD Acceleration:</strong> Xtensa PIE (Processor Instruction Extension) for vector dot-product speedup</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-amber);">Flash RAG & Benefits</div>
+                        <div class="divider" style="background: var(--accent-amber);"></div>
+                        <ul class="list-unstyled">
+                            <li><strong>Flash-Mapped Index:</strong> Compact INT8 embeddings stored in raw flash partition</li>
+                            <li><strong>Zero Cloud Dependency:</strong> Operates 100% offline in air-gapped industrial facilities</li>
+                            <li><strong>Zero API Cost:</strong> No recurring cloud subscriptions or token billing</li>
+                            <li><strong>Sub-ms Retrieval:</strong> Cosine similarity search over hardware datasheets</li>
+                            <li><strong>Immediate Privacy:</strong> Raw telemetry never leaves the physical silicon</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 5: RocketLander3D -->
+            <section class="slide" data-slide="5">
+                <div class="slide-tag">Physics Simulation & Reinforcement Learning</div>
+                <h2 class="slide-title">RocketLander3D: 6-DOF Falcon 9 VTVL Simulator & RL</h2>
+                <p class="slide-subtitle">Continuous 6-DOF rocketry flight simulator with thrust vectoring & aerodynamic crosswinds.</p>
+                <div class="grid-2">
+                    <div class="card" style="justify-content: center;">
+                        <div class="point-item">
+                            <div class="point-label">▶ High-Fidelity 6-DOF Physics</div>
+                            <div class="point-desc">Modeled in PyBullet & Farama Gymnasium. Accounts for variable mass depletion as propellant burns, changing center of mass (CoM), and moment of inertia tensor over time.</div>
+                        </div>
+                        <div class="point-item">
+                            <div class="point-label">▶ Actuation & Aerodynamics</div>
+                            <div class="point-desc">Simulates Thrust Vector Control (TVC) 2-axis engine gimbal deflection (+/- 15 deg), cold gas thruster attitude control, dynamic atmospheric crosswinds, and landing leg ground contact mechanics.</div>
+                        </div>
+                        <div class="point-item">
+                            <div class="point-label">▶ Reinforcement Learning Algorithms</div>
+                            <div class="point-desc">Trained continuous action-space neural policies: Proximal Policy Optimization (PPO) and Soft Actor-Critic (SAC) against reward formulations prioritizing fuel conservation, upright attitude, and touchdown velocity &lt; 1.0 m/s.</div>
+                        </div>
+                        <div class="point-item">
+                            <div class="point-label">▶ Baseline Benchmarking</div>
+                            <div class="point-desc">Compared RL policy convergence against classical Cascaded PID and LQR controllers under turbulent wind shear.</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <div class="chart-frame" style="flex: 1;">
+                            <img src="assets/images/rocketlander3d_sim.png" alt="RocketLander3D Sim">
+                        </div>
+                        <div class="chart-frame" style="flex: 1;">
+                            <img src="assets/images/rocketlander3d_report.png" alt="RocketLander3D Report">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 6: 3-DOF Robotic Arm with YOLOv11 -->
+            <section class="slide" data-slide="6">
+                <div class="slide-tag">Robotics & Computer Vision</div>
+                <h2 class="slide-title">3-DOF Robotic Arm with YOLOv11 Visual Sorting</h2>
+                <p class="slide-subtitle">Integration of real-time machine vision, inverse kinematics, and multi-servo actuation.</p>
+                <div class="grid-2">
+                    <div class="card" style="justify-content: center;">
+                        <div class="point-item">
+                            <div class="point-label">▶ Robotic Manipulator Hardware</div>
+                            <div class="point-desc">Heavy-duty aluminum alloy chassis with 3 degrees of freedom plus end-effector gripper. Powered by high-torque metal-gear servos (MG996R / DS3218) driven by a dedicated 16-channel PCA9685 I2C PWM driver.</div>
+                        </div>
+                        <div class="point-item">
+                            <div class="point-label">▶ Vision Pipeline (YOLOv11)</div>
+                            <div class="point-desc">Overhead camera stream processed via YOLOv11 inference for real-time item classification and bounding box localization.</div>
+                        </div>
+                        <div class="point-item">
+                            <div class="point-label">▶ Spatial Coordinate Mapping</div>
+                            <div class="point-desc">Calibrated OpenCV homography and perspective transformation mapping 2D image pixel coordinates (u, v) into physical millimeter coordinates (X, Y, Z) on the conveyor sorting plane.</div>
+                        </div>
+                        <div class="point-item">
+                            <div class="point-label">▶ Inverse Kinematics Solver</div>
+                            <div class="point-desc">Geometric and trigonometric IK solver executing on the embedded controller, converting target (X, Y, Z) coordinates into precise joint angles (θ₁, θ₂, θ₃) with trajectory smoothing.</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <div class="chart-frame" style="flex: 1;">
+                            <img src="assets/images/robotic_arm_1.jpeg" alt="Robotic Arm 1">
+                        </div>
+                        <div class="chart-frame" style="flex: 1;">
+                            <img src="assets/images/robotic_arm_2.jpeg" alt="Robotic Arm 2">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 7: Robotics & Dynamic Control Highlights -->
+            <section class="slide" data-slide="7">
+                <div class="slide-tag">Robotics & Control Systems</div>
+                <h2 class="slide-title">Robotics & Dynamic Control Highlights</h2>
+                <p class="slide-subtitle">High-frequency embedded balance loops, competitive robotics, and kinematic platforms.</p>
+                <div class="grid-2x2">
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-amber);">TWSBR Nidec 24H BLDC Hardware</div>
+                        <div class="divider" style="background: var(--accent-amber);"></div>
+                        <ul class="list-unstyled">
+                            <li>Dynamic inverted-pendulum balancing robot (Hobby Research)</li>
+                            <li>Dual Nidec 24H BLDC motors with optical quadrature encoders</li>
+                            <li>MPU6050 6-axis IMU complementary sensor fusion filter</li>
+                            <li>High-frequency FreeRTOS dual-core balance loop</li>
+                            <li>Live WiFi / OSC telemetry for state debugging</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-cyan);">Competition Line Follower Robot</div>
+                        <div class="divider" style="background: var(--accent-cyan);"></div>
+                        <ul class="list-unstyled">
+                            <li>7-channel front phototransistor array with LM339 comparators</li>
+                            <li>High-RPM coreless DC motors with magnetic hall encoders</li>
+                            <li>Non-volatile EEPROM calibration for on-track PID tuning</li>
+                            <li>Dynamic cornering braking & acceleration feedforward</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-green);">Wi-Fi Combat Sumo Robot</div>
+                        <div class="divider" style="background: var(--accent-green);"></div>
+                        <ul class="list-unstyled">
+                            <li>High-torque differential drive combat platform on ESP32</li>
+                            <li>On-board asynchronous web server (ESPAsyncWebServer)</li>
+                            <li>Zero-latency responsive touch GUI with dual fader controls</li>
+                            <li>SoftAP local wireless network with failsafe timeout</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-purple);">Quadruped Spider & Myo EMG Arm</div>
+                        <div class="divider" style="background: var(--accent-purple);"></div>
+                        <ul class="list-unstyled">
+                            <li>8-DOF spider robot with parametric gait kinematics</li>
+                            <li>Myo EMG armband decoding muscle biopotential signals</li>
+                            <li>Prosthetic hand teleoperation via gesture classification</li>
+                            <li>Smooth servo interpolation avoiding high current spikes</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 8: RL & Simulation Showcase -->
+            <section class="slide" data-slide="8">
+                <div class="slide-tag">RL Algorithms & Dynamics</div>
+                <h2 class="slide-title">Reinforcement Learning & Physics Simulation</h2>
+                <p class="slide-subtitle">Evaluating continuous control algorithms in rigorous physics simulation engines.</p>
+                <div class="grid-2">
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-cyan);">twsbr-rl: Inverted Pendulum RL Benchmark</div>
+                        <div class="divider" style="background: var(--accent-cyan);"></div>
+                        <div class="point-item">
+                            <div class="point-label">▶ Simulated Physics Engines</div>
+                            <div class="point-desc">Implemented across both MuJoCo and PyBullet for high-speed parallel rollouts.</div>
+                        </div>
+                        <div class="point-item">
+                            <div class="point-label">▶ Continuous Deep RL Benchmark</div>
+                            <div class="point-desc">Benchmarked Soft Actor-Critic (SAC), Proximal Policy Optimization (PPO), and Twin Delayed DDPG (TD3) under random impulse disturbances.</div>
+                        </div>
+                        <div class="point-item">
+                            <div class="point-label">▶ Baseline Comparison</div>
+                            <div class="point-desc">Evaluated against analytical Linear Quadratic Regulator (LQR) and Cascaded PID controllers.</div>
+                        </div>
+                        <div class="point-item">
+                            <div class="point-label">▶ Edge Deployment Pipeline</div>
+                            <div class="point-desc">Trained policy networks exported to ONNX format for on-device inference on embedded ARM/ESP32 microcontrollers.</div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-purple);">LunarLander3D & Sim-to-Real Methodologies</div>
+                        <div class="divider" style="background: var(--accent-purple);"></div>
+                        <div class="point-item">
+                            <div class="point-label">▶ 3D Continuous Low-Gravity Control</div>
+                            <div class="point-desc">Gymnasium environment simulating descent, attitude orientation, thruster throttling, and leg contact in lunar gravity (1.62 m/s²).</div>
+                        </div>
+                        <div class="point-item">
+                            <div class="point-label">▶ Domain Randomization</div>
+                            <div class="point-desc">Perturbing friction coefficients, ground slope, sensor noise, and engine response lag during training to prevent overfitting.</div>
+                        </div>
+                        <div class="point-item">
+                            <div class="point-label">▶ Multi-Objective Reward Engineering</div>
+                            <div class="point-desc">Balancing soft landing speed (&lt; 0.5 m/s), low fuel expenditure, vertical alignment, and landing pad touchdown accuracy.</div>
+                        </div>
+                        <div class="point-item">
+                            <div class="point-label">▶ Sim-to-Real Readiness</div>
+                            <div class="point-desc">Quantizing observation tensors to fixed-point / INT8, ensuring real-time inference latency fits within hardware micro-loop budgets (&lt; 5ms).</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 9: Custom Embedded Systems, IoT & PCB Hardware -->
+            <section class="slide" data-slide="9">
+                <div class="slide-tag">Embedded Systems & Hardware Codesign</div>
+                <h2 class="slide-title">Custom Embedded Hardware, IoT & PCB Engineering</h2>
+                <p class="slide-subtitle">Production-grade microcontrollers, custom PCBs, CAN-bus networks, and wireless telemetry.</p>
+                <div class="grid-2x2">
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-green);">ideaSTEAM XB1: Custom ESP32 Dev Board</div>
+                        <div class="divider" style="background: var(--accent-green);"></div>
+                        <ul class="list-unstyled">
+                            <li>Designed 2-layer PCB in KiCad with USB-C CP2102 auto-flasher</li>
+                            <li>High-efficiency LDO regulator circuit with reverse polarity protection</li>
+                            <li>Breadboard-friendly standardized 0.1" breakout headers</li>
+                            <li>Tested and deployed for educational STEM & robotics prototyping</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-cyan);">Electric Vehicle (EV) CAN-Bus Telemetry</div>
+                        <div class="divider" style="background: var(--accent-cyan);"></div>
+                        <ul class="list-unstyled">
+                            <li>Automotive ISO 11898 standard implementation via MCP2515 transceiver</li>
+                            <li>Real-time battery pack thermals, cell voltages, and motor RPM telemetry</li>
+                            <li>High-reliability differential signaling rejecting EMI/noise</li>
+                            <li>Local TFT dashboard visualization and alert trigger thresholds</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-amber);">ESP32-C3 RISC-V AC Power Monitoring</div>
+                        <div class="divider" style="background: var(--accent-amber);"></div>
+                        <ul class="list-unstyled">
+                            <li>Isolated AC power meter via PZEM-004T optical UART isolation</li>
+                            <li>Monitors active power (W), voltage, current (A), energy (kWh), and frequency</li>
+                            <li>MQTT message broker telemetry published to InfluxDB and Grafana</li>
+                            <li>ESP32-C3 single-core RISC-V with WiFi & BLE 5.0</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-blue);">Solar Long-Range LoRa Agricultural System</div>
+                        <div class="divider" style="background: var(--accent-blue);"></div>
+                        <ul class="list-unstyled">
+                            <li>Semtech SX1278 433 MHz LoRa transceiver with +20 dBm PA</li>
+                            <li>Deep sleep current &lt; 15 uA powered by solar LiFePO4 battery management</li>
+                            <li>Multi-sensor array: soil moisture, air temperature, relative humidity, light</li>
+                            <li>Range &gt; 5 km non-line-of-sight telemetry in remote farm fields</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 10: Environmental & Industrial IoT Deployments -->
+            <section class="slide" data-slide="10">
+                <div class="slide-tag">Applied IoT Systems</div>
+                <h2 class="slide-title">Industrial & Environmental IoT Deployments</h2>
+                <p class="slide-subtitle">Real-world telemetry solutions operating in aquacultural, agricultural, and residential facilities.</p>
+                <div class="grid-2x2">
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-green);">Biofloc Fish Pond Automation</div>
+                        <div class="divider" style="background: var(--accent-green);"></div>
+                        <ul class="list-unstyled">
+                            <li>Real-time dissolved oxygen (DO), pH, temperature, and water level monitoring</li>
+                            <li>Automated aerator motor control relays with hysteresis thresholds</li>
+                            <li>GSM/GPRS and Wi-Fi dual-fallback telemetry alerting farm managers</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-green);">Vertical Hydroponic & Nutrient Control</div>
+                        <div class="divider" style="background: var(--accent-green);"></div>
+                        <ul class="list-unstyled">
+                            <li>Total Dissolved Solids (TDS) and Electrical Conductivity (EC) feedback loops</li>
+                            <li>Peristaltic dosing pumps for precision pH up/down and nutrient A/B injection</li>
+                            <li>Cyclic irrigation scheduler maintaining root oxygenation</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-green);">Low-Power Weather Parameter Station</div>
+                        <div class="divider" style="background: var(--accent-green);"></div>
+                        <ul class="list-unstyled">
+                            <li>Barometric pressure (BME280), wind speed anemometer, rainfall tipping bucket</li>
+                            <li>Ultra-low-power battery telemetry transmitting via LoRa / MQTT</li>
+                            <li>Tested under tropical outdoor climate conditions for continuous operations</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-green);">Automated Mushroom Cultivation Environment</div>
+                        <div class="divider" style="background: var(--accent-green);"></div>
+                        <ul class="list-unstyled">
+                            <li>Ultrasonic mist humidifiers and exhaust fan ventilation control</li>
+                            <li>High-humidity capacitive sensors preventing spore saturation</li>
+                            <li>Dual-relay actuation maintaining strict 85-95% RH microclimate</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 11: Technology & Tooling Stack -->
+            <section class="slide" data-slide="11">
+                <div class="slide-tag">Engineering Capabilities</div>
+                <h2 class="slide-title">End-to-End Technology & Tooling Stack</h2>
+                <p class="slide-subtitle">Full vertical integration from schematic capture and board layout to deep learning & cloud.</p>
+                <div class="grid-2x2">
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-cyan);">HARDWARE & FIRMWARE</div>
+                        <div class="divider" style="background: var(--accent-cyan);"></div>
+                        <ul class="list-unstyled">
+                            <li><strong>Microcontrollers:</strong> ESP32, ESP32-S3, ESP32-C3 RISC-V, STM32, Arduino</li>
+                            <li><strong>OS & Frameworks:</strong> ESP-IDF, FreeRTOS, STM32 HAL, PlatformIO</li>
+                            <li><strong>Protocols:</strong> CAN-Bus (ISO 11898), LoRa, I2C, SPI, UART, Modbus RS485</li>
+                            <li><strong>EDA / CAD:</strong> KiCad (schematic & multi-layer layout), Fusion 360 (CAD/STL)</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-amber);">EDGE AI & MACHINE LEARNING</div>
+                        <div class="divider" style="background: var(--accent-amber);"></div>
+                        <ul class="list-unstyled">
+                            <li><strong>Frameworks:</strong> PyTorch, TensorFlow Lite for Microcontrollers (TFLM)</li>
+                            <li><strong>Edge Runtimes:</strong> Hailo Dataflow Compiler (HEF), NVIDIA TensorRT, RKNN</li>
+                            <li><strong>Computer Vision:</strong> YOLO11-OBB, YOLOv8, OpenCV, Camera Homography</li>
+                            <li><strong>Quantization:</strong> INT8 W8A32, PTQ (Post-Training Quantization), Flash RAG</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-purple);">SIMULATION & CONTROL</div>
+                        <div class="divider" style="background: var(--accent-purple);"></div>
+                        <ul class="list-unstyled">
+                            <li><strong>Physics Engines:</strong> MuJoCo, PyBullet, Farama Gymnasium</li>
+                            <li><strong>RL Algorithms:</strong> Stable-Baselines3 (SAC, PPO, TD3, DDPG, A2C)</li>
+                            <li><strong>Control Theory:</strong> LQR (Linear Quadratic Regulator), Cascaded PID, State-Space</li>
+                            <li><strong>Export Formats:</strong> ONNX runtime, C++ embedded inference deployment</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title" style="color: var(--accent-green);">SYSTEMS, DEVOPS & TELEMETRY</div>
+                        <div class="divider" style="background: var(--accent-green);"></div>
+                        <ul class="list-unstyled">
+                            <li><strong>Languages:</strong> Python, C/C++, JavaScript, Bash, SQL</li>
+                            <li><strong>IoT & Telemetry:</strong> MQTT, WebSockets, OSC, REST API, ESPAsyncWebServer</li>
+                            <li><strong>Data & Monitoring:</strong> InfluxDB, Grafana, Node-RED, Linux / Docker</li>
+                            <li><strong>Version Control:</strong> Git, GitHub, Automated testing & documentation</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 12: Open Source Index -->
+            <section class="slide" data-slide="12">
+                <div class="slide-tag">Public Codebases</div>
+                <h2 class="slide-title">Open Source Project Index & GitHub Repositories</h2>
+                <p class="slide-subtitle">Well-documented, verifiable engineering repositories available on GitHub.</p>
+                <div class="grid-2" style="font-size: 0.85rem;">
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <div class="card" style="padding: 10px 14px;">
+                            <a href="https://github.com/fitranurmayadi/obb-sbc-benchmark" target="_blank" style="color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-family: var(--font-mono);">github.com/fitranurmayadi/obb-sbc-benchmark</a>
+                            <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 2px;">Master's Thesis: Cross-platform YOLO11-OBB benchmark on Hailo-8L, Jetson, Khadas (Python, TensorRT, HEF)</div>
+                        </div>
+                        <div class="card" style="padding: 10px 14px;">
+                            <a href="https://github.com/fitranurmayadi/esp32-microlm" target="_blank" style="color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-family: var(--font-mono);">github.com/fitranurmayadi/esp32-microlm</a>
+                            <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 2px;">100% on-device 1.84M INT8 generative language model & flash RAG on ESP32-S3 (C++, ESP-IDF)</div>
+                        </div>
+                        <div class="card" style="padding: 10px 14px;">
+                            <a href="https://github.com/fitranurmayadi/rocketlander3d" target="_blank" style="color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-family: var(--font-mono);">github.com/fitranurmayadi/rocketlander3d</a>
+                            <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 2px;">6-DOF Falcon 9 VTVL flight simulator with thrust vector control and deep RL (Python, PyBullet)</div>
+                        </div>
+                        <div class="card" style="padding: 10px 14px;">
+                            <a href="https://github.com/fitranurmayadi/twsbr-rl" target="_blank" style="color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-family: var(--font-mono);">github.com/fitranurmayadi/twsbr-rl</a>
+                            <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 2px;">MuJoCo/PyBullet simulation environment & RL balance benchmark with ONNX export (Python, SB3)</div>
+                        </div>
+                        <div class="card" style="padding: 10px 14px;">
+                            <a href="https://github.com/fitranurmayadi/ESP32C3-PowerMonitoring" target="_blank" style="color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-family: var(--font-mono);">github.com/fitranurmayadi/ESP32C3-PowerMonitoring</a>
+                            <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 2px;">AC energy monitoring via PZEM-004T optical UART and MQTT telemetry (C++, ESP32-C3)</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <div class="card" style="padding: 10px 14px;">
+                            <a href="https://github.com/fitranurmayadi/line-follower" target="_blank" style="color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-family: var(--font-mono);">github.com/fitranurmayadi/line-follower</a>
+                            <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 2px;">High-speed line follower with on-track EEPROM PID auto-calibration (C++, Encoders)</div>
+                        </div>
+                        <div class="card" style="padding: 10px 14px;">
+                            <a href="https://github.com/fitranurmayadi/S2SProject" target="_blank" style="color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-family: var(--font-mono);">github.com/fitranurmayadi/S2SProject</a>
+                            <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 2px;">On-chip Genetic Algorithm PID auto-tuning on dual-core ESP32-S3 (C++, Optimization)</div>
+                        </div>
+                        <div class="card" style="padding: 10px 14px;">
+                            <a href="https://github.com/fitranurmayadi/weather-stations-lora-mqtt" target="_blank" style="color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-family: var(--font-mono);">github.com/fitranurmayadi/weather-stations-lora-mqtt</a>
+                            <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 2px;">Solar-powered long-range multi-sensor meteorological station (C++, LoRa, Deep Sleep)</div>
+                        </div>
+                        <div class="card" style="padding: 10px 14px;">
+                            <a href="https://github.com/fitranurmayadi/waterflow-monitoring-mqtt" target="_blank" style="color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-family: var(--font-mono);">github.com/fitranurmayadi/waterflow-monitoring-mqtt</a>
+                            <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 2px;">Precision Hall-effect fluid dynamics telemetry with MQTT alerting (C++, FreeRTOS)</div>
+                        </div>
+                        <div class="card" style="padding: 10px 14px;">
+                            <a href="https://github.com/fitranurmayadi/muse-myo-arduino-js" target="_blank" style="color: var(--accent-cyan); font-weight: 700; text-decoration: none; font-family: var(--font-mono);">github.com/fitranurmayadi/muse-myo-arduino-js</a>
+                            <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 2px;">EMG biopotential classification and robotic hand teleoperation (C++, JavaScript)</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 13: Summary & Contact -->
+            <section class="slide" data-slide="13" style="justify-content: center;">
+                <div class="card" style="padding: 2.5rem 3rem;">
+                    <div class="slide-tag">Engineering Philosophy & Summary</div>
+                    <h2 class="slide-title" style="font-size: 2.2rem; margin-bottom: 1rem;">Building High-Reliability Intelligent Systems</h2>
+                    <p style="font-size: 1.05rem; line-height: 1.6; color: var(--text-light); margin-bottom: 2rem;">
+                        Committed to rigorous, first-principles engineering across the full hardware-software stack. Whether deploying INT8 quantized neural networks to resource-constrained microcontrollers, modeling 6-DOF dynamic physics environments, or routing impedance-controlled PCBs in KiCad, the objective remains clear: <strong>high reliability, verifiable empirical benchmarks, and zero unnecessary fluff</strong>.
+                    </p>
+                    <div style="display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--card-border); padding-top: 1.5rem;">
+                        <div style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--text-white);">
+                            <span style="color: var(--text-muted);">🌐 Portfolio Website:</span> <a href="https://fitranurmayadi.github.io" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">https://fitranurmayadi.github.io</a>
+                        </div>
+                        <div style="font-family: var(--font-mono); font-size: 0.95rem; color: var(--text-white);">
+                            <span style="color: var(--text-muted);">💻 GitHub Profile:</span> <a href="https://github.com/fitranurmayadi" target="_blank" style="color: var(--accent-cyan); text-decoration: none;">https://github.com/fitranurmayadi</a>
+                        </div>
+                        <div style="font-size: 0.9rem; color: var(--text-dim); margin-top: 6px;">
+                            Primary Disciplines: Edge AI Acceleration · Embedded Systems · Robotics & Dynamic Control · Physics Simulation
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Bottom Controls -->
+    <footer class="deck-footer">
+        <div class="counter-badge">
+            Slide <span id="current-slide">01</span> / <span id="total-slides">13</span>
+        </div>
+        <div class="progress-bar-container">
+            <div id="progress-fill" class="progress-bar-fill"></div>
+        </div>
+        <div class="nav-arrows">
+            <button id="btn-prev" class="btn-arrow" title="Previous Slide (Left Arrow, Backspace)" disabled>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button id="btn-next" class="btn-arrow" title="Next Slide (Right Arrow, Space)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Slide Controller Script -->
+    <script>
+        (function() {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            let currentIdx = 0;
+
+            const curSlideEl = document.getElementById('current-slide');
+            const totalSlideEl = document.getElementById('total-slides');
+            const progressEl = document.getElementById('progress-fill');
+            const btnPrev = document.getElementById('btn-prev');
+            const btnNext = document.getElementById('btn-next');
+            const btnFullscreen = document.getElementById('btn-fullscreen');
+
+            totalSlideEl.textContent = String(totalSlides).padStart(2, '0');
+
+            function showSlide(idx) {
+                if (idx < 0 || idx >= totalSlides) return;
+                slides.forEach((s, i) => {
+                    s.classList.toggle('active', i === idx);
+                });
+                currentIdx = idx;
+                curSlideEl.textContent = String(currentIdx + 1).padStart(2, '0');
+                const pct = ((currentIdx + 1) / totalSlides) * 100;
+                progressEl.style.width = pct + '%';
+
+                btnPrev.disabled = (currentIdx === 0);
+                btnNext.disabled = (currentIdx === totalSlides - 1);
+            }
+
+            function nextSlide() {
+                if (currentIdx < totalSlides - 1) showSlide(currentIdx + 1);
+            }
+
+            function prevSlide() {
+                if (currentIdx > 0) showSlide(currentIdx - 1);
+            }
+
+            btnNext.addEventListener('click', nextSlide);
+            btnPrev.addEventListener('click', prevSlide);
+
+            // Keyboard navigation
+            window.addEventListener('keydown', (e) => {
+                if (['ArrowRight', 'Space', 'PageDown', 'j', 'l'].includes(e.key)) {
+                    e.preventDefault();
+                    nextSlide();
+                } else if (['ArrowLeft', 'Backspace', 'PageUp', 'h', 'k'].includes(e.key)) {
+                    e.preventDefault();
+                    prevSlide();
+                } else if (e.key === 'Home') {
+                    e.preventDefault();
+                    showSlide(0);
+                } else if (e.key === 'End') {
+                    e.preventDefault();
+                    showSlide(totalSlides - 1);
+                } else if (e.key.toLowerCase() === 'f') {
+                    e.preventDefault();
+                    toggleFullscreen();
+                }
+            });
+
+            // Touch swipe support
+            let touchStartX = 0;
+            window.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            window.addEventListener('touchend', (e) => {
+                const touchEndX = e.changedTouches[0].screenX;
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) nextSlide();
+                    else prevSlide();
+                }
+            }, { passive: true });
+
+            // Fullscreen toggle
+            function toggleFullscreen() {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen().catch(err => console.log(err));
+                } else {
+                    if (document.exitFullscreen) document.exitFullscreen();
+                }
+            }
+
+            if (btnFullscreen) {
+                btnFullscreen.addEventListener('click', toggleFullscreen);
+            }
+
+            showSlide(0);
+        })();
+    </script>
+</body>
+</html>
