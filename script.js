@@ -1,358 +1,375 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // State variables
-    let allProjects = [];
+/**
+ * Fitra Nurmayadi — Technical Portfolio Client Logic
+ * Lightweight, zero-bloat, instant client-side filtering and lightbox.
+ */
+
+(function () {
+    'use strict';
+
+    // State
     let activeCategory = 'all';
     let searchQuery = '';
-    let currentCarouselIndex = 0;
-    let currentCarouselImages = [];
+    let lightboxImages = [];
+    let currentLightboxIndex = 0;
+    let currentProjectTitle = '';
+
+    // Data Source
+    const data = window.PORTFOLIO_DATA || { projects: [], categories: [] };
+    const allProjects = data.projects || [];
 
     // DOM Elements
+    const featuredGrid = document.getElementById('featured-grid');
     const projectsGrid = document.getElementById('projects-grid');
+    const categoryTabs = document.getElementById('category-tabs');
     const searchInput = document.getElementById('search-input');
-    const searchClearBtn = document.getElementById('search-clear-btn');
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const projectModal = document.getElementById('project-modal');
-    const modalCloseBtn = document.getElementById('modal-close-btn');
+    const searchClear = document.getElementById('search-clear');
+    const resultsCount = document.getElementById('results-count');
+    const themeToggle = document.getElementById('theme-toggle');
 
-    // Modal Info Elements
-    const modalTitle = document.getElementById('modal-project-title');
-    const modalCategory = document.getElementById('modal-project-category');
-    const modalDescription = document.getElementById('modal-project-description');
-    const modalLinks = document.getElementById('modal-project-links');
+    // Lightbox Elements
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxBackdrop = document.getElementById('lightbox-backdrop');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
 
-    // Carousel Elements
-    const carouselSlides = document.getElementById('carousel-slides');
-    const carouselDots = document.getElementById('carousel-dots');
-    const carouselPrevBtn = document.getElementById('carousel-prev-btn');
-    const carouselNextBtn = document.getElementById('carousel-next-btn');
-
-    // ==========================================================================
-    // THEME TOGGLE (DARK / LIGHT MODE)
-    // ==========================================================================
-    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
-    if (savedTheme === 'light') {
-        document.body.classList.remove('dark-mode');
-        document.body.classList.add('light-mode');
-        themeToggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
-    } else {
-        document.body.classList.remove('light-mode');
-        document.body.classList.add('dark-mode');
-        themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
-    }
-
-    themeToggleBtn.addEventListener('click', () => {
-        if (document.body.classList.contains('dark-mode')) {
-            document.body.classList.remove('dark-mode');
+    // Init Theme
+    function initTheme() {
+        const savedTheme = localStorage.getItem('fn_portfolio_theme');
+        if (savedTheme === 'light') {
             document.body.classList.add('light-mode');
-            themeToggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
-            localStorage.setItem('portfolio-theme', 'light');
         } else {
             document.body.classList.remove('light-mode');
-            document.body.classList.add('dark-mode');
-            themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
-            localStorage.setItem('portfolio-theme', 'dark');
         }
-    });
 
-    // ==========================================================================
-    // FETCH DATA & INITIATE
-    // ==========================================================================
-    async function loadProjects() {
-        try {
-            const response = await fetch('./projects.json');
-            if (!response.ok) {
-                throw new Error('Gagal mengambil data proyek.');
-            }
-            allProjects = await response.json();
-            const countEl = document.getElementById('stats-projects-count');
-            if (countEl) countEl.textContent = allProjects.length;
-            renderProjects();
-        } catch (error) {
-            console.error('Error loading projects:', error);
-            projectsGrid.innerHTML = `
-                <div class="empty-state">
-                    <i class="fas fa-exclamation-triangle" style="color: #ef4444;"></i>
-                    <h3>Gagal Memuat Data</h3>
-                    <p>Pastikan file <code>projects.json</code> sudah digenerate dengan menjalankan skrip migrasi.</p>
-                </div>
-            `;
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('light-mode');
+                const isLight = document.body.classList.contains('light-mode');
+                localStorage.setItem('fn_portfolio_theme', isLight ? 'light' : 'dark');
+            });
         }
     }
 
-    // ==========================================================================
-    // RENDER PROJECTS GRID
-    // ==========================================================================
-    function renderProjects() {
-        // Filter projects based on category and search query
-        const filtered = allProjects.filter(project => {
-            const matchesCategory = activeCategory === 'all' || project.category === activeCategory;
-            
-            const matchesSearch = searchQuery === '' || 
-                project.title.toLowerCase().includes(searchQuery) ||
-                project.category.toLowerCase().includes(searchQuery) ||
-                project.description_paragraphs.some(p => p.toLowerCase().includes(searchQuery));
-                
-            return matchesCategory && matchesSearch;
+    // Render Featured Cards (Flagship Research)
+    function renderFeaturedProjects() {
+        if (!featuredGrid) return;
+        const featured = allProjects.filter(p => p.featured);
+
+        featuredGrid.innerHTML = featured.map(p => {
+            const hasImages = p.images && p.images.length > 0;
+            const primaryImage = hasImages ? p.images[0] : '';
+            const mediaCountBadge = hasImages && p.images.length > 1 ? `<span class="media-badge">${p.images.length} Figures</span>` : '';
+
+            const hardwarePills = (p.hardware || []).map(h => `<span class="pill">${escapeHtml(h)}</span>`).join('');
+            const stackPills = (p.stack || []).map(s => `<span class="pill">${escapeHtml(s)}</span>`).join('');
+
+            return `
+                <article class="featured-card" data-project-id="${p.id}">
+                    ${hasImages ? `
+                    <div class="featured-media" data-project-id="${p.id}">
+                        <img src="${primaryImage}" alt="${escapeHtml(p.title)}" loading="lazy">
+                        ${mediaCountBadge}
+                    </div>
+                    ` : ''}
+                    <div class="featured-body">
+                        <div class="card-topline">
+                            <span class="category-tag">${escapeHtml(p.category)}</span>
+                            <span class="year-tag">${p.year}</span>
+                        </div>
+                        <h3 class="featured-title">
+                            <a href="${p.github_url}" target="_blank" rel="noopener">${escapeHtml(p.title)} &rarr;</a>
+                        </h3>
+                        <p class="featured-summary">${escapeHtml(p.summary)}</p>
+                        
+                        <div class="metric-box">
+                            <strong>Benchmark & Architecture:</strong> ${escapeHtml(p.metrics)}
+                        </div>
+
+                        <div class="hardware-pills">
+                            ${hardwarePills}
+                            ${stackPills}
+                        </div>
+
+                        <div class="card-actions">
+                            <a href="${p.github_url}" target="_blank" rel="noopener" class="btn-action primary">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                                </svg>
+                                <span>GitHub Repository</span>
+                            </a>
+                            ${hasImages ? `
+                            <button type="button" class="btn-action view-gallery-btn" data-project-id="${p.id}">
+                                <span>View Figures (${p.images.length})</span>
+                            </button>
+                            ` : ''}
+                        </div>
+                    </div>
+                </article>
+            `;
+        }).join('');
+
+        // Attach image click events
+        featuredGrid.querySelectorAll('.featured-media, .view-gallery-btn').forEach(el => {
+            el.addEventListener('click', (e) => {
+                const projectId = el.getAttribute('data-project-id');
+                openProjectGallery(projectId);
+            });
+        });
+    }
+
+    // Render Category Tabs
+    function renderCategoryTabs() {
+        if (!categoryTabs) return;
+        const categories = data.categories || [
+            { id: 'all', name: 'All Work', count: allProjects.length }
+        ];
+
+        categoryTabs.innerHTML = categories.map(cat => {
+            const count = cat.id === 'all' 
+                ? allProjects.length 
+                : allProjects.filter(p => p.category_id === cat.id).length;
+
+            return `
+                <button class="tab-btn ${cat.id === activeCategory ? 'active' : ''}" data-category="${cat.id}">
+                    <span>${escapeHtml(cat.name)}</span>
+                    <span class="tab-count">[${count}]</span>
+                </button>
+            `;
+        }).join('');
+
+        categoryTabs.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                activeCategory = btn.getAttribute('data-category');
+                categoryTabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterAndRenderProjects();
+            });
+        });
+    }
+
+    // Filter and Render Projects Grid
+    function filterAndRenderProjects() {
+        if (!projectsGrid) return;
+
+        const query = searchQuery.trim().toLowerCase();
+
+        const filtered = allProjects.filter(p => {
+            // Category check
+            const matchesCat = activeCategory === 'all' || p.category_id === activeCategory;
+            if (!matchesCat) return false;
+
+            // Search query check
+            if (!query) return true;
+
+            const searchable = [
+                p.title,
+                p.summary,
+                p.category,
+                p.metrics,
+                ...(p.hardware || []),
+                ...(p.stack || []),
+                p.year
+            ].join(' ').toLowerCase();
+
+            return searchable.includes(query);
         });
 
-        // Clear loading or existing cards
-        projectsGrid.innerHTML = '';
+        // Update count
+        if (resultsCount) {
+            resultsCount.textContent = `Showing ${filtered.length} of ${allProjects.length} projects`;
+        }
 
         if (filtered.length === 0) {
             projectsGrid.innerHTML = `
                 <div class="empty-state">
-                    <i class="fas fa-search"></i>
-                    <h3>Proyek Tidak Ditemukan</h3>
-                    <p>Tidak ada proyek yang cocok dengan kata kunci pencarian atau kategori ini.</p>
+                    <p>No matching projects found for "<strong>${escapeHtml(searchQuery)}</strong>" in this category.</p>
                 </div>
             `;
             return;
         }
 
-        // Generate cards
-        filtered.forEach(project => {
-            const card = document.createElement('div');
-            card.className = 'project-card';
-            
-            // Thumbnail image: use the first image if available, else show fallback
-            let headerHTML = '';
-            if (project.images && project.images.length > 0) {
-                headerHTML = `
-                    <div class="card-header">
-                        <span class="card-tag">${project.category}</span>
-                        <img src="${project.images[0]}" alt="${project.title}" class="card-image" loading="lazy">
-                    </div>
-                `;
-            } else {
-                headerHTML = `
-                    <div class="card-header">
-                        <span class="card-tag">${project.category}</span>
-                        <div class="card-image-fallback">
-                            <i class="fas fa-microchip"></i>
-                            <span style="font-size: 0.8rem; font-weight: 600;">No Image / Schematics</span>
-                        </div>
-                    </div>
-                `;
-            }
+        projectsGrid.innerHTML = filtered.map(p => {
+            const hasImages = p.images && p.images.length > 0;
+            const tags = [...(p.hardware || []), ...(p.stack || [])].slice(0, 5);
 
-            // Description preview (first paragraph or text preview)
-            const previewText = project.description_paragraphs.length > 0 
-                ? project.description_paragraphs[0] 
-                : 'Merancang sistem embedded dan antarmuka pemrograman.';
-
-            // Links icons
-            let linksHTML = '';
-            if (project.github_links && project.github_links.length > 0) {
-                linksHTML = project.github_links.map(link => `
-                    <a href="${link}" target="_blank" class="card-link-icon" title="Lihat Kode di GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                `).join('');
-            }
-
-            card.innerHTML = `
-                ${headerHTML}
-                <div class="card-body">
-                    <h3>${project.title}</h3>
-                    <p>${previewText}</p>
-                    <div class="card-footer">
-                        <button class="card-btn detail-btn" data-id="${project.id}">Lihat Detail</button>
-                        <div class="card-links">
-                            ${linksHTML}
-                        </div>
+            return `
+                <article class="project-card">
+                    <div class="project-header">
+                        <span class="project-cat">${escapeHtml(p.category)}</span>
+                        <span class="project-year">${p.year}</span>
                     </div>
-                </div>
+
+                    <h4 class="project-title">
+                        <a href="${p.github_url}" target="_blank" rel="noopener">${escapeHtml(p.title)} &rarr;</a>
+                    </h4>
+
+                    <p class="project-desc">${escapeHtml(p.summary)}</p>
+
+                    <div class="project-metric">
+                        <strong>Architecture:</strong> ${escapeHtml(p.metrics)}
+                    </div>
+
+                    <div class="project-tags">
+                        ${tags.map(t => `<span class="pill">${escapeHtml(t)}</span>`).join('')}
+                    </div>
+
+                    <div class="project-footer">
+                        <a href="${p.github_url}" target="_blank" rel="noopener" class="btn-action">
+                            <span>Repository &rarr;</span>
+                        </a>
+
+                        ${hasImages ? `
+                        <button type="button" class="btn-action view-gallery-btn" data-project-id="${p.id}">
+                            <span>Figures (${p.images.length})</span>
+                        </button>
+                        ` : ''}
+                    </div>
+                </article>
             `;
+        }).join('');
 
-            // Bind click for open detail button
-            card.querySelector('.detail-btn').addEventListener('click', () => {
-                openProjectModal(project);
+        // Attach click listener for gallery buttons
+        projectsGrid.querySelectorAll('.view-gallery-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const projectId = btn.getAttribute('data-project-id');
+                openProjectGallery(projectId);
             });
-            
-            projectsGrid.appendChild(card);
         });
     }
 
-    // ==========================================================================
-    // FILTER & SEARCH HANDLERS
-    // ==========================================================================
-    // Filter Tabs click
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
-            activeCategory = e.target.getAttribute('data-category');
-            renderProjects();
+    // Search Input Handling
+    function initSearch() {
+        if (!searchInput) return;
+
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            if (searchClear) {
+                searchClear.style.display = searchQuery ? 'block' : 'none';
+            }
+            filterAndRenderProjects();
         });
-    });
 
-    // Search input typing
-    searchInput.addEventListener('input', (e) => {
-        searchQuery = e.target.value.toLowerCase().strip();
-        if (searchQuery !== '') {
-            searchClearBtn.style.display = 'block';
-        } else {
-            searchClearBtn.style.display = 'none';
+        if (searchClear) {
+            searchClear.addEventListener('click', () => {
+                searchInput.value = '';
+                searchQuery = '';
+                searchClear.style.display = 'none';
+                searchInput.focus();
+                filterAndRenderProjects();
+            });
         }
-        renderProjects();
-    });
-
-    // Clear search
-    searchClearBtn.addEventListener('click', () => {
-        searchInput.value = '';
-        searchQuery = '';
-        searchClearBtn.style.display = 'none';
-        renderProjects();
-        searchInput.focus();
-    });
-
-    // String trim polyfill if needed
-    if (!String.prototype.strip) {
-        String.prototype.strip = function() {
-            return this.replace(/^\s+|\s+$/g, '');
-        };
     }
 
-    // ==========================================================================
-    // MODAL DIALOG & CAROUSEL GALLERY
-    // ==========================================================================
-    function openProjectModal(project) {
-        // Set info
-        modalTitle.textContent = project.title;
-        modalCategory.textContent = project.category;
-        
-        // Render description paragraphs
-        modalDescription.innerHTML = project.description_paragraphs.map(p => `<p>${p}</p>`).join('');
+    // Lightbox Gallery Management
+    function openProjectGallery(projectId) {
+        const project = allProjects.find(p => p.id === projectId);
+        if (!project || !project.images || project.images.length === 0) return;
 
-        // Render github links
-        if (project.github_links && project.github_links.length > 0) {
-            modalLinks.innerHTML = `
-                <a href="${project.github_links[0]}" target="_blank" class="btn-github">
-                    <i class="fab fa-github"></i> Lihat Kode di GitHub
-                </a>
-            `;
-        } else {
-            modalLinks.innerHTML = '';
+        lightboxImages = project.images;
+        currentLightboxIndex = 0;
+        currentProjectTitle = project.title;
+
+        updateLightbox();
+        if (lightboxModal) {
+            lightboxModal.classList.add('open');
+            lightboxModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
         }
-
-        // Setup Carousel Images
-        currentCarouselImages = project.images || [];
-        currentCarouselIndex = 0;
-
-        setupCarousel();
-
-        // Open Overlay
-        projectModal.classList.add('open');
-        document.body.style.overflow = 'hidden'; // Lock page scroll
     }
 
-    function closeProjectModal() {
-        projectModal.classList.remove('open');
-        document.body.style.overflow = ''; // Unlock page scroll
+    function closeLightbox() {
+        if (!lightboxModal) return;
+        lightboxModal.classList.remove('open');
+        lightboxModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
     }
 
-    modalCloseBtn.addEventListener('click', closeProjectModal);
-    
-    // Close modal when clicking on backdrop overlay
-    projectModal.addEventListener('click', (e) => {
-        if (e.target === projectModal) {
-            closeProjectModal();
-        }
-    });
+    function updateLightbox() {
+        if (!lightboxImg || lightboxImages.length === 0) return;
 
-    // Escape key to close modal
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && projectModal.classList.contains('open')) {
-            closeProjectModal();
-        }
-    });
+        const currentPath = lightboxImages[currentLightboxIndex];
+        lightboxImg.src = currentPath;
 
-    // Carousel Setup Logic
-    function setupCarousel() {
-        carouselSlides.innerHTML = '';
-        carouselDots.innerHTML = '';
-
-        if (currentCarouselImages.length === 0) {
-            // Show fallback image inside carousel if none
-            carouselSlides.innerHTML = `
-                <div class="carousel-slide active">
-                    <div class="card-image-fallback" style="height: 100%; width: 100%;">
-                        <i class="fas fa-microchip" style="font-size: 4rem;"></i>
-                        <span style="font-weight: 600;">No images or schematics available</span>
-                    </div>
-                </div>
-            `;
-            carouselPrevBtn.style.display = 'none';
-            carouselNextBtn.style.display = 'none';
-            return;
+        if (lightboxTitle) {
+            lightboxTitle.textContent = currentProjectTitle;
         }
 
-        // Show navigation if more than 1 image
-        if (currentCarouselImages.length > 1) {
-            carouselPrevBtn.style.display = 'flex';
-            carouselNextBtn.style.display = 'flex';
-        } else {
-            carouselPrevBtn.style.display = 'none';
-            carouselNextBtn.style.display = 'none';
+        if (lightboxCounter) {
+            lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${lightboxImages.length}`;
         }
 
-        // Generate slides and indicators
-        currentCarouselImages.forEach((imgSrc, idx) => {
-            const slide = document.createElement('div');
-            slide.className = `carousel-slide ${idx === 0 ? 'active' : ''}`;
-            slide.innerHTML = `<img src="${imgSrc}" alt="Gambar Proyek" loading="lazy">`;
-            carouselSlides.appendChild(slide);
+        if (lightboxCaption) {
+            const fileName = currentPath.split('/').pop().replace(/[-_]/g, ' ').replace(/\.[^/.]+$/, '');
+            lightboxCaption.textContent = `${fileName} (Documentation & Figure)`;
+        }
 
-            if (currentCarouselImages.length > 1) {
-                const dot = document.createElement('span');
-                dot.className = `carousel-dot ${idx === 0 ? 'active' : ''}`;
-                dot.addEventListener('click', () => {
-                    goToSlide(idx);
-                });
-                carouselDots.appendChild(dot);
+        if (lightboxPrev) {
+            lightboxPrev.style.display = lightboxImages.length > 1 ? 'flex' : 'none';
+        }
+        if (lightboxNext) {
+            lightboxNext.style.display = lightboxImages.length > 1 ? 'flex' : 'none';
+        }
+    }
+
+    function initLightbox() {
+        if (!lightboxModal) return;
+
+        if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+        if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+
+        if (lightboxPrev) {
+            lightboxPrev.addEventListener('click', () => {
+                currentLightboxIndex = (currentLightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+                updateLightbox();
+            });
+        }
+
+        if (lightboxNext) {
+            lightboxNext.addEventListener('click', () => {
+                currentLightboxIndex = (currentLightboxIndex + 1) % lightboxImages.length;
+                updateLightbox();
+            });
+        }
+
+        window.addEventListener('keydown', (e) => {
+            if (!lightboxModal.classList.contains('open')) return;
+
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft' && lightboxImages.length > 1) {
+                currentLightboxIndex = (currentLightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+                updateLightbox();
+            } else if (e.key === 'ArrowRight' && lightboxImages.length > 1) {
+                currentLightboxIndex = (currentLightboxIndex + 1) % lightboxImages.length;
+                updateLightbox();
             }
         });
     }
 
-    function goToSlide(index) {
-        const slides = document.querySelectorAll('.carousel-slide');
-        const dots = document.querySelectorAll('.carousel-dot');
-
-        if (slides.length === 0) return;
-
-        // Reset active classes
-        slides[currentCarouselIndex].classList.remove('active');
-        if (dots.length > 0) dots[currentCarouselIndex].classList.remove('active');
-
-        // Set index bounds
-        currentCarouselIndex = (index + slides.length) % slides.length;
-
-        // Apply active classes
-        slides[currentCarouselIndex].classList.add('active');
-        if (dots.length > 0) dots[currentCarouselIndex].classList.add('active');
+    // Helper: Escape HTML
+    function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
     }
 
-    // Prev / Next button listeners
-    carouselPrevBtn.addEventListener('click', () => {
-        goToSlide(currentCarouselIndex - 1);
+    // DOM Ready Initialization
+    document.addEventListener('DOMContentLoaded', () => {
+        initTheme();
+        renderFeaturedProjects();
+        renderCategoryTabs();
+        filterAndRenderProjects();
+        initSearch();
+        initLightbox();
     });
 
-    carouselNextBtn.addEventListener('click', () => {
-        goToSlide(currentCarouselIndex + 1);
-    });
-
-    // Keyboard arrow keys navigation for carousel inside modal
-    document.addEventListener('keydown', (e) => {
-        if (projectModal.classList.contains('open') && currentCarouselImages.length > 1) {
-            if (e.key === 'ArrowLeft') {
-                goToSlide(currentCarouselIndex - 1);
-            } else if (e.key === 'ArrowRight') {
-                goToSlide(currentCarouselIndex + 1);
-            }
-        }
-    });
-
-    // Start fetching
-    loadProjects();
-});
+})();

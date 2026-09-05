@@ -1,147 +1,163 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitra Nurmayadi - Portofolio Embedded Systems & IoT</title>
-    <!-- Google Fonts -->
+    <title>Fitra Nurmayadi — Embedded Systems, Edge AI & Robotics</title>
+    <meta name="description" content="Technical portfolio of Fitra Nurmayadi. Research and engineering projects in Edge AI acceleration, robotics control, 3D physics simulations, and custom embedded systems.">
+
+    <!-- Fonts: Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-mode">
-    <!-- Background Elements -->
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-
-    <!-- Header / Nav -->
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <span class="logo-accent">&lt;</span>Fitra Nurmayadi<span class="logo-accent"> /&gt;</span>
-            </a>
-            <div class="nav-actions">
-                <a href="https://github.com/fitranurmayadi" target="_blank" class="nav-icon-link" title="GitHub Profile">
-                    <i class="fab fa-github"></i>
+<body>
+    <div class="site-container">
+        <!-- Top Navigation / Status Bar -->
+        <header class="top-nav">
+            <div class="brand">
+                <span class="brand-name">fitranurmayadi</span>
+                <span class="status-pill"><span class="status-dot"></span> M.Sc. Researcher</span>
+            </div>
+            <div class="nav-controls">
+                <a href="https://github.com/fitranurmayadi" target="_blank" rel="noopener" class="nav-link" title="GitHub Profile">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                    <span>github/fitranurmayadi</span>
                 </a>
-                <button id="theme-toggle" class="theme-toggle-btn" title="Ganti Tema">
-                    <i class="fas fa-sun"></i>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle light/dark theme" title="Toggle theme">
+                    <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                    </svg>
+                    <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
                 </button>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <span class="hero-badge">Embedded Systems & IoT Engineer</span>
-            <h1>Merancang Solusi Masa Depan Lewat Elektronika & Kode</h1>
-            <p class="hero-lead">Selamat datang di portofolio saya. Di sini saya membagikan berbagai proyek perangkat keras (hardware) dan perangkat lunak (software) di bidang Robotika, Internet of Things (IoT), Embedded Systems, dan Life Science.</p>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number" id="stats-projects-count">18</span>
-                    <span class="stat-label">Total Proyek</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">4+</span>
-                    <span class="stat-label">Kategori Riset</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">PCB</span>
-                    <span class="stat-label">Design & Assembly</span>
+        <!-- Engineering Profile Header -->
+        <section class="profile-header">
+            <div class="profile-main">
+                <h1 class="engineer-name">Fitra Nurmayadi</h1>
+                <p class="engineer-headline">Computer & Embedded Systems Engineer</p>
+                <p class="engineer-focus">Edge AI Acceleration &bull; Robotics Control &bull; Embedded Hardware & Firmware</p>
+                <div class="engineer-bio">
+                    <p>Focused on hardware-software co-design: running neural networks on constrained edge devices (Raspberry Pi 5, Hailo-8L, Jetson Orin Nano, Khadas Edge 2, ESP32-S3), 6-DOF dynamic simulations in PyBullet, and embedded firmware development.</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Project Section -->
-    <section class="projects-section">
-        <div class="section-header">
-            <h2>Galeri Portofolio Proyek</h2>
-            <p>Telusuri diagram rangkaian, file PCB, kode program, dan dokumentasi lengkap di bawah ini.</p>
-        </div>
-
-        <!-- Search and Filters -->
-        <div class="search-filter-container">
-            <div class="search-box">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" id="search-input" placeholder="Cari nama proyek atau mikrokontroler (ESP32, STM32, Arduino)...">
-                <button id="search-clear-btn" class="search-clear-btn" style="display: none;"><i class="fas fa-times"></i></button>
+            <div class="profile-meta-panel">
+                <div class="meta-row">
+                    <span class="meta-label">Domain:</span>
+                    <span class="meta-value">Robotics, Edge AI & Embedded Systems</span>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Research:</span>
+                    <span class="meta-value">YOLO11-OBB SBC & Edge NPU Benchmark (M.Sc. Thesis)</span>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">SoC / Chips:</span>
+                    <span class="meta-value code-font">ESP32-S3, STM32, Hailo-8L, RK3588S</span>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Contact:</span>
+                    <a href="mailto:fitra.nurmayadi@gmail.com" class="meta-link">fitra.nurmayadi@gmail.com</a>
+                </div>
             </div>
-            <div class="filter-group" id="filter-tabs">
-                <button class="filter-btn active" data-category="all">Semua</button>
-                <button class="filter-btn" data-category="Embedded Systems">Embedded Systems</button>
-                <button class="filter-btn" data-category="IoT">IoT</button>
-                <button class="filter-btn" data-category="Robotics">Robotics</button>
-                <button class="filter-btn" data-category="Life Science">Life Science</button>
+        </section>
+
+        <!-- Flagship Deep Dives (Featured Research Projects) -->
+        <section class="section-featured">
+            <div class="section-title-wrap">
+                <h2 class="section-title">Featured Research & Flagship Systems</h2>
+                <span class="section-note">Empirical benchmarks, physical simulations, and embedded model acceleration</span>
             </div>
-        </div>
 
-        <!-- Projects Grid -->
-        <div class="projects-grid" id="projects-grid">
-            <!-- Loading State -->
-            <div class="loading-state">
-                <i class="fas fa-circle-notch fa-spin loading-icon"></i>
-                <p>Memuat data proyek portofolio...</p>
+            <div class="featured-grid" id="featured-grid">
+                <!-- Injected dynamically from projects_data.js -->
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <p>&copy; 2026 Fitra Nurmayadi. Migrasi dari WordPress ke GitHub Pages.</p>
-            <p class="footer-sub">Dibuat menggunakan HTML, CSS, dan JS Vanilla yang dioptimalkan untuk kecepatan maksimum.</p>
-        </div>
-    </footer>
+        <!-- All Engineering Projects Section -->
+        <section class="section-all-work" id="all-work">
+            <div class="section-title-wrap">
+                <h2 class="section-title">Complete Project Index</h2>
+                <span class="section-note">20 hardware implementations, robotics platforms, and telemetry nodes</span>
+            </div>
 
-    <!-- Modal Detail Proyek -->
-    <div class="modal-overlay" id="project-modal">
-        <div class="modal-container">
-            <button class="modal-close" id="modal-close-btn" title="Tutup">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-content">
-                <!-- Bagian Kiri: Carousel Gambar -->
-                <div class="modal-gallery">
-                    <div class="carousel-container">
-                        <button class="carousel-nav prev" id="carousel-prev-btn" title="Gambar Sebelumnya">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <div class="carousel-slides" id="carousel-slides">
-                            <!-- Diisi oleh JS -->
-                        </div>
-                        <button class="carousel-nav next" id="carousel-next-btn" title="Gambar Selanjutnya">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                    <div class="carousel-dots" id="carousel-dots">
-                        <!-- Diisi oleh JS -->
-                    </div>
+            <!-- Filter Tabs & Search Bar -->
+            <div class="filter-controls">
+                <div class="category-tabs" id="category-tabs" role="tablist">
+                    <!-- Injected dynamically -->
                 </div>
 
-                <!-- Bagian Kanan: Info Lengkap Proyek -->
-                <div class="modal-info">
-                    <span class="modal-tag" id="modal-project-category">Kategori</span>
-                    <h3 class="modal-title" id="modal-project-title">Judul Proyek</h3>
-                    
-                    <div class="modal-description" id="modal-project-description">
-                        <!-- Diisi paragraf deskripsi oleh JS -->
-                    </div>
-
-                    <div class="modal-meta-links" id="modal-project-links">
-                        <!-- Diisi link kode program oleh JS -->
-                    </div>
+                <div class="search-wrap">
+                    <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="search-input" placeholder="Filter by chip, framework, or keyword..." autocomplete="off">
+                    <button id="search-clear" class="search-clear" aria-label="Clear search" style="display: none;">&times;</button>
                 </div>
+            </div>
+
+            <div class="filter-summary">
+                <span id="results-count">Showing 20 projects</span>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="projects-grid" id="projects-grid">
+                <!-- Injected dynamically -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-left">
+                <span>&copy; 2026 Fitra Nurmayadi</span>
+                <span class="footer-sep">&bull;</span>
+                <span>Static, zero-bloat architecture</span>
+            </div>
+            <div class="footer-right">
+                <a href="https://github.com/fitranurmayadi" target="_blank" rel="noopener" class="footer-link">GitHub</a>
+                <a href="mailto:fitra.nurmayadi@gmail.com" class="footer-link">Email</a>
+                <a href="#top" class="footer-link">Back to top &uarr;</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Image Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true" role="dialog">
+        <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+        <div class="lightbox-container">
+            <div class="lightbox-header">
+                <div class="lightbox-title-wrap">
+                    <h3 id="lightbox-title">Project Documentation</h3>
+                    <span id="lightbox-counter" class="lightbox-counter">1 / 1</span>
+                </div>
+                <button id="lightbox-close" class="lightbox-close-btn" aria-label="Close dialog">&times;</button>
+            </div>
+            <div class="lightbox-body">
+                <button id="lightbox-prev" class="lightbox-nav-btn prev" aria-label="Previous image">&lsaquo;</button>
+                <div class="lightbox-image-wrapper">
+                    <img id="lightbox-img" src="" alt="Project documentation preview">
+                </div>
+                <button id="lightbox-next" class="lightbox-nav-btn next" aria-label="Next image">&rsaquo;</button>
+            </div>
+            <div class="lightbox-footer">
+                <p id="lightbox-caption" class="lightbox-caption"></p>
             </div>
         </div>
     </div>
 
-    <!-- Custom JS -->
+    <!-- Data & Script -->
+    <script src="projects_data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
+

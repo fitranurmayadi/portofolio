@@ -1,0 +1,562 @@
+/**
+ * Fitra Nurmayadi - Technical Portfolio Data
+ * High-signal engineering projects grouped by technical discipline.
+ * Zero buzzwords, real hardware specs, quantitative benchmarks.
+ */
+window.PORTFOLIO_DATA = {
+    "engineer": {
+        "name": "Fitra Nurmayadi",
+        "title": "Computer & Embedded Systems Engineer",
+        "focus": "Edge AI Acceleration • Robotics Control • Embedded Hardware & Firmware",
+        "bio": "Specializing in embedded computing, on-device neural network acceleration (Hailo-8L, Jetson, Khadas), physical simulations (PyBullet / Gymnasium), and custom embedded hardware design (ESP32-S3, STM32, RISC-V).",
+        "github": "https://github.com/fitranurmayadi",
+        "email": "fitra.nurmayadi@gmail.com",
+        "location": "Indonesia",
+        "status": "Master's Researcher — YOLO11-OBB Edge NPU Benchmarks"
+    },
+    "categories": [
+        {
+            "id": "all",
+            "name": "All Work",
+            "count": 20
+        },
+        {
+            "id": "edge-ai",
+            "name": "Edge AI & Benchmarking",
+            "count": 4
+        },
+        {
+            "id": "robotics",
+            "name": "Robotics & Control",
+            "count": 8
+        },
+        {
+            "id": "rl-sim",
+            "name": "RL & Simulation",
+            "count": 2
+        },
+        {
+            "id": "embedded-iot",
+            "name": "Embedded & IoT Hardware",
+            "count": 6
+        }
+    ],
+    "projects": [
+        {
+            "id": "obb-sbc-benchmark",
+            "title": "YOLO11-OBB Single Board Computer & Edge NPU Benchmark Suite [M.Sc. Thesis]",
+            "category": "Edge AI & Benchmarking",
+            "category_id": "edge-ai",
+            "featured": true,
+            "year": "2026",
+            "summary": "Master's Thesis Research: Comprehensive cross-platform empirical benchmark comparing oriented object detection (YOLO11-OBB) across Raspberry Pi 5, Hailo-8L NPU (13 TOPS), NVIDIA Jetson Orin Nano, and Khadas Edge 2 (6 TOPS NPU). Evaluates inference latency, FPS throughput, wattage, and thermal stability across multiple precision backends.",
+            "hardware": [
+                "Raspberry Pi 5",
+                "Hailo-8L NPU (13 TOPS)",
+                "Jetson Orin Nano",
+                "Khadas Edge 2 (RK3588S)"
+            ],
+            "stack": [
+                "YOLO11-OBB",
+                "TensorRT",
+                "Hailo HEF",
+                "RKNN-Toolkit2",
+                "Python",
+                "OpenCV"
+            ],
+            "metrics": "Master's Thesis Matrix: Hailo-8L PCIe vs Jetson Orin Nano vs Khadas vs Raspi 5 latency, wattage & thermal profiling",
+            "github_url": "https://github.com/fitranurmayadi/obb-sbc-benchmark",
+            "images": [
+                "assets/images/obb_benchmark_fps.png",
+                "assets/images/obb_benchmark_latency.png",
+                "assets/images/obb_benchmark_energy.png"
+            ]
+        },
+        {
+            "id": "esp32-microlm",
+            "title": "ESP32 Micro-LM: On-Chip 1.84M Language Model",
+            "category": "Edge AI & Benchmarking",
+            "category_id": "edge-ai",
+            "featured": true,
+            "year": "2026",
+            "summary": "Generative Micro-Language Model (1.84M INT8) running 100% locally on an ESP32-S3 microcontroller. Implements INT8 W8A32 quantization, FreeRTOS dual-core pipelining, and offline RAG through flash-mapped vector embeddings without external internet or cloud API.",
+            "hardware": [
+                "ESP32-S3 (WROOM-1 / N16R8)",
+                "8MB Octal PSRAM",
+                "16MB SPI Flash"
+            ],
+            "stack": [
+                "ESP-IDF",
+                "FreeRTOS",
+                "INT8 W8A32 Quantization",
+                "Flash RAG",
+                "C++"
+            ],
+            "metrics": "100% on-device generative token generation at zero network dependency",
+            "github_url": "https://github.com/fitranurmayadi/esp32-microlm",
+            "images": [
+                "assets/images/esp32_microlm_card.gif"
+            ]
+        },
+        {
+            "id": "rocketlander3d",
+            "title": "RocketLander3D: 3D Falcon 9 VTVL Flight Simulation & RL",
+            "category": "RL & Simulation",
+            "category_id": "rl-sim",
+            "featured": true,
+            "year": "2026",
+            "summary": "High-fidelity 6-DOF simulation environment for vertical rocket takeoff and landing (VTVL) built on PyBullet and Farama Gymnasium. Features realistic variable mass consumption, aerodynamic crosswinds, thrust vector control (TVC) gimbal dynamics, and deep reinforcement learning (PPO/SAC) landing policies.",
+            "hardware": [
+                "Simulation / Workstation Host"
+            ],
+            "stack": [
+                "Gymnasium",
+                "PyBullet 3D Physics",
+                "PyTorch",
+                "PPO / SAC RL",
+                "Python"
+            ],
+            "metrics": "Full 6-DOF multi-axis TVC rocket stabilization & touchdown trajectory report",
+            "github_url": "https://github.com/fitranurmayadi/RocketLander3D",
+            "images": [
+                "assets/images/rocketlander3d_sim.png",
+                "assets/images/rocketlander3d_report.png"
+            ]
+        },
+        {
+            "id": "robotic-arm-yolo",
+            "title": "3-DOF Robotic Arm with YOLOv11 Computer Vision Sorting",
+            "category": "Robotics & Control",
+            "category_id": "robotics",
+            "featured": true,
+            "year": "2025",
+            "summary": "Automated sorting robotic arm integrating high-speed visual classification with physical pick-and-place manipulation. Utilizes custom YOLOv11 for multi-class colored spherical target recognition, analytical inverse kinematics for joint angle computation, and an interactive desktop control GUI.",
+            "hardware": [
+                "3-DOF Stepper Arm",
+                "A4988 / TMC Drivers",
+                "USB Camera",
+                "Arduino Mega"
+            ],
+            "stack": [
+                "YOLOv11",
+                "Inverse Kinematics",
+                "OpenCV",
+                "Python GUI",
+                "C++ Firmware"
+            ],
+            "metrics": "Real-time color/target classification with sub-second inverse kinematics trajectory execution",
+            "github_url": "https://github.com/fitranurmayadi/robotic_arm_yolo_pick_n_place",
+            "images": [
+                "assets/images/robotic_arm_1.jpeg",
+                "assets/images/robotic_arm_2.jpeg"
+            ]
+        },
+        {
+            "id": "ideasteam-xb1",
+            "title": "ideaSTEAM XB1: Custom ESP32 Educational Dev Board",
+            "category": "Embedded & IoT Hardware",
+            "category_id": "embedded-iot",
+            "featured": true,
+            "year": "2022",
+            "summary": "Custom 2-layer electronics development board designed from schematic capture to surface-mount assembly. Houses an ESP32 SoC, 0.96\" I2C OLED display, dual DC motor drivers, addressable RGB indicators, passive buzzer, pushbuttons, and analog sensor breakout headers for embedded programming pedagogy.",
+            "hardware": [
+                "ESP32-WROOM-32",
+                "0.96\" I2C OLED",
+                "Dual H-Bridge Driver",
+                "Custom 2-Layer PCB"
+            ],
+            "stack": [
+                "KiCad / EasyEDA",
+                "SMD Soldering & Assembly",
+                "C++ Arduino",
+                "ESP-IDF"
+            ],
+            "metrics": "Complete integrated devboard replacing breadboard wiring for educational robotics",
+            "github_url": "https://github.com/fitranurmayadi/ideasteam-test-code",
+            "images": [
+                "assets/images/ideasteam_1.jpg",
+                "assets/images/ideasteam_2.jpg",
+                "assets/images/ideasteam_3.png",
+                "assets/images/ideasteam_7.jpg"
+            ]
+        },
+        {
+            "id": "thesis-twsbr-rl",
+            "title": "Two-Wheeled Self-Balancing Robot (TWSBR) Dynamic RL Control (Hobby Research)",
+            "category": "Robotics & Control",
+            "category_id": "robotics",
+            "featured": false,
+            "year": "2025",
+            "summary": "Independent robotics research project investigating nonlinear balance stabilization of an inverted-pendulum mobile robot. Compares deep reinforcement learning policies (PPO/SAC) against classical linear quadratic regulator (LQR) and PID controllers under external disturbance rejection.",
+            "hardware": [
+                "Inverted Pendulum Chassis",
+                "High-Torque DC Motors",
+                "MPU6050 IMU",
+                "STM32 / ESP32"
+            ],
+            "stack": [
+                "Deep RL (PPO)",
+                "Sim-to-Real Transfer",
+                "LQR / PID",
+                "MATLAB / Python",
+                "C++"
+            ],
+            "metrics": "Comparative disturbance rejection: neural policy vs tuned state-feedback LQR",
+            "github_url": "https://github.com/fitranurmayadi/thesis_project_twsbr_rl",
+            "images": []
+        },
+        {
+            "id": "lunarlander3d",
+            "title": "LunarLander3D: Continuous 3D Control Environment",
+            "category": "RL & Simulation",
+            "category_id": "rl-sim",
+            "featured": false,
+            "year": "2026",
+            "summary": "Continuous 3D physics environment modeled in PyBullet and Gymnasium for evaluating reinforcement learning algorithms in simulated low-gravity lunar descent, thruster modulation, and precision soft touchdown.",
+            "hardware": [
+                "Simulation Host"
+            ],
+            "stack": [
+                "Gymnasium",
+                "PyBullet",
+                "PyTorch",
+                "Python"
+            ],
+            "metrics": "Continuous 3-axis thruster control with penalization on impact velocity and fuel consumption",
+            "github_url": "https://github.com/fitranurmayadi/LunarLander3D",
+            "images": []
+        },
+        {
+            "id": "quadruped-spider",
+            "title": "Quadruped Spider Robot: 8-DOF Kinematic Locomotion",
+            "category": "Robotics & Control",
+            "category_id": "robotics",
+            "featured": false,
+            "year": "2026",
+            "summary": "Multi-legged mobile robotics platform engineered with analytical leg kinematics. Implements periodic crawl and trot gait cycles with coordinated servo actuation, driven via an I2C PWM controller with wireless teleoperation.",
+            "hardware": [
+                "8-DOF Servo Linkages",
+                "PCA9685 I2C Servo Controller",
+                "ESP32",
+                "Li-ion Power Stage"
+            ],
+            "stack": [
+                "Forward/Inverse Kinematics",
+                "Gait Sequencer",
+                "C++ Firmware",
+                "BLE Control"
+            ],
+            "metrics": "Coordinated 4-leg gait trajectory generation with dynamic center-of-mass balance",
+            "github_url": "https://github.com/fitranurmayadi/Quadrupped-Spider",
+            "images": []
+        },
+        {
+            "id": "edge-impulse-animals",
+            "title": "TinyML On-Device Visual Classification on ESP32-S3",
+            "category": "Edge AI & Benchmarking",
+            "category_id": "edge-ai",
+            "featured": false,
+            "year": "2023",
+            "summary": "Deployment of an optimized convolutional neural network model onto a Seeed XIAO ESP32-S3 microcontroller. Captures imagery through an OV2640 camera sensor and runs INT8 inference locally with real-time bounding box and class display on an SPI ST7789 screen.",
+            "hardware": [
+                "Seeed XIAO ESP32-S3",
+                "OV2640 Camera Module",
+                "ST7789 240x240 SPI Display"
+            ],
+            "stack": [
+                "Edge Impulse",
+                "TensorFlow Lite for Microcontrollers",
+                "C++ Arduino",
+                "INT8 Quantization"
+            ],
+            "metrics": "Sub-150ms inference cycle on 0.5W ultra-compact microcontroller",
+            "github_url": "https://github.com/fitranurmayadi/Edge-Impulse-ESP32S3-Animals-10-with-ST7789",
+            "images": [
+                "assets/images/edge-impulse-esp32s3-animals_1.png",
+                "assets/images/edge-impulse-esp32s3-animals_1.png"
+            ]
+        },
+        {
+            "id": "ev-monitoring",
+            "title": "Electric Vehicle (EV) Real-Time Battery & Powertrain Telemetry",
+            "category": "Embedded & IoT Hardware",
+            "category_id": "embedded-iot",
+            "featured": false,
+            "year": "2026",
+            "summary": "Embedded vehicle telemetry node interfacing directly with electric vehicle battery management systems (BMS) and motor controllers via CAN bus and high-precision current shunts. Transmits voltage, current, temperature, and GPS telemetry over MQTT.",
+            "hardware": [
+                "ESP32 Controller",
+                "CAN Transceiver MCP2515",
+                "INA226 Current/Power Sensor",
+                "NEO-6M GPS"
+            ],
+            "stack": [
+                "CAN Bus",
+                "FreeRTOS",
+                "MQTT",
+                "Grafana",
+                "C++"
+            ],
+            "metrics": "Real-time state-of-charge (SoC) calculation and battery thermal tracking at 10Hz sampling",
+            "github_url": "https://github.com/fitranurmayadi/EV-Monitoring",
+            "images": []
+        },
+        {
+            "id": "esp32c3-powermonitoring",
+            "title": "ESP32-C3 AC Mains Electrical Power Monitoring",
+            "category": "Embedded & IoT Hardware",
+            "category_id": "embedded-iot",
+            "featured": false,
+            "year": "2023",
+            "summary": "Energy measurement terminal utilizing an ESP32-C3 RISC-V microcontroller coupled with a PZEM-004T AC transducer. Measures true RMS voltage, current up to 100A, active power (W), frequency (Hz), and accumulated kWh with Modbus-RTU over hardware UART.",
+            "hardware": [
+                "ESP32-C3 RISC-V SoC",
+                "PZEM-004T 100A Current Transformer",
+                "0.96\" I2C OLED"
+            ],
+            "stack": [
+                "Modbus-RTU",
+                "MQTT",
+                "ESP-IDF / Arduino",
+                "Home Assistant"
+            ],
+            "metrics": "0.5% class accuracy electrical telemetry with local OLED graphs and cloud dashboard",
+            "github_url": "https://github.com/fitranurmayadi/ESP32C3-PowerMonitoring",
+            "images": []
+        },
+        {
+            "id": "integrated-farming",
+            "title": "Long-Range Environmental & Microclimate Telemetry (LoRa)",
+            "category": "Embedded & IoT Hardware",
+            "category_id": "embedded-iot",
+            "featured": false,
+            "year": "2024",
+            "summary": "Solar-powered environmental telemetry network designed for distributed agricultural deployment. Features deep-sleep power management, multi-depth soil moisture sensing, and long-range point-to-point LoRa telemetry back to a central gateway.",
+            "hardware": [
+                "ESP32 Deep-Sleep Node",
+                "SX1278 LoRa Transceiver",
+                "Solar Harvesting PMIC",
+                "Capacitive Soil Probes"
+            ],
+            "stack": [
+                "LoRa Radio Frequency",
+                "Ultra-Low-Power Sleep",
+                "Node-RED",
+                "InfluxDB"
+            ],
+            "metrics": ">2km non-line-of-sight wireless transmission on microampere sleep current",
+            "github_url": "https://github.com/fitranurmayadi/Integrated-Farming",
+            "images": [
+                "assets/images/low-power-weather-parameters-monitoring-device_1.png",
+                "assets/images/low-power-weather-parameters-monitoring-device_2.png"
+            ]
+        },
+        {
+            "id": "smarthome-dlcb",
+            "title": "Industrial DIN-Rail Automation Control Panel (DLCB)",
+            "category": "Embedded & IoT Hardware",
+            "category_id": "embedded-iot",
+            "featured": false,
+            "year": "2023",
+            "summary": "Industrial-grade electrical distribution panel controller housed in a standard DIN-rail enclosure. Features optoisolated multi-channel AC relay switching, current surge protection, and dual-band WiFi/BLE network bridging for home/building automation.",
+            "hardware": [
+                "Custom DIN-Rail PCB",
+                "Optoisolated Relay Banks",
+                "ESP32",
+                "AC-DC Isolated Power Converter"
+            ],
+            "stack": [
+                "MQTT",
+                "Home Assistant",
+                "C++ Firmware",
+                "Hardware Fail-Safe Logic"
+            ],
+            "metrics": "Isolated 10A AC switching per channel with physical override switches",
+            "github_url": "https://github.com/fitranurmayadi/smarthome-iot-dlcb",
+            "images": [
+                "assets/images/smarthome-iot-dlcb_1.jpeg",
+                "assets/images/smarthome-iot-dlcb_2.jpeg"
+            ]
+        },
+        {
+            "id": "myo-arm-robot",
+            "title": "EMG Myoelectric Biomechanical Robotic Arm Interface",
+            "category": "Robotics & Control",
+            "category_id": "robotics",
+            "featured": false,
+            "year": "2022",
+            "summary": "Human-machine interface (HMI) translating forearm surface electromyography (sEMG) muscle contraction signals and IMU arm orientations from a Thalmic Myo armband into multi-axis robotic manipulator gestures.",
+            "hardware": [
+                "Thalmic Myo Armband (8-Ch EMG)",
+                "4-DOF Articulated Robotic Arm",
+                "Arduino Mega"
+            ],
+            "stack": [
+                "Node.js / WebSockets",
+                "Biomechanical Signal Processing",
+                "C++ Firmware",
+                "Servo Kinematics"
+            ],
+            "metrics": "Real-time hand gesture decoding with under 80ms latency to joint actuation",
+            "github_url": "https://github.com/fitranurmayadi/muse-myo-arduino-js",
+            "images": [
+                "assets/images/myo-to-arm-robot_1.jpeg",
+                "assets/images/myo-to-arm-robot_2.jpeg"
+            ]
+        },
+        {
+            "id": "stemi-robotika",
+            "title": "STEMI ROBOTIKA Mobile Educational Robotics Platform",
+            "category": "Robotics & Control",
+            "category_id": "robotics",
+            "featured": false,
+            "year": "2023",
+            "summary": "Educational differential-drive mobile robotics platform developed for teaching algorithms, motor control, ultrasonic obstacle avoidance, and infrared line tracking.",
+            "hardware": [
+                "Arduino ATmega328P",
+                "L298N Motor Driver",
+                "HC-SR04 Ultrasonic",
+                "IR Array"
+            ],
+            "stack": [
+                "C++ Arduino",
+                "PID Line Tracking",
+                "State Machine Navigation"
+            ],
+            "metrics": "Modular educational chassis used in STEM robotics workshops",
+            "github_url": "https://github.com/fitranurmayadi/stemi-robotika",
+            "images": [
+                "assets/images/stemi-robotika_1.jpeg",
+                "assets/images/stemi-robotika_2.png"
+            ]
+        },
+        {
+            "id": "biofloc-aquaculture",
+            "title": "Biofloc Aquaculture Multi-Parameter Water Telemetry",
+            "category": "Embedded & IoT Hardware",
+            "category_id": "embedded-iot",
+            "featured": false,
+            "year": "2022",
+            "summary": "Telemetry system safeguarding high-density biofloc fish cultivation through continuous automated monitoring of critical water parameters including dissolved oxygen (DO), pH, and water temperature.",
+            "hardware": [
+                "Analog pH Probe & Driver",
+                "DS18B20 Digital Temp",
+                "ESP32 Controller",
+                "Relay Aerator Actuator"
+            ],
+            "stack": [
+                "C++ Firmware",
+                "Kalman Filtering",
+                "MQTT",
+                "Web Dashboard"
+            ],
+            "metrics": "Autonomous aerator triggering on dissolved oxygen drop thresholds",
+            "github_url": "https://github.com/fitranurmayadi/aquascape-monitoring",
+            "images": [
+                "assets/images/biofloc-fish-pond_1.jpeg",
+                "assets/images/biofloc-fish-pond_2.jpeg"
+            ]
+        },
+        {
+            "id": "line-follower-pid",
+            "title": "Competition Line Follower Robot with On-Track EEPROM PID Tuning",
+            "category": "Robotics & Control",
+            "category_id": "robotics",
+            "featured": false,
+            "year": "2020",
+            "summary": "High-speed differential-drive line tracking robot featuring an 8-channel optical sensor bar, automated EEPROM threshold calibration, and an on-board 16x2 LCD menu interface for tuning Kp, Ki, Kd gains directly on the competition track without a computer.",
+            "hardware": [
+                "ATmega328P / Nano",
+                "8-Channel Phototransistor Array",
+                "Custom Etched PCB",
+                "16x2 LCD Display",
+                "Discrete H-Bridge Motor Driver"
+            ],
+            "stack": [
+                "C++ Embedded",
+                "Differential PID Control",
+                "EEPROM State Storage",
+                "Analog Comparator"
+            ],
+            "metrics": "Real-time sensor bar threshold auto-tuning with sub-millisecond PID closed-loop steering",
+            "github_url": "https://github.com/fitranurmayadi/line-follower",
+            "images": [
+                "assets/images/line-follower_3.jpeg",
+                "assets/images/line-follower_1.png",
+                "assets/images/line-follower_2.png"
+            ]
+        },
+        {
+            "id": "esp32s3-ga-pid",
+            "title": "On-Chip Genetic Algorithm PID Auto-Tuner on ESP32-S3",
+            "category": "Edge AI & Benchmarking",
+            "category_id": "edge-ai",
+            "featured": false,
+            "year": "2024",
+            "summary": "Evolutionary computation algorithm executing directly on an ESP32-S3 microcontroller to search for and optimize PID controller gains (Kp, Ki, Kd). Simulates multi-generation populations, crossover, and mutation targeting settling time minimization and overshoot suppression on-chip.",
+            "hardware": [
+                "ESP32-S3 Dual-Core Xtensa LX7",
+                "Hardware Timers"
+            ],
+            "stack": [
+                "Genetic Algorithm",
+                "PID Controller",
+                "C++ Embedded",
+                "Multi-Generation Evolutionary Search"
+            ],
+            "metrics": "Autonomous heuristic PID gain convergence directly executed on constrained microcontroller",
+            "github_url": "https://github.com/fitranurmayadi/Reinforcement-Learning",
+            "images": []
+        },
+        {
+            "id": "twsbr-physical-hardware",
+            "title": "Two-Wheeled Self-Balancing Robot: Nidec 24H BLDC & FreeRTOS Hardware (Hobby Research)",
+            "category": "Robotics & Control",
+            "category_id": "robotics",
+            "featured": false,
+            "year": "2024",
+            "summary": "Independent hobby robotics research: Physical hardware implementation of a dynamic inverted-pendulum balancing robot. Powered by dual Nidec 24H brushless DC motors with optical quadrature encoders, MPU6050 6-axis IMU sensor fusion, simultaneous dynamic balancing and line tracking, and WiFi/OSC data telemetry.",
+            "hardware": [
+                "ESP32-S3",
+                "Dual Nidec 24H Brushless DC Motors",
+                "Optical Quadrature Encoders",
+                "MPU6050 6-Axis IMU",
+                "Li-ion Battery"
+            ],
+            "stack": [
+                "FreeRTOS Multitasking",
+                "BLDC Closed-Loop Velocity Control",
+                "IMU Complementary Filter",
+                "OSC / HTTP Telemetry",
+                "C++"
+            ],
+            "metrics": "Hobby research build: High-frequency dual-core balance loop with optical encoder velocity feedback and real-time WiFi logging",
+            "github_url": "https://github.com/fitranurmayadi/thesis_project_twsbr_rl",
+            "images": []
+        },
+        {
+            "id": "sumo-robot-esp32",
+            "title": "Wi-Fi Combat Sumo Robot with Asynchronous Web Server Teleoperation",
+            "category": "Robotics & Control",
+            "category_id": "robotics",
+            "featured": false,
+            "year": "2026",
+            "summary": "High-torque combat sumo robotics platform running on ESP32. Hosts an on-board asynchronous web server (ESPAsyncWebServer) and local SoftAP network, serving a zero-latency responsive web GUI with touch faders for bidirectional throttle and differential steering.",
+            "hardware": [
+                "ESP32 DevKit",
+                "Dual High-Current H-Bridge Drivers",
+                "High-Torque DC Geared Motors",
+                "SoftAP Wi-Fi"
+            ],
+            "stack": [
+                "ESPAsyncWebServer",
+                "C++ ESP32 LEDC PWM",
+                "Responsive Web GUI",
+                "WebSocket / HTTP Telemetry"
+            ],
+            "metrics": "Zero-install smartphone teleoperation over self-hosted Wi-Fi access point with sub-10ms latency",
+            "github_url": "https://github.com/fitranurmayadi/fitranurmayadi",
+            "images": []
+        }
+    ]
+};
