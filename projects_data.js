@@ -12,7 +12,7 @@ window.PORTFOLIO_DATA = {
         "github": "https://github.com/fitranurmayadi",
         "email": "fitra.nurmayadi@gmail.com",
         "location": "Indonesia",
-        "status": "Master's Researcher — YOLO11-OBB Edge NPU Benchmarks"
+        "status": "Computer & Embedded Systems Engineer"
     },
     "categories": [
         {
@@ -44,12 +44,12 @@ window.PORTFOLIO_DATA = {
     "projects": [
         {
             "id": "obb-sbc-benchmark",
-            "title": "YOLO11-OBB Single Board Computer & Edge NPU Benchmark Suite [M.Sc. Thesis]",
+            "title": "YOLO11-OBB Single Board Computer & Edge NPU Benchmark Suite",
             "category": "Edge AI & Benchmarking",
             "category_id": "edge-ai",
             "featured": true,
             "year": "2026",
-            "summary": "Master's Thesis Research: Comprehensive cross-platform empirical benchmark comparing oriented object detection (YOLO11-OBB) across Raspberry Pi 5, Hailo-8L NPU (13 TOPS), NVIDIA Jetson Orin Nano, and Khadas Edge 2 (6 TOPS NPU). Evaluates inference latency, FPS throughput, wattage, and thermal stability across multiple precision backends.",
+            "summary": "Comprehensive cross-platform empirical benchmark comparing oriented object detection (YOLO11-OBB) across Raspberry Pi 5, Hailo-8L NPU (13 TOPS), NVIDIA Jetson Orin Nano, and Khadas Edge 2 (6 TOPS NPU). Evaluates inference latency, FPS throughput, wattage, and thermal stability across multiple precision backends.",
             "hardware": [
                 "Raspberry Pi 5",
                 "Hailo-8L NPU (13 TOPS)",
@@ -64,7 +64,7 @@ window.PORTFOLIO_DATA = {
                 "Python",
                 "OpenCV"
             ],
-            "metrics": "Master's Thesis Matrix: Hailo-8L PCIe vs Jetson Orin Nano vs Khadas vs Raspi 5 latency, wattage & thermal profiling",
+            "metrics": "4-platform benchmark matrix: Hailo-8L PCIe vs Jetson Orin Nano vs Khadas vs Raspi 5 latency, wattage & thermal profiling",
             "github_url": "https://github.com/fitranurmayadi/obb-sbc-benchmark",
             "images": [
                 "assets/images/obb_benchmark_fps.png",
