@@ -181,7 +181,7 @@ window.PORTFOLIO_DATA = {
             ]
         },
         {
-            "id": "thesis-twsbr-rl",
+            "id": "twsbr-rl",
             "title": "Two-Wheeled Self-Balancing Robot (TWSBR) Dynamic RL Control (Hobby Research)",
             "category": "Robotics & Control",
             "category_id": "robotics",
@@ -202,7 +202,7 @@ window.PORTFOLIO_DATA = {
                 "C++"
             ],
             "metrics": "Comparative disturbance rejection: neural policy vs tuned state-feedback LQR",
-            "github_url": "https://github.com/fitranurmayadi/thesis_project_twsbr_rl",
+            "github_url": "https://github.com/fitranurmayadi/twsbr-rl",
             "images": []
         },
         {
@@ -531,7 +531,7 @@ window.PORTFOLIO_DATA = {
                 "C++"
             ],
             "metrics": "Hobby research build: High-frequency dual-core balance loop with optical encoder velocity feedback and real-time WiFi logging",
-            "github_url": "https://github.com/fitranurmayadi/thesis_project_twsbr_rl",
+            "github_url": "https://github.com/fitranurmayadi/twsbr-rl",
             "images": []
         },
         {
