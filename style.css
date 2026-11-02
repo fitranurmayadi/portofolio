@@ -25,7 +25,7 @@ a { color: var(--mark); text-underline-offset: 0.15em; }
 a:hover { color: var(--ink); }
 a:focus-visible { outline: 2px solid var(--mark); outline-offset: 2px; }
 
-img { display: block; max-width: 100%; height: auto; }
+img, video { display: block; max-width: 100%; height: auto; }
 
 p { margin: 0 0 1em; }
 
@@ -145,6 +145,9 @@ figcaption::before {
 
 /* For a portrait photo beside a landscape one */
 .pair.portrait { grid-template-columns: 2fr 3fr; }
+
+/* Two phone videos side by side */
+.pair.even { grid-template-columns: 1fr 1fr; max-width: 30rem; }
 
 /* Older work and the code list */
 .older, .code {

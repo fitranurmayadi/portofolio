@@ -27,31 +27,51 @@
 
 <main>
 
-<article class="work" id="microlm">
+<article class="work" id="tinyml">
   <div class="side">
-    <p>2026</p>
-    <p><a href="https://github.com/fitranurmayadi/esp32-microlm">Source</a><br>
-    <a href="https://github.com/fitranurmayadi/esp32-microlm/blob/main/BENCHMARK.md">Benchmarks</a><br>
-    <a href="https://github.com/fitranurmayadi/esp32-microlm/blob/main/JOURNEY.md">Design notes</a></p>
+    <p>2023</p>
+    <p><a href="https://github.com/fitranurmayadi/Edge-Impulse-ESP32S3-Animals-10-with-ST7789">Source</a><br>
+    <a href="https://studio.edgeimpulse.com/studio/327359">Edge Impulse project</a><br>
+    <a href="https://youtube.com/shorts/LacXYa14CoM">Demo video</a></p>
   </div>
   <div class="body">
-    <h2>A language model on an ESP32-S3</h2>
-    <p>A 1.84M-parameter INT8 model that generates text on the microcontroller, with no network. The inference engine is plain C++, without TFLite Micro or ONNX. Weights sit in octal PSRAM, working buffers in internal SRAM, and FreeRTOS splits the attention and feed-forward work across both cores.</p>
-    <table>
-      <caption>Generation speed on the board, by release</caption>
-      <thead><tr><th>Release</th><th>What changed</th><th class="num">Tokens/s</th></tr></thead>
-      <tbody>
-        <tr><td>v1.0</td><td>Single-core baseline</td><td class="num">about 12.3</td></tr>
-        <tr><td>v2.0</td><td>Dual-core FreeRTOS, 8-way unrolled FPU loop</td><td class="num">13.5–14.5</td></tr>
-        <tr><td>v3.0</td><td>Moved to native ESP-IDF, tasks pinned to cores</td><td class="num">14.5–15.4</td></tr>
-        <tr><td>v4.0</td><td>Dual-core with 8-way FP32 accumulators</td><td class="num">14.5–15.6</td></tr>
-      </tbody>
-    </table>
-    <p>v4.0 reaches the same speed on the ESP32-S3 DevKit N16R8, Arduino Nano ESP32 and Seeed XIAO ESP32-S3.</p>
-    <figure>
-      <img src="assets/images/esp32_microlm_terminal.png" alt="Terminal showing the model's boot log and a chat reply, 63 tokens in 4.05 seconds at 15.5 tokens per second" loading="lazy" width="648" height="357">
-      <figcaption>A chat over the serial port: 63 tokens in 4.05 s.</figcaption>
-    </figure>
+    <h2>TinyML animal classifier</h2>
+    <p>A MobileNet V2 image classifier with 96×96 input, trained in Edge Impulse on a balanced subset of the Animals-10 dataset plus photos of rooms. It runs on an AI Thinker ESP32-CAM and on a Seeed XIAO ESP32-S3 Sense, and shows each result on an ST7789 display.</p>
+    <div class="pair even">
+      <figure>
+        <video controls muted playsinline preload="none" poster="assets/images/tinyml-xiao-esp32s3_poster.jpg" width="368" height="656">
+          <source src="assets/video/tinyml-xiao-esp32s3.mp4" type="video/mp4">
+        </video>
+        <figcaption>On the XIAO ESP32-S3 Sense.</figcaption>
+      </figure>
+      <figure>
+        <video controls muted playsinline preload="none" poster="assets/images/tinyml-esp32cam-ai-thinker_poster.jpg" width="368" height="656">
+          <source src="assets/video/tinyml-esp32cam-ai-thinker.mp4" type="video/mp4">
+        </video>
+        <figcaption>On the AI Thinker ESP32-CAM.</figcaption>
+      </figure>
+    </div>
+  </div>
+</article>
+
+<article class="work" id="xb1">
+  <div class="side">
+    <p>2022, at IDEASTEAM</p>
+    <p><a href="https://github.com/fitranurmayadi/ideasteam-test-code">Sample code</a></p>
+  </div>
+  <div class="body">
+    <h2>ideaSTEAM XB1, a board for learning electronics</h2>
+    <p>An ESP32 board with buttons, a buzzer, RGB LEDs, an OLED display, temperature and light sensors and a motor driver, so students can program real parts without wiring a breadboard. I took it from concept to production: schematic, PCB layout, Gerbers, component assembly, documentation and sample code.</p>
+    <div class="pair">
+      <figure>
+        <img src="assets/images/ideasteam_6.jpg" alt="Back of the assembled board showing the ESP32 module and motor driver" loading="lazy" width="2239" height="1368">
+        <figcaption>Assembled board, ESP32 side.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/ideasteam_5.png" alt="PCB layout of the board with red copper on black" loading="lazy" width="440" height="291">
+        <figcaption>PCB layout.</figcaption>
+      </figure>
+    </div>
   </div>
 </article>
 
@@ -106,42 +126,6 @@
   </div>
 </article>
 
-<article class="work" id="xb1">
-  <div class="side">
-    <p>2022, at IDEASTEAM</p>
-    <p><a href="https://github.com/fitranurmayadi/ideasteam-test-code">Sample code</a></p>
-  </div>
-  <div class="body">
-    <h2>ideaSTEAM XB1, a board for learning electronics</h2>
-    <p>An ESP32 board with buttons, a buzzer, RGB LEDs, an OLED display, temperature and light sensors and a motor driver, so students can program real parts without wiring a breadboard. I took it from concept to production: schematic, PCB layout, Gerbers, component assembly, documentation and sample code.</p>
-    <div class="pair">
-      <figure>
-        <img src="assets/images/ideasteam_6.jpg" alt="Back of the assembled board showing the ESP32 module and motor driver" loading="lazy" width="2239" height="1368">
-        <figcaption>Assembled board, ESP32 side.</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/images/ideasteam_5.png" alt="PCB layout of the board with red copper on black" loading="lazy" width="440" height="291">
-        <figcaption>PCB layout.</figcaption>
-      </figure>
-    </div>
-  </div>
-</article>
-
-<article class="work" id="arm">
-  <div class="side">
-    <p>2025</p>
-    <p><a href="https://github.com/fitranurmayadi/robotic_arm_yolo_pick_n_place">Source</a></p>
-  </div>
-  <div class="body">
-    <h2>A robot arm that sorts balls by colour</h2>
-    <p>Teaching material for AIoT and robotics. A USB camera and a YOLOv11 model pick out red, yellow and green balls, then a 3-DOF stepper arm with a vacuum end-effector moves them. An Arduino Mega drives the A4988 drivers and the pump, and a PyQt5 program on the PC runs the whole thing.</p>
-    <figure class="narrow">
-      <img src="assets/images/robotic_arm_1.jpeg" alt="Block diagram of the arm's hardware and software" loading="lazy" width="1058" height="583">
-      <figcaption>How the parts connect.</figcaption>
-    </figure>
-  </div>
-</article>
-
 <article class="work" id="panel">
   <div class="side">
     <p>2023</p>
@@ -158,6 +142,27 @@
       <figure>
         <img src="assets/images/smarthome-iot-dlcb_2.jpeg" alt="Home Assistant dashboard for the panel" loading="lazy" width="1600" height="796">
         <figcaption>Its Home Assistant dashboard.</figcaption>
+      </figure>
+    </div>
+  </div>
+</article>
+
+<article class="work" id="rocket">
+  <div class="side">
+    <p>2026, simulation</p>
+    <p><a href="https://github.com/fitranurmayadi/RocketLander3D">Source</a></p>
+  </div>
+  <div class="body">
+    <h2>Landing a rocket in simulation</h2>
+    <p>A 5 m Falcon 9-style booster in PyBullet and Gymnasium. Mass falls from 3,000 kg to 300 kg as fuel burns, so thrust-to-weight goes from about 2 to about 20 and the same throttle input means something very different at the end of a flight than at the start.</p>
+    <div class="pair">
+      <figure>
+        <img src="assets/images/rocketlander3d_sim.png" alt="Rocket above terrain in the PyBullet window" loading="lazy" width="1025" height="776">
+        <figcaption>The simulator.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/rocketlander3d_report.png" alt="Flight report with plots of altitude, velocity and attitude" loading="lazy" width="1200" height="1200">
+        <figcaption>A flight report.</figcaption>
       </figure>
     </div>
   </div>
@@ -185,24 +190,34 @@
   </div>
 </article>
 
-<article class="work" id="rocket">
+<article class="work" id="lunar">
   <div class="side">
     <p>2026, simulation</p>
-    <p><a href="https://github.com/fitranurmayadi/RocketLander3D">Source</a></p>
+    <p><a href="https://github.com/fitranurmayadi/LunarLander3D">Source</a></p>
   </div>
   <div class="body">
-    <h2>Landing a rocket in simulation</h2>
-    <p>A 5 m Falcon 9-style booster in PyBullet and Gymnasium. Mass falls from 3,000 kg to 300 kg as fuel burns, so thrust-to-weight goes from about 2 to about 20 and the same throttle input means something very different at the end of a flight than at the start.</p>
-    <div class="pair">
-      <figure>
-        <img src="assets/images/rocketlander3d_sim.png" alt="Rocket above terrain in the PyBullet window" loading="lazy" width="1025" height="776">
-        <figcaption>The simulator.</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/images/rocketlander3d_report.png" alt="Flight report with plots of altitude, velocity and attitude" loading="lazy" width="1200" height="1200">
-        <figcaption>A flight report.</figcaption>
-      </figure>
-    </div>
+    <h2>LunarLander3D</h2>
+    <p>A 6-DoF lunar lander for Gymnasium and PyBullet, simulated at 100 Hz. I started it to compare reinforcement learning with conventional flight control, and the 2D LunarLander in Gymnasium was too simple for that. The lander weighs about 5,100 kg, with a 22,000 N main engine and 20 RCS thrusters of up to 5,000 N each. Moon, Earth and Mars gravity are built in.</p>
+    <p>There are three controllers so far: decoupled PID loops driven by a state machine, direct thrust vectoring, and tracking a precomputed reference trajectory. The trajectory tracker lands best.</p>
+    <figure class="narrow">
+      <img src="assets/images/lunarlander3d_sim.png" alt="Lunar lander descending over grey procedurally generated terrain" loading="lazy" width="798" height="838">
+      <figcaption>The lander over generated terrain.</figcaption>
+    </figure>
+  </div>
+</article>
+
+<article class="work" id="arm">
+  <div class="side">
+    <p>2025</p>
+    <p><a href="https://github.com/fitranurmayadi/robotic_arm_yolo_pick_n_place">Source</a></p>
+  </div>
+  <div class="body">
+    <h2>A robot arm that sorts balls by colour</h2>
+    <p>Teaching material for AIoT and robotics. A USB camera and a YOLOv11 model pick out red, yellow and green balls, then a 3-DOF stepper arm with a vacuum end-effector moves them. An Arduino Mega drives the A4988 drivers and the pump, and a PyQt5 program on the PC runs the whole thing.</p>
+    <figure class="narrow">
+      <img src="assets/images/robotic_arm_1.jpeg" alt="Block diagram of the arm's hardware and software" loading="lazy" width="1058" height="583">
+      <figcaption>How the parts connect.</figcaption>
+    </figure>
   </div>
 </article>
 
@@ -251,11 +266,37 @@
 <section class="code">
   <h2>Code only</h2>
   <ul>
-    <li><a href="https://github.com/fitranurmayadi/Edge-Impulse-ESP32S3-Animals-10-with-ST7789">TinyML animal classifier</a>. MobileNet V2 at 96×96 on ESP32-CAM and XIAO ESP32-S3, trained in Edge Impulse. <a href="https://youtube.com/shorts/LacXYa14CoM">Demo video</a>.</li>
     <li><a href="https://github.com/fitranurmayadi/twsbr-rl">Self-balancing robot controllers</a>. PPO, SAC, TD3 and A2C against LQR and PID, in PyBullet and MuJoCo.</li>
-    <li><a href="https://github.com/fitranurmayadi/LunarLander3D">LunarLander3D</a>. A 3D lander environment for Gymnasium, simulated at 100 Hz.</li>
   </ul>
 </section>
+
+<article class="work" id="microlm">
+  <div class="side">
+    <p>2026</p>
+    <p><a href="https://github.com/fitranurmayadi/esp32-microlm">Source</a><br>
+    <a href="https://github.com/fitranurmayadi/esp32-microlm/blob/main/BENCHMARK.md">Benchmarks</a><br>
+    <a href="https://github.com/fitranurmayadi/esp32-microlm/blob/main/JOURNEY.md">Design notes</a></p>
+  </div>
+  <div class="body">
+    <h2>A language model on an ESP32-S3</h2>
+    <p>A 1.84M-parameter INT8 model that generates text on the microcontroller, with no network. The inference engine is plain C++, without TFLite Micro or ONNX. Weights sit in octal PSRAM, working buffers in internal SRAM, and FreeRTOS splits the attention and feed-forward work across both cores.</p>
+    <table>
+      <caption>Generation speed on the board, by release</caption>
+      <thead><tr><th>Release</th><th>What changed</th><th class="num">Tokens/s</th></tr></thead>
+      <tbody>
+        <tr><td>v1.0</td><td>Single-core baseline</td><td class="num">about 12.3</td></tr>
+        <tr><td>v2.0</td><td>Dual-core FreeRTOS, 8-way unrolled FPU loop</td><td class="num">13.5–14.5</td></tr>
+        <tr><td>v3.0</td><td>Moved to native ESP-IDF, tasks pinned to cores</td><td class="num">14.5–15.4</td></tr>
+        <tr><td>v4.0</td><td>Dual-core with 8-way FP32 accumulators</td><td class="num">14.5–15.6</td></tr>
+      </tbody>
+    </table>
+    <p>v4.0 reaches the same speed on the ESP32-S3 DevKit N16R8, Arduino Nano ESP32 and Seeed XIAO ESP32-S3.</p>
+    <figure>
+      <img src="assets/images/esp32_microlm_terminal.png" alt="Terminal showing the model's boot log and a chat reply, 63 tokens in 4.05 seconds at 15.5 tokens per second" loading="lazy" width="648" height="357">
+      <figcaption>A chat over the serial port: 63 tokens in 4.05 s.</figcaption>
+    </figure>
+  </div>
+</article>
 
 </main>
 
