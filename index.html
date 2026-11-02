@@ -1,171 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitra Nurmayadi — Embedded Systems, Edge AI & Robotics</title>
-    <meta name="description" content="Technical portfolio of Fitra Nurmayadi. Research and engineering projects in Edge AI acceleration, robotics control, 3D physics simulations, and custom embedded systems.">
-
-    <!-- Fonts: Inter & JetBrains Mono -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fitra Nurmayadi, embedded systems engineer</title>
+<meta name="description" content="Circuit boards, firmware and small machine learning models built by Fitra Nurmayadi in Medan, Indonesia.">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="site-container">
-        <!-- Top Navigation / Status Bar -->
-        <header class="top-nav">
-            <div class="brand">
-                <span class="brand-name">fitranurmayadi</span>
-                <span class="status-pill"><span class="status-dot"></span> Systems & Robotics</span>
-            </div>
-            <div class="nav-controls">
-                <a href="https://github.com/fitranurmayadi" target="_blank" rel="noopener" class="nav-link" title="GitHub Profile">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                    </svg>
-                    <span>github/fitranurmayadi</span>
-                </a>
-                <a href="presentation.html" class="nav-link" title="Technical Presentation Slides">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                        <line x1="8" y1="21" x2="16" y2="21"></line>
-                        <line x1="12" y1="17" x2="12" y2="21"></line>
-                    </svg>
-                    <span>Presentation (PPT)</span>
-                </a>
-                <button id="theme-toggle" class="theme-btn" aria-label="Toggle light/dark theme" title="Toggle theme">
-                    <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
-                    </svg>
-                    <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
-                    </svg>
-                </button>
-            </div>
-        </header>
 
-        <!-- Engineering Profile Header -->
-        <section class="profile-header">
-            <div class="profile-main">
-                <h1 class="engineer-name">Fitra Nurmayadi</h1>
-                <p class="engineer-headline">Computer & Embedded Systems Engineer</p>
-                <p class="engineer-focus">Edge AI Acceleration &bull; Robotics Control &bull; Embedded Hardware & Firmware</p>
-                <div class="engineer-bio">
-                    <p>Focused on hardware-software co-design: running neural networks on constrained edge devices (Raspberry Pi 5, Hailo-8L, Jetson Orin Nano, Khadas Edge 2, ESP32-S3), 6-DOF dynamic simulations in PyBullet, and embedded firmware development.</p>
-                </div>
-            </div>
+<header class="intro">
+  <h1>Fitra Nurmayadi</h1>
+  <p class="lede">I'm an embedded systems engineer in Medan, Indonesia. I design circuit boards, write firmware in C and Python, and run machine learning models on small hardware. Since October 2023 I've worked as an IoT engineer at the Digital Learning Center Building, Universitas Sumatera Utara.</p>
+  <p class="contact">
+    <a href="mailto:fitra.nurmayadi@gmail.com">fitra.nurmayadi@gmail.com</a>
+    <a href="https://github.com/fitranurmayadi">GitHub</a>
+    <a href="https://www.linkedin.com/in/fitra-nurmayadi/">LinkedIn</a>
+  </p>
+</header>
 
-            <div class="profile-meta-panel">
-                <div class="meta-row">
-                    <span class="meta-label">Domain:</span>
-                    <span class="meta-value">Robotics, Edge AI & Embedded Systems</span>
-                </div>
-                <div class="meta-row">
-                    <span class="meta-label">Focus:</span>
-                    <span class="meta-value">YOLO11-OBB Single Board Computer & Edge NPU Benchmark</span>
-                </div>
-                <div class="meta-row">
-                    <span class="meta-label">SoC / Chips:</span>
-                    <span class="meta-value code-font">ESP32-S3, STM32, Hailo-8L, RK3588S</span>
-                </div>
-                <div class="meta-row">
-                    <span class="meta-label">Contact:</span>
-                    <a href="mailto:fitra.nurmayadi@gmail.com" class="meta-link">fitra.nurmayadi@gmail.com</a>
-                </div>
-            </div>
-        </section>
+<div class="strip">
+  <img src="assets/images/ideasteam_7.jpg" alt="Assembled ideaSTEAM XB1 board with OLED display and buttons" width="2904" height="1758">
+  <img src="assets/images/line-follower_3.jpeg" alt="Two hand-built line follower robots with LCD displays" width="1280" height="720">
+  <img src="assets/images/robotic_arm_2.jpeg" alt="Three-axis robotic arm on a yellow frame" width="902" height="1221">
+</div>
 
-        <!-- Flagship Deep Dives (Featured Research Projects) -->
-        <section class="section-featured">
-            <div class="section-title-wrap">
-                <h2 class="section-title">Featured Research & Flagship Systems</h2>
-                <span class="section-note">Empirical benchmarks, physical simulations, and embedded model acceleration</span>
-            </div>
+<main>
 
-            <div class="featured-grid" id="featured-grid">
-                <!-- Injected dynamically from projects_data.js -->
-            </div>
-        </section>
+<article class="work" id="microlm">
+  <div class="side">
+    <p>2026</p>
+    <p><a href="https://github.com/fitranurmayadi/esp32-microlm">Source</a><br>
+    <a href="https://github.com/fitranurmayadi/esp32-microlm/blob/main/BENCHMARK.md">Benchmarks</a><br>
+    <a href="https://github.com/fitranurmayadi/esp32-microlm/blob/main/JOURNEY.md">Design notes</a></p>
+  </div>
+  <div class="body">
+    <h2>A language model on an ESP32-S3</h2>
+    <p>A 1.84M-parameter INT8 model that generates text on the microcontroller, with no network. The inference engine is plain C++, without TFLite Micro or ONNX. Weights sit in octal PSRAM, working buffers in internal SRAM, and FreeRTOS splits the attention and feed-forward work across both cores.</p>
+    <table>
+      <caption>Generation speed on the board, by release</caption>
+      <thead><tr><th>Release</th><th>What changed</th><th class="num">Tokens/s</th></tr></thead>
+      <tbody>
+        <tr><td>v1.0</td><td>Single-core baseline</td><td class="num">about 12.3</td></tr>
+        <tr><td>v2.0</td><td>Dual-core FreeRTOS, 8-way unrolled FPU loop</td><td class="num">13.5–14.5</td></tr>
+        <tr><td>v3.0</td><td>Moved to native ESP-IDF, tasks pinned to cores</td><td class="num">14.5–15.4</td></tr>
+        <tr><td>v4.0</td><td>Dual-core with 8-way FP32 accumulators</td><td class="num">14.5–15.6</td></tr>
+      </tbody>
+    </table>
+    <p>v4.0 reaches the same speed on the ESP32-S3 DevKit N16R8, Arduino Nano ESP32 and Seeed XIAO ESP32-S3.</p>
+    <figure>
+      <img src="assets/images/esp32_microlm_terminal.png" alt="Terminal showing the model's boot log and a chat reply, 63 tokens in 4.05 seconds at 15.5 tokens per second" loading="lazy" width="648" height="357">
+      <figcaption>A chat over the serial port: 63 tokens in 4.05 s.</figcaption>
+    </figure>
+  </div>
+</article>
 
-        <!-- All Engineering Projects Section -->
-        <section class="section-all-work" id="all-work">
-            <div class="section-title-wrap">
-                <h2 class="section-title">Complete Project Index</h2>
-                <span class="section-note">20 hardware implementations, robotics platforms, and telemetry nodes</span>
-            </div>
-
-            <!-- Filter Tabs & Search Bar -->
-            <div class="filter-controls">
-                <div class="category-tabs" id="category-tabs" role="tablist">
-                    <!-- Injected dynamically -->
-                </div>
-
-                <div class="search-wrap">
-                    <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                    <input type="text" id="search-input" placeholder="Filter by chip, framework, or keyword..." autocomplete="off">
-                    <button id="search-clear" class="search-clear" aria-label="Clear search" style="display: none;">&times;</button>
-                </div>
-            </div>
-
-            <div class="filter-summary">
-                <span id="results-count">Showing 20 projects</span>
-            </div>
-
-            <!-- Projects Grid -->
-            <div class="projects-grid" id="projects-grid">
-                <!-- Injected dynamically -->
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="site-footer">
-            <div class="footer-left">
-                <span>&copy; 2026 Fitra Nurmayadi</span>
-                <span class="footer-sep">&bull;</span>
-                <span>Static, zero-bloat architecture</span>
-            </div>
-            <div class="footer-right">
-                <a href="https://github.com/fitranurmayadi" target="_blank" rel="noopener" class="footer-link">GitHub</a>
-                <a href="mailto:fitra.nurmayadi@gmail.com" class="footer-link">Email</a>
-                <a href="#top" class="footer-link">Back to top &uarr;</a>
-            </div>
-        </footer>
+<article class="work" id="weather">
+  <div class="side">
+    <p>Bachelor's thesis</p>
+    <p><a href="https://github.com/fitranurmayadi/weather-stations-lora-mqtt">Source</a></p>
+  </div>
+  <div class="body">
+    <h2>A weather station that runs on one 18650 cell</h2>
+    <p>An STM32F103 reads a BME280 and sends the values over LoRa (SX1278) to an ESP32 gateway, which passes them on over Wi-Fi and MQTT. I set up the server myself instead of using an existing one, so I could follow the data end to end: an MQTT broker on Ubuntu, Node-RED into InfluxDB, and Grafana for the graphs.</p>
+    <table>
+      <caption>Battery life on one Li-ion 18650</caption>
+      <tbody>
+        <tr><td>Calculated</td><td class="num">15 months</td></tr>
+        <tr><td>Measured</td><td class="num">9 months</td></tr>
+      </tbody>
+    </table>
+    <div class="pair portrait">
+      <figure>
+        <img src="assets/images/low-power-weather-parameters-monitoring-device_4.jpg" alt="Two 3D-printed enclosures with antennas, one white and one black" loading="lazy" width="961" height="1341">
+        <figcaption>The node and gateway enclosures.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/low-power-weather-parameters-monitoring-device_5.png" alt="Grafana dashboard with weather graphs" loading="lazy" width="2560" height="1440">
+        <figcaption>Readings in Grafana.</figcaption>
+      </figure>
     </div>
+  </div>
+</article>
 
-    <!-- Image Lightbox Modal -->
-    <div id="lightbox-modal" class="lightbox-modal" aria-hidden="true" role="dialog">
-        <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
-        <div class="lightbox-container">
-            <div class="lightbox-header">
-                <div class="lightbox-title-wrap">
-                    <h3 id="lightbox-title">Project Documentation</h3>
-                    <span id="lightbox-counter" class="lightbox-counter">1 / 1</span>
-                </div>
-                <button id="lightbox-close" class="lightbox-close-btn" aria-label="Close dialog">&times;</button>
-            </div>
-            <div class="lightbox-body">
-                <button id="lightbox-prev" class="lightbox-nav-btn prev" aria-label="Previous image">&lsaquo;</button>
-                <div class="lightbox-image-wrapper">
-                    <img id="lightbox-img" src="" alt="Project documentation preview">
-                </div>
-                <button id="lightbox-next" class="lightbox-nav-btn next" aria-label="Next image">&rsaquo;</button>
-            </div>
-            <div class="lightbox-footer">
-                <p id="lightbox-caption" class="lightbox-caption"></p>
-            </div>
-        </div>
+<article class="work" id="obb">
+  <div class="side">
+    <p>2026</p>
+  </div>
+  <div class="body">
+    <h2>YOLO11-OBB on three small computers</h2>
+    <p>I ran oriented object detection at three model sizes on a Khadas Edge 2, a Raspberry Pi 5 and a Jetson Orin Nano, and compared frame rate against peak power. The Khadas gave the most frames per watt at every size. The Pi dropped the furthest as the model grew.</p>
+    <table>
+      <caption>Frames per second per watt of peak power</caption>
+      <thead><tr><th>Model</th><th class="num">Khadas Edge 2</th><th class="num">Raspberry Pi 5</th><th class="num">Jetson Orin Nano</th></tr></thead>
+      <tbody>
+        <tr><td>nano</td><td class="num">3.84</td><td class="num">2.81</td><td class="num">1.51</td></tr>
+        <tr><td>small</td><td class="num">2.99</td><td class="num">1.48</td><td class="num">1.31</td></tr>
+        <tr><td>medium</td><td class="num">1.44</td><td class="num">0.53</td><td class="num">1.28</td></tr>
+      </tbody>
+    </table>
+    <figure>
+      <img src="assets/images/obb_benchmark_energy.png" alt="Scatter plot of frame rate against peak power for each board and model size" loading="lazy" width="3199" height="1655">
+      <figcaption>The same runs, frame rate against peak power.</figcaption>
+    </figure>
+  </div>
+</article>
+
+<article class="work" id="xb1">
+  <div class="side">
+    <p>2022, at IDEASTEAM</p>
+    <p><a href="https://github.com/fitranurmayadi/ideasteam-test-code">Sample code</a></p>
+  </div>
+  <div class="body">
+    <h2>ideaSTEAM XB1, a board for learning electronics</h2>
+    <p>An ESP32 board with buttons, a buzzer, RGB LEDs, an OLED display, temperature and light sensors and a motor driver, so students can program real parts without wiring a breadboard. I took it from concept to production: schematic, PCB layout, Gerbers, component assembly, documentation and sample code.</p>
+    <div class="pair">
+      <figure>
+        <img src="assets/images/ideasteam_6.jpg" alt="Back of the assembled board showing the ESP32 module and motor driver" loading="lazy" width="2239" height="1368">
+        <figcaption>Assembled board, ESP32 side.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/ideasteam_5.png" alt="PCB layout of the board with red copper on black" loading="lazy" width="440" height="291">
+        <figcaption>PCB layout.</figcaption>
+      </figure>
     </div>
+  </div>
+</article>
 
-    <!-- Data & Script -->
-    <script src="projects_data.js"></script>
-    <script src="script.js"></script>
+<article class="work" id="arm">
+  <div class="side">
+    <p>2025</p>
+    <p><a href="https://github.com/fitranurmayadi/robotic_arm_yolo_pick_n_place">Source</a></p>
+  </div>
+  <div class="body">
+    <h2>A robot arm that sorts balls by colour</h2>
+    <p>Teaching material for AIoT and robotics. A USB camera and a YOLOv11 model pick out red, yellow and green balls, then a 3-DOF stepper arm with a vacuum end-effector moves them. An Arduino Mega drives the A4988 drivers and the pump, and a PyQt5 program on the PC runs the whole thing.</p>
+    <figure class="narrow">
+      <img src="assets/images/robotic_arm_1.jpeg" alt="Block diagram of the arm's hardware and software" loading="lazy" width="1058" height="583">
+      <figcaption>How the parts connect.</figcaption>
+    </figure>
+  </div>
+</article>
+
+<article class="work" id="panel">
+  <div class="side">
+    <p>2023</p>
+    <p><a href="https://github.com/fitranurmayadi/smarthome-iot-dlcb">Source</a></p>
+  </div>
+  <div class="body">
+    <h2>Smart home teaching panel</h2>
+    <p>A wall panel for IoT lessons. Three boards talk MQTT to Home Assistant on a Raspberry Pi 4: an ESP32-S3 with a DHT22 and an 8-channel relay for the lights, fan, buzzer and solenoid, an ESP32-C3 reading a PZEM-004T power meter, and an ESP32-C6 with a PN532 RFID reader for door access.</p>
+    <div class="pair portrait">
+      <figure>
+        <img src="assets/images/smarthome-iot-dlcb_1.jpeg" alt="Wall-mounted panel with lamps, fan and controller boards" loading="lazy" width="792" height="902">
+        <figcaption>The panel.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/smarthome-iot-dlcb_2.jpeg" alt="Home Assistant dashboard for the panel" loading="lazy" width="1600" height="796">
+        <figcaption>Its Home Assistant dashboard.</figcaption>
+      </figure>
+    </div>
+  </div>
+</article>
+
+<article class="work" id="spider">
+  <div class="side">
+    <p>2026, simulation</p>
+    <p><a href="https://github.com/fitranurmayadi/Quadrupped-Spider">Source</a></p>
+  </div>
+  <div class="body">
+    <h2>Quadruped navigation in PyBullet</h2>
+    <p>A spider robot modelled in FreeCAD, with a closed-form inverse kinematics solver and a trot gait. I raced four navigation methods through the same obstacle course, from one corner of a 10 m square to the other.</p>
+    <table>
+      <caption>Time to reach the target</caption>
+      <thead><tr><th>Method</th><th class="num">Seconds</th></tr></thead>
+      <tbody>
+        <tr><td>Artificial potential field</td><td class="num">48.43</td></tr>
+        <tr><td>Dijkstra</td><td class="num">52.26</td></tr>
+        <tr><td>A*</td><td class="num">55.03</td></tr>
+        <tr><td>Hybrid MPC</td><td class="num">107.44</td></tr>
+      </tbody>
+    </table>
+    <p>MPC came last partly because its optimiser shared a single Python thread with the other three robots.</p>
+  </div>
+</article>
+
+<article class="work" id="rocket">
+  <div class="side">
+    <p>2026, simulation</p>
+    <p><a href="https://github.com/fitranurmayadi/RocketLander3D">Source</a></p>
+  </div>
+  <div class="body">
+    <h2>Landing a rocket in simulation</h2>
+    <p>A 5 m Falcon 9-style booster in PyBullet and Gymnasium. Mass falls from 3,000 kg to 300 kg as fuel burns, so thrust-to-weight goes from about 2 to about 20 and the same throttle input means something very different at the end of a flight than at the start.</p>
+    <div class="pair">
+      <figure>
+        <img src="assets/images/rocketlander3d_sim.png" alt="Rocket above terrain in the PyBullet window" loading="lazy" width="1025" height="776">
+        <figcaption>The simulator.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/images/rocketlander3d_report.png" alt="Flight report with plots of altitude, velocity and attitude" loading="lazy" width="1200" height="1200">
+        <figcaption>A flight report.</figcaption>
+      </figure>
+    </div>
+  </div>
+</article>
+
+<section class="older">
+  <h2>Older builds</h2>
+  <div class="grid">
+    <figure>
+      <a href="https://github.com/fitranurmayadi/line-follower"><img class="whole" src="assets/images/line-follower_1.png" alt="Line follower schematic" loading="lazy" width="2341" height="1652"></a>
+      <figcaption><a href="https://github.com/fitranurmayadi/line-follower">Line follower</a>. PID gains are tuned on the track from an LCD menu, no PC needed.</figcaption>
+    </figure>
+    <figure>
+      <a href="https://github.com/fitranurmayadi/stemi-robotika"><img src="assets/images/stemi-robotika_9.jpeg" alt="Round blue robot with LCD and yellow wheels" loading="lazy" width="1600" height="900"></a>
+      <figcaption><a href="https://github.com/fitranurmayadi/stemi-robotika">STEMI Robotika</a>. Line-following and obstacle-avoiding robots for teaching.</figcaption>
+    </figure>
+    <figure>
+      <a href="https://github.com/fitranurmayadi/muse-myo-arduino-js"><img src="assets/images/myo-to-arm-robot_3.jpeg" alt="Small robot arm on a round table" loading="lazy" width="1600" height="900"></a>
+      <figcaption><a href="https://github.com/fitranurmayadi/muse-myo-arduino-js">Myo armband to robot arm</a>. Forearm EMG through a Node.js bridge to the servos.</figcaption>
+    </figure>
+    <figure>
+      <a href="https://github.com/fitranurmayadi/ESP32C3-PowerMonitoring"><img src="assets/images/power-monitoring_2.jpeg" alt="Power monitor board with display lit" loading="lazy" width="1600" height="900"></a>
+      <figcaption><a href="https://github.com/fitranurmayadi/ESP32C3-PowerMonitoring">AC power monitor</a>. ESP32-C3 and PZEM-004T, with an OLED and MQTT.</figcaption>
+    </figure>
+    <figure>
+      <img class="whole" src="assets/images/esp01-ir-air-conditioner_3.jpeg" alt="Phone app screen for the air conditioner controller" loading="lazy" width="899" height="1599">
+      <figcaption>Air conditioner controller. An ESP8266 sends IR commands, driven by an Android app through Firebase.</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/images/vertical-hidroponic_1.jpeg" alt="Vertical hydroponic towers with a temperature display in front" loading="lazy" width="1600" height="900">
+      <figcaption>Vertical hydroponics.</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/images/biofloc-fish-pond_1.jpeg" alt="Round biofloc fish pond under a greenhouse roof" loading="lazy" width="900" height="1600">
+      <figcaption>Biofloc fish pond.</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/images/aquascape-monitoring_1.jpeg" alt="Planted aquarium with a monitor mounted above it" loading="lazy" width="900" height="1600">
+      <figcaption>Aquascape monitor.</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/images/diy-robot_3.jpeg" alt="Small four-wheeled robot with white wheels on a laptop" loading="lazy" width="1280" height="720">
+      <figcaption>DIY robot.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="code">
+  <h2>Code only</h2>
+  <ul>
+    <li><a href="https://github.com/fitranurmayadi/Edge-Impulse-ESP32S3-Animals-10-with-ST7789">TinyML animal classifier</a>. MobileNet V2 at 96×96 on ESP32-CAM and XIAO ESP32-S3, trained in Edge Impulse. <a href="https://youtube.com/shorts/LacXYa14CoM">Demo video</a>.</li>
+    <li><a href="https://github.com/fitranurmayadi/twsbr-rl">Self-balancing robot controllers</a>. PPO, SAC, TD3 and A2C against LQR and PID, in PyBullet and MuJoCo.</li>
+    <li><a href="https://github.com/fitranurmayadi/LunarLander3D">LunarLander3D</a>. A 3D lander environment for Gymnasium, simulated at 100 Hz.</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p><a href="mailto:fitra.nurmayadi@gmail.com">fitra.nurmayadi@gmail.com</a></p>
+</footer>
+
 </body>
 </html>
-
