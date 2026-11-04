@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-labelledby="t">
+<title id="t">Time to reach the target: potential field 48.43 s, Dijkstra 52.26 s, A* 55.03 s, hybrid MPC 107.44 s</title>
+<rect width="800" height="500" fill="#2a2f28"/>
+<text x="44" y="70" font-family="'JetBrains Mono', ui-monospace, Consolas, monospace" font-size="22" letter-spacing="2" fill="#a2a79b">SECONDS TO THE TARGET</text>
+<text x="232" y="151.0" text-anchor="end" font-family="Manrope, system-ui, sans-serif" font-weight="600" font-size="26" fill="#f6f5ee">Potential field</text>
+<rect x="250" y="118" width="180.5" height="48" rx="6" fill="#e88a5c"/>
+<text x="442.5" y="151.0" font-family="'JetBrains Mono', ui-monospace, Consolas, monospace" font-size="25" fill="#f6f5ee">48.43</text>
+<text x="232" y="243.0" text-anchor="end" font-family="Manrope, system-ui, sans-serif" font-weight="600" font-size="26" fill="#f6f5ee">Dijkstra</text>
+<rect x="250" y="210" width="194.8" height="48" rx="6" fill="#646a5f"/>
+<text x="456.8" y="243.0" font-family="'JetBrains Mono', ui-monospace, Consolas, monospace" font-size="25" fill="#f6f5ee">52.26</text>
+<text x="232" y="335.0" text-anchor="end" font-family="Manrope, system-ui, sans-serif" font-weight="600" font-size="26" fill="#f6f5ee">A*</text>
+<rect x="250" y="302" width="205.1" height="48" rx="6" fill="#646a5f"/>
+<text x="467.1" y="335.0" font-family="'JetBrains Mono', ui-monospace, Consolas, monospace" font-size="25" fill="#f6f5ee">55.03</text>
+<text x="232" y="427.0" text-anchor="end" font-family="Manrope, system-ui, sans-serif" font-weight="600" font-size="26" fill="#f6f5ee">Hybrid MPC</text>
+<rect x="250" y="394" width="400.5" height="48" rx="6" fill="#646a5f"/>
+<text x="662.5" y="427.0" font-family="'JetBrains Mono', ui-monospace, Consolas, monospace" font-size="25" fill="#f6f5ee">107.44</text>
+</svg>
