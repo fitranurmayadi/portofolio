@@ -1,205 +1,328 @@
 /* Red is the top-copper colour in the PCB layouts shown on the page. */
 :root {
     color-scheme: light;
-    --ink: #111;
-    --quiet: #555;
-    --rule: #111;
-    --mark: #c4161c;
-    --gutter: clamp(1rem, 4vw, 3rem);
-    --side: 11rem;
+    --ink: #151515;
+    --text: #2b2b29;
+    --muted: #63635e;
+    --line: #e3e3de;
+    --panel: #f3f3f0;
+    --accent: #c4161c;
+    --wrap: 1160px;
+    --pad: clamp(1.25rem, 4vw, 2.5rem);
+    --radius: 6px;
+    --sans: "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Consolas, "Liberation Mono", monospace;
 }
 
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+}
 
 body {
     margin: 0;
     background: #fff;
-    color: var(--ink);
-    font: 400 1.0625rem/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
-    counter-reset: fig;
+    color: var(--text);
+    font: 400 1rem/1.65 var(--sans);
 }
 
-a { color: var(--mark); text-underline-offset: 0.15em; }
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
 a:hover { color: var(--ink); }
-a:focus-visible { outline: 2px solid var(--mark); outline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
 
-img, video { display: block; max-width: 100%; height: auto; }
+img, video { display: block; max-width: 100%; }
 
 p { margin: 0 0 1em; }
 
+.wrap {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding: 0 var(--pad);
+}
+
+/* Top bar */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+}
+
+.topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 3.5rem;
+}
+
+.brand {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.topbar nav { display: flex; gap: 1.5rem; font-size: 0.9375rem; }
+.topbar nav a { color: var(--muted); text-decoration: none; white-space: nowrap; }
+.topbar nav a:hover { color: var(--ink); }
+
 /* Intro */
-.intro { padding: clamp(2rem, 6vw, 5rem) var(--gutter) 2rem; }
+.intro { padding: clamp(3.5rem, 9vw, 6.5rem) 0 clamp(2.5rem, 6vw, 4rem); }
 
 h1 {
-    margin: 0 0 1.5rem;
-    font-size: clamp(3rem, 11vw, 9rem);
-    font-weight: 700;
-    line-height: 0.95;
-    letter-spacing: -0.04em;
+    margin: 0 0 1.25rem;
+    color: var(--ink);
+    font-size: clamp(2.75rem, 7vw, 5rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.035em;
 }
 
 .lede {
-    max-width: 40em;
-    font-size: clamp(1.15rem, 2vw, 1.5rem);
-    line-height: 1.35;
+    max-width: 36em;
+    font-size: clamp(1.125rem, 1.8vw, 1.3125rem);
+    line-height: 1.55;
 }
 
-.contact { margin: 0; }
-.contact a { margin-right: 1.25em; white-space: nowrap; }
-
-/* Three photos, edge to edge */
-.strip {
-    display: grid;
-    grid-template-columns: 5fr 4fr 3fr;
-    gap: 2px;
+.contact,
+.links,
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.5rem;
+    margin: 0;
 }
 
-.strip img {
-    width: 100%;
-    height: clamp(11rem, 30vw, 28rem);
-    object-fit: cover;
-}
+.contact { margin-top: 1.5rem; }
 
-/* Projects */
-main { padding: 0 var(--gutter); }
+/* Sections */
+.section { padding-top: clamp(2.5rem, 6vw, 4rem); }
 
-.work {
-    display: grid;
-    grid-template-columns: var(--side) minmax(0, 1fr);
-    column-gap: 2rem;
-    padding: 2rem 0 3.5rem;
-    border-top: 2px solid var(--rule);
-}
-
-.strip + main .work:first-child { border-top: 0; }
-
-.side { font-size: 0.9375rem; padding-top: 0.45rem; }
-.side p { margin-bottom: 0.75em; }
-
-h2 {
-    margin: 0 0 0.75rem;
-    font-size: clamp(1.6rem, 3.2vw, 2.5rem);
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-}
-
-.body > p { max-width: 38em; }
-
-/* Tables read like the electrical characteristics page of a datasheet */
-table {
-    width: 100%;
-    max-width: 38em;
-    margin: 1.5rem 0;
-    border-collapse: collapse;
-    border-top: 2px solid var(--rule);
-    border-bottom: 2px solid var(--rule);
-    font-size: 0.9375rem;
-    font-variant-numeric: tabular-nums;
-}
-
-caption {
-    padding-bottom: 0.4rem;
-    font-weight: 700;
-    text-align: left;
-}
-
-th, td {
-    padding: 0.35rem 1rem 0.35rem 0;
-    border-bottom: 1px solid #bbb;
-    text-align: left;
-    vertical-align: top;
-}
-
-th { border-bottom-color: var(--rule); }
-tr:last-child td { border-bottom: 0; }
-.num { padding-right: 0; padding-left: 0.75rem; text-align: right; white-space: nowrap; }
-
-/* Figures are numbered in page order */
-figure { margin: 1.5rem 0 0; counter-increment: fig; }
-
-figcaption {
-    margin-top: 0.4rem;
-    color: var(--quiet);
-    font-size: 0.875rem;
-    line-height: 1.35;
-}
-
-figcaption::before {
-    content: "Fig. " counter(fig) "  ";
+.label {
+    margin: 0 0 1.75rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--ink);
     color: var(--ink);
-    font-weight: 700;
-    white-space: pre;
+    font: 500 0.8125rem/1.2 var(--mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
 }
 
-.narrow { max-width: 30rem; }
-
-.pair {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: 1.25rem;
-    align-items: start;
-}
-
-/* For a portrait photo beside a landscape one */
-.pair.portrait { grid-template-columns: 2fr 3fr; }
-
-/* Two phone videos side by side */
-.pair.even { grid-template-columns: 1fr 1fr; max-width: 30rem; }
-
-/* Older work and the code list */
-.older, .code {
-    padding: 2rem 0 3.5rem;
-    border-top: 2px solid var(--rule);
-}
-
-.grid {
+/* Index of selected work */
+.cards {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2rem 1.25rem;
-    margin-top: 1.25rem;
-}
-
-.grid figure { margin: 0; }
-
-.grid img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-}
-
-/* Screenshots and drawings lose their meaning when cropped */
-.grid img.whole { object-fit: contain; }
-
-.code ul {
-    max-width: 44em;
-    margin: 0;
+    gap: 2rem 1.5rem;
+    margin: 0 0 clamp(2rem, 5vw, 3rem);
     padding: 0;
     list-style: none;
 }
 
-.code li { margin-bottom: 0.75em; }
+.card { display: block; color: var(--ink); text-decoration: none; }
 
-footer {
-    padding: 1.5rem var(--gutter) 3rem;
-    border-top: 2px solid var(--rule);
-    margin: 0 var(--gutter);
-    padding-left: 0;
+.thumb {
+    display: block;
+    aspect-ratio: 4 / 3;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--panel);
 }
 
-footer p { margin: 0; }
+.thumb img { width: 100%; height: 100%; object-fit: cover; }
+.thumb img.top { object-position: center top; }
+.thumb img.upper { object-position: center 22%; }
+.thumb img.fit { object-fit: contain; padding: 6%; }
+.thumb.white { background: #fff; border: 1px solid var(--line); }
+.thumb.dark { background: #0c0c0c; }
 
-@media (max-width: 760px) {
-    .work { display: block; }
-    .side { display: flex; flex-wrap: wrap; gap: 0 1.25rem; padding: 0 0 0.5rem; }
-    .side p { margin: 0; }
-    .side br { display: none; }
-    .side a { margin-right: 1em; }
-    .pair { grid-template-columns: 1fr; }
-    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 0.75rem; }
-    .strip { grid-template-columns: 1fr 1fr; }
-    .strip img:first-child { grid-column: 1 / -1; }
-    .num { white-space: normal; }
+.card-title { display: block; font-weight: 500; line-height: 1.35; }
+.card:hover .card-title { color: var(--accent); }
+
+.card-meta,
+.meta {
+    color: var(--muted);
+    font: 400 0.8125rem/1.4 var(--mono);
+}
+
+.card-meta { display: block; margin-top: 0.2rem; }
+
+/* Projects: text on the left, pictures on the right */
+.project {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    padding: clamp(2.5rem, 6vw, 4rem) 0;
+    border-top: 1px solid var(--line);
+}
+
+/* The section label already draws a rule above the first project */
+.label + .project { padding-top: 0; border-top: 0; }
+
+.meta { display: flex; flex-wrap: wrap; gap: 0 0.6rem; margin: 0 0 0.6rem; }
+.meta span + span::before { content: "·"; margin-right: 0.6rem; }
+
+h3 {
+    margin: 0 0 1rem;
+    color: var(--ink);
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+.links { margin-top: 1.5rem; font-size: 0.9375rem; font-weight: 500; }
+
+.media { display: grid; gap: 1.25rem; align-content: start; }
+
+figure { margin: 0; }
+
+figcaption {
+    margin-top: 0.5rem;
+    color: var(--muted);
+    font-size: 0.8125rem;
+    line-height: 1.45;
+}
+
+/* Every picture sits in a frame with a fixed shape */
+.frame {
+    display: block;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--panel);
+}
+
+.frame > img,
+.frame > video { width: 100%; height: 100%; object-fit: contain; }
+.frame.cover > img,
+.frame.cover > video { object-fit: cover; }
+.frame.white { background: #fff; border: 1px solid var(--line); }
+.frame.dark { background: #0c0c0c; }
+
+.r-16x9 { aspect-ratio: 16 / 9; }
+.r-16x10 { aspect-ratio: 16 / 10; }
+.r-4x3 { aspect-ratio: 4 / 3; }
+.r-9x16 { aspect-ratio: 9 / 16; }
+
+/* Diagrams and charts keep their own proportions */
+.plain {
+    display: block;
+    padding: 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: #fff;
+}
+
+.plain img { width: 100%; height: auto; }
+
+.pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: start;
+}
+
+/* Portrait beside landscape: widths 2:3 and these ratios give equal heights */
+.pair.mixed { grid-template-columns: 2fr 3fr; }
+.pair.mixed figure:first-child .frame { aspect-ratio: 32 / 27; }
+.pair.mixed figure:last-child .frame { aspect-ratio: 16 / 9; }
+
+/* Two phone videos */
+.pair.phones { max-width: 28rem; }
+
+/* Tables read like the electrical characteristics page of a datasheet */
+table {
+    width: 100%;
+    margin: 1.5rem 0;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.media table { margin-top: 0; }
+
+caption {
+    padding-bottom: 0.6rem;
+    color: var(--muted);
+    font: 500 0.75rem/1.3 var(--mono);
+    letter-spacing: 0.05em;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+th, td {
+    padding: 0.45rem 0.75rem 0.45rem 0;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    vertical-align: top;
+}
+
+thead th { color: var(--muted); font-weight: 500; border-bottom-color: var(--ink); }
+tbody tr:last-child td { border-bottom-color: var(--ink); }
+table:not(:has(thead)) tbody tr:first-child td { border-top: 1px solid var(--ink); }
+
+.num {
+    padding-right: 0;
+    padding-left: 0.75rem;
+    font-family: var(--mono);
+    font-size: 0.875rem;
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Older builds */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem 1.5rem;
+}
+
+.grid .frame { aspect-ratio: 4 / 3; }
+.grid figcaption { color: var(--text); font-size: 0.875rem; }
+
+/* Footer */
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem 2rem;
+    margin-top: clamp(3rem, 7vw, 5rem);
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
+    border-top: 1px solid var(--ink);
+    color: var(--muted);
+    font-size: 0.9375rem;
+}
+
+.footer p { margin: 0; }
+
+@media (max-width: 900px) {
+    .project { grid-template-columns: minmax(0, 1fr); }
+    .cards, .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+    .topbar nav { gap: 1.1rem; font-size: 0.875rem; }
+    .topbar nav .ext { display: none; }
+    .cards { gap: 1.5rem 1rem; }
+    .grid { gap: 1.5rem 1rem; }
+    .pair.mixed { grid-template-columns: minmax(0, 1fr); }
+    .pair.mixed figure:first-child .frame { aspect-ratio: 4 / 3; }
+    table { font-size: 0.875rem; }
+    th, td { padding-right: 0.5rem; }
+    .num { padding-left: 0.5rem; white-space: normal; }
+}
+
+@media (max-width: 420px) {
+    .brand { display: none; }
+    .topbar-inner { justify-content: flex-start; }
 }

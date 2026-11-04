@@ -5,11 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fitra Nurmayadi, embedded systems engineer</title>
 <meta name="description" content="Circuit boards, firmware and small machine learning models built by Fitra Nurmayadi in Medan, Indonesia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="intro">
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="#top">Fitra Nurmayadi</a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#simulations">Simulations</a>
+      <a href="#older">Older builds</a>
+      <a class="ext" href="https://github.com/fitranurmayadi">GitHub</a>
+      <a class="ext" href="https://www.linkedin.com/in/fitra-nurmayadi/">LinkedIn</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top" class="wrap">
+
+<section class="intro">
   <h1>Fitra Nurmayadi</h1>
   <p class="lede">I'm an embedded systems engineer in Medan, Indonesia. I design circuit boards, write firmware in C and Python, and run machine learning models on small hardware. Since October 2023 I've worked as an IoT engineer at the Digital Learning Center Building, Universitas Sumatera Utara.</p>
   <p class="contact">
@@ -17,291 +35,358 @@
     <a href="https://github.com/fitranurmayadi">GitHub</a>
     <a href="https://www.linkedin.com/in/fitra-nurmayadi/">LinkedIn</a>
   </p>
-</header>
+</section>
 
-<div class="strip">
-  <img src="assets/images/ideasteam_7.jpg" alt="Assembled ideaSTEAM XB1 board with OLED display and buttons" width="2904" height="1758">
-  <img src="assets/images/line-follower_3.jpeg" alt="Two hand-built line follower robots with LCD displays" width="1280" height="720">
-  <img src="assets/images/robotic_arm_2.jpeg" alt="Three-axis robotic arm on a yellow frame" width="902" height="1221">
-</div>
+<section id="work" class="section">
+  <h2 class="label">Selected work</h2>
 
-<main>
+  <ol class="cards">
+    <li><a class="card" href="#tinyml"><span class="thumb"><img src="assets/images/tinyml-xiao-esp32s3_poster.jpg" alt="" width="368" height="656"></span><span class="card-title">TinyML animal classifier</span><span class="card-meta">Edge AI · 2023</span></a></li>
+    <li><a class="card" href="#twsbr"><span class="thumb"><img class="top" src="assets/images/twsbr_poster.jpg" alt="" width="960" height="540"></span><span class="card-title">Self-balancing line follower</span><span class="card-meta">Robotics · 2024</span></a></li>
+    <li><a class="card" href="#xb1"><span class="thumb"><img src="assets/images/ideasteam_7.jpg" alt="" width="2904" height="1758"></span><span class="card-title">ideaSTEAM XB1 learning board</span><span class="card-meta">Hardware · 2022</span></a></li>
+    <li><a class="card" href="#weather"><span class="thumb"><img class="upper" src="assets/images/low-power-weather-parameters-monitoring-device_4.jpg" alt="" width="961" height="1341"></span><span class="card-title">Weather station on one 18650 cell</span><span class="card-meta">Low-power IoT · Bachelor's thesis</span></a></li>
+    <li><a class="card" href="#obb"><span class="thumb white"><img class="fit" src="assets/images/obb_benchmark_energy.png" alt="" width="3199" height="1655"></span><span class="card-title">YOLO11-OBB on three small computers</span><span class="card-meta">Edge AI benchmark · 2026</span></a></li>
+    <li><a class="card" href="#panel"><span class="thumb"><img src="assets/images/smarthome-iot-dlcb_1.jpeg" alt="" width="792" height="902"></span><span class="card-title">Smart home teaching panel</span><span class="card-meta">IoT · 2023</span></a></li>
+    <li><a class="card" href="#arm"><span class="thumb"><img src="assets/images/robotic_arm_2.jpeg" alt="" width="902" height="1221"></span><span class="card-title">Robot arm that sorts by colour</span><span class="card-meta">Robotics · 2025</span></a></li>
+    <li><a class="card" href="#microlm"><span class="thumb dark"><img class="fit" src="assets/images/esp32_microlm_terminal.png" alt="" width="648" height="357"></span><span class="card-title">A language model on an ESP32-S3</span><span class="card-meta">Edge AI · 2026</span></a></li>
+    <li><a class="card" href="#simulations"><span class="thumb"><img src="assets/images/rocketlander3d_sim.png" alt="" width="1025" height="776"></span><span class="card-title">Robotics simulations</span><span class="card-meta">Simulation · 2026</span></a></li>
+  </ol>
 
-<article class="work" id="tinyml">
-  <div class="side">
-    <p>2023</p>
-    <p><a href="https://github.com/fitranurmayadi/Edge-Impulse-ESP32S3-Animals-10-with-ST7789">Source</a><br>
-    <a href="https://studio.edgeimpulse.com/studio/327359">Edge Impulse project</a><br>
-    <a href="https://youtube.com/shorts/LacXYa14CoM">Demo video</a></p>
-  </div>
-  <div class="body">
-    <h2>TinyML animal classifier</h2>
-    <p>A MobileNet V2 image classifier with 96×96 input, trained in Edge Impulse on a balanced subset of the Animals-10 dataset plus photos of rooms. It runs on an AI Thinker ESP32-CAM and on a Seeed XIAO ESP32-S3 Sense, and shows each result on an ST7789 display.</p>
-    <div class="pair even">
+  <article class="project" id="tinyml">
+    <div class="text">
+      <p class="meta"><span>Edge AI</span><span>2023</span></p>
+      <h3>TinyML animal classifier</h3>
+      <p>A MobileNet V2 image classifier with 96×96 input, trained in Edge Impulse on a balanced subset of the Animals-10 dataset plus photos of rooms. It runs on an AI Thinker ESP32-CAM and on a Seeed XIAO ESP32-S3 Sense, and shows each result on an ST7789 display.</p>
+      <p class="links">
+        <a href="https://github.com/fitranurmayadi/Edge-Impulse-ESP32S3-Animals-10-with-ST7789">Source</a>
+        <a href="https://studio.edgeimpulse.com/studio/327359">Edge Impulse project</a>
+        <a href="https://youtube.com/shorts/LacXYa14CoM">Demo video</a>
+      </p>
+    </div>
+    <div class="media">
+      <div class="pair phones">
+        <figure>
+          <div class="frame cover r-9x16">
+            <video controls muted playsinline preload="none" poster="assets/images/tinyml-xiao-esp32s3_poster.jpg" width="368" height="656">
+              <source src="assets/video/tinyml-xiao-esp32s3.mp4" type="video/mp4">
+            </video>
+          </div>
+          <figcaption>On the XIAO ESP32-S3 Sense.</figcaption>
+        </figure>
+        <figure>
+          <div class="frame cover r-9x16">
+            <video controls muted playsinline preload="none" poster="assets/images/tinyml-esp32cam-ai-thinker_poster.jpg" width="368" height="656">
+              <source src="assets/video/tinyml-esp32cam-ai-thinker.mp4" type="video/mp4">
+            </video>
+          </div>
+          <figcaption>On the AI Thinker ESP32-CAM.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <article class="project" id="twsbr">
+    <div class="text">
+      <p class="meta"><span>Robotics</span><span>2024</span></p>
+      <h3>A two-wheeled robot that balances and follows a line</h3>
+      <p>An ESP32-S3 runs three PID loops every 10 ms. The speed loop decides how far the robot should lean, the balance loop holds that angle using a Kalman-filtered tilt estimate from an MPU6050, and the line loop steers with a left/right PWM difference from a QTR-8A sensor. Two BLDC motors with built-in encoders drive the wheels.</p>
+      <table>
+        <caption>Control loops, every 10 ms</caption>
+        <thead><tr><th>Loop</th><th>Measures</th><th>Output</th></tr></thead>
+        <tbody>
+          <tr><td>Speed</td><td>Wheel encoders</td><td>Tilt setpoint, ±2°</td></tr>
+          <tr><td>Balance</td><td>MPU6050 through a Kalman filter</td><td>Motor PWM</td></tr>
+          <tr><td>Line</td><td>QTR-8A, 8 reflectance sensors</td><td>Steering PWM, ±100</td></tr>
+        </tbody>
+      </table>
+      <p>To tune it from data rather than by eye, the robot logs ten seconds of speed, tilt and line position and sends them over Wi-Fi to a small Flask server, which plots each run with its gains. It balances and follows the oval track. The speed loop was never finished and still settles well below its setpoint. Later I compared reinforcement learning with LQR and PID on the same kind of robot in simulation.</p>
+      <p class="links">
+        <a href="https://github.com/fitranurmayadi/twsbr">Source</a>
+        <a href="https://www.youtube.com/watch?v=iszBgYYvSfs">Demo video</a>
+        <a href="https://github.com/fitranurmayadi/twsbr-rl">Simulation</a>
+      </p>
+    </div>
+    <div class="media">
       <figure>
-        <video controls muted playsinline preload="none" poster="assets/images/tinyml-xiao-esp32s3_poster.jpg" width="368" height="656">
-          <source src="assets/video/tinyml-xiao-esp32s3.mp4" type="video/mp4">
-        </video>
-        <figcaption>On the XIAO ESP32-S3 Sense.</figcaption>
+        <div class="frame cover r-16x9">
+          <video controls muted playsinline preload="none" poster="assets/images/twsbr_poster.jpg" width="960" height="540">
+            <source src="assets/video/twsbr-demo.mp4" type="video/mp4">
+          </video>
+        </div>
+        <figcaption>On the oval test track.</figcaption>
       </figure>
       <figure>
-        <video controls muted playsinline preload="none" poster="assets/images/tinyml-esp32cam-ai-thinker_poster.jpg" width="368" height="656">
-          <source src="assets/video/tinyml-esp32cam-ai-thinker.mp4" type="video/mp4">
-        </video>
-        <figcaption>On the AI Thinker ESP32-CAM.</figcaption>
+        <a class="plain" href="assets/images/twsbr_control.svg"><img src="assets/images/twsbr_control.svg" alt="Block diagram: the speed PID sets the tilt setpoint for the balance PID, the line PID adds steering, a mixer drives both motors, and encoders, the IMU and the line sensor feed back" loading="lazy" width="964" height="478"></a>
+        <figcaption>The three loops and the sensors that close them.</figcaption>
       </figure>
     </div>
-  </div>
-</article>
+  </article>
 
-<article class="work" id="xb1">
-  <div class="side">
-    <p>2022, at IDEASTEAM</p>
-    <p><a href="https://github.com/fitranurmayadi/ideasteam-test-code">Sample code</a></p>
-  </div>
-  <div class="body">
-    <h2>ideaSTEAM XB1, a board for learning electronics</h2>
-    <p>An ESP32 board with buttons, a buzzer, RGB LEDs, an OLED display, temperature and light sensors and a motor driver, so students can program real parts without wiring a breadboard. I took it from concept to production: schematic, PCB layout, Gerbers, component assembly, documentation and sample code.</p>
-    <div class="pair">
+  <article class="project" id="xb1">
+    <div class="text">
+      <p class="meta"><span>Hardware</span><span>2022, at IDEASTEAM</span></p>
+      <h3>ideaSTEAM XB1, a board for learning electronics</h3>
+      <p>An ESP32 board with buttons, a buzzer, RGB LEDs, an OLED display, temperature and light sensors and a motor driver, so students can program real parts without wiring a breadboard. I took it from concept to production: schematic, PCB layout, Gerbers, component assembly, documentation and sample code.</p>
+      <p class="links"><a href="https://github.com/fitranurmayadi/ideasteam-test-code">Sample code</a></p>
+    </div>
+    <div class="media">
       <figure>
-        <img src="assets/images/ideasteam_6.jpg" alt="Back of the assembled board showing the ESP32 module and motor driver" loading="lazy" width="2239" height="1368">
-        <figcaption>Assembled board, ESP32 side.</figcaption>
+        <div class="frame cover r-16x10"><img src="assets/images/ideasteam_7.jpg" alt="Assembled ideaSTEAM XB1 board with OLED display and buttons" loading="lazy" width="2904" height="1758"></div>
+        <figcaption>Assembled board, front.</figcaption>
       </figure>
+      <div class="pair">
+        <figure>
+          <div class="frame cover r-4x3"><img src="assets/images/ideasteam_6.jpg" alt="Back of the assembled board showing the ESP32 module and motor driver" loading="lazy" width="2239" height="1368"></div>
+          <figcaption>ESP32 side.</figcaption>
+        </figure>
+        <figure>
+          <div class="frame dark r-4x3"><img src="assets/images/ideasteam_5.png" alt="PCB layout of the board with red copper on black" loading="lazy" width="440" height="291"></div>
+          <figcaption>PCB layout.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <article class="project" id="weather">
+    <div class="text">
+      <p class="meta"><span>Low-power IoT</span><span>Bachelor's thesis</span></p>
+      <h3>A weather station that runs on one 18650 cell</h3>
+      <p>An STM32F103 reads a BME280 and sends the values over LoRa (SX1278) to an ESP32 gateway, which passes them on over Wi-Fi and MQTT. I set up the server myself instead of using an existing one, so I could follow the data end to end: an MQTT broker on Ubuntu, Node-RED into InfluxDB, and Grafana for the graphs.</p>
+      <table>
+        <caption>Battery life on one Li-ion 18650</caption>
+        <tbody>
+          <tr><td>Calculated</td><td class="num">15 months</td></tr>
+          <tr><td>Measured</td><td class="num">9 months</td></tr>
+        </tbody>
+      </table>
+      <p class="links"><a href="https://github.com/fitranurmayadi/weather-stations-lora-mqtt">Source</a></p>
+    </div>
+    <div class="media">
+      <div class="pair mixed">
+        <figure>
+          <div class="frame white"><img src="assets/images/low-power-weather-parameters-monitoring-device_4.jpg" alt="Two 3D-printed enclosures with antennas, one white and one black" loading="lazy" width="961" height="1341"></div>
+          <figcaption>The node and gateway enclosures.</figcaption>
+        </figure>
+        <figure>
+          <div class="frame dark"><img src="assets/images/low-power-weather-parameters-monitoring-device_5.png" alt="Grafana dashboard with weather graphs" loading="lazy" width="2560" height="1440"></div>
+          <figcaption>Readings in Grafana.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <article class="project" id="obb">
+    <div class="text">
+      <p class="meta"><span>Edge AI benchmark</span><span>2026</span></p>
+      <h3>YOLO11-OBB on three small computers</h3>
+      <p>I ran oriented object detection at three model sizes on a Khadas Edge 2, a Raspberry Pi 5 and a Jetson Orin Nano, and compared frame rate against peak power. The Khadas gave the most frames per watt at every size. The Pi dropped the furthest as the model grew.</p>
+    </div>
+    <div class="media">
       <figure>
-        <img src="assets/images/ideasteam_5.png" alt="PCB layout of the board with red copper on black" loading="lazy" width="440" height="291">
-        <figcaption>PCB layout.</figcaption>
+        <a class="plain" href="assets/images/obb_benchmark_energy.png"><img src="assets/images/obb_benchmark_energy.png" alt="Scatter plot of frame rate against peak power for each board and model size" loading="lazy" width="3199" height="1655"></a>
+        <figcaption>The same runs, frame rate against peak power.</figcaption>
+      </figure>
+      <table>
+        <caption>Frames per second per watt of peak power</caption>
+        <thead><tr><th>Model</th><th class="num">Khadas Edge 2</th><th class="num">Raspberry Pi 5</th><th class="num">Jetson Orin Nano</th></tr></thead>
+        <tbody>
+          <tr><td>nano</td><td class="num">3.84</td><td class="num">2.81</td><td class="num">1.51</td></tr>
+          <tr><td>small</td><td class="num">2.99</td><td class="num">1.48</td><td class="num">1.31</td></tr>
+          <tr><td>medium</td><td class="num">1.44</td><td class="num">0.53</td><td class="num">1.28</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+
+  <article class="project" id="panel">
+    <div class="text">
+      <p class="meta"><span>IoT</span><span>2023</span></p>
+      <h3>Smart home teaching panel</h3>
+      <p>A wall panel for IoT lessons. Three boards talk MQTT to Home Assistant on a Raspberry Pi 4: an ESP32-S3 with a DHT22 and an 8-channel relay for the lights, fan, buzzer and solenoid, an ESP32-C3 reading a PZEM-004T power meter, and an ESP32-C6 with a PN532 RFID reader for door access.</p>
+      <p class="links"><a href="https://github.com/fitranurmayadi/smarthome-iot-dlcb">Source</a></p>
+    </div>
+    <div class="media">
+      <div class="pair mixed">
+        <figure>
+          <div class="frame cover"><img src="assets/images/smarthome-iot-dlcb_1.jpeg" alt="Wall-mounted panel with lamps, fan and controller boards" loading="lazy" width="792" height="902"></div>
+          <figcaption>The panel.</figcaption>
+        </figure>
+        <figure>
+          <div class="frame white"><img src="assets/images/smarthome-iot-dlcb_2.jpeg" alt="Home Assistant dashboard for the panel" loading="lazy" width="1600" height="796"></div>
+          <figcaption>Its Home Assistant dashboard.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <article class="project" id="arm">
+    <div class="text">
+      <p class="meta"><span>Robotics</span><span>2025</span></p>
+      <h3>A robot arm that sorts balls by colour</h3>
+      <p>Teaching material for AIoT and robotics. A USB camera and a YOLOv11 model pick out red, yellow and green balls, then a 3-DOF stepper arm with a vacuum end-effector moves them. An Arduino Mega drives the A4988 drivers and the pump, and a PyQt5 program on the PC runs the whole thing.</p>
+      <p class="links"><a href="https://github.com/fitranurmayadi/robotic_arm_yolo_pick_n_place">Source</a></p>
+    </div>
+    <div class="media">
+      <div class="pair mixed">
+        <figure>
+          <div class="frame cover"><img src="assets/images/robotic_arm_2.jpeg" alt="Three-axis robotic arm on a yellow frame" loading="lazy" width="902" height="1221"></div>
+          <figcaption>The arm on its frame.</figcaption>
+        </figure>
+        <figure>
+          <div class="frame white"><img src="assets/images/robotic_arm_1.jpeg" alt="Block diagram of the arm's hardware and software" loading="lazy" width="1058" height="583"></div>
+          <figcaption>How the parts connect.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <article class="project" id="microlm">
+    <div class="text">
+      <p class="meta"><span>Edge AI</span><span>2026</span></p>
+      <h3>A language model on an ESP32-S3</h3>
+      <p>A 1.84M-parameter INT8 model that generates text on the microcontroller, with no network. The inference engine is plain C++, without TFLite Micro or ONNX. Weights sit in octal PSRAM, working buffers in internal SRAM, and FreeRTOS splits the attention and feed-forward work across both cores.</p>
+      <p>v4.0 reaches the same speed on the ESP32-S3 DevKit N16R8, Arduino Nano ESP32 and Seeed XIAO ESP32-S3.</p>
+      <p class="links">
+        <a href="https://github.com/fitranurmayadi/esp32-microlm">Source</a>
+        <a href="https://github.com/fitranurmayadi/esp32-microlm/blob/main/BENCHMARK.md">Benchmarks</a>
+        <a href="https://github.com/fitranurmayadi/esp32-microlm/blob/main/JOURNEY.md">Design notes</a>
+      </p>
+    </div>
+    <div class="media">
+      <table>
+        <caption>Generation speed on the board, by release</caption>
+        <thead><tr><th>Release</th><th>What changed</th><th class="num">Tokens/s</th></tr></thead>
+        <tbody>
+          <tr><td>v1.0</td><td>Single-core baseline</td><td class="num">about 12.3</td></tr>
+          <tr><td>v2.0</td><td>Dual-core FreeRTOS, 8-way unrolled FPU loop</td><td class="num">13.5–14.5</td></tr>
+          <tr><td>v3.0</td><td>Moved to native ESP-IDF, tasks pinned to cores</td><td class="num">14.5–15.4</td></tr>
+          <tr><td>v4.0</td><td>Dual-core with 8-way FP32 accumulators</td><td class="num">14.5–15.6</td></tr>
+        </tbody>
+      </table>
+      <figure>
+        <div class="frame dark"><img src="assets/images/esp32_microlm_terminal.png" alt="Terminal showing the model's boot log and a chat reply, 63 tokens in 4.05 seconds at 15.5 tokens per second" loading="lazy" width="648" height="357"></div>
+        <figcaption>A chat over the serial port: 63 tokens in 4.05 s.</figcaption>
       </figure>
     </div>
-  </div>
-</article>
+  </article>
+</section>
 
-<article class="work" id="weather">
-  <div class="side">
-    <p>Bachelor's thesis</p>
-    <p><a href="https://github.com/fitranurmayadi/weather-stations-lora-mqtt">Source</a></p>
-  </div>
-  <div class="body">
-    <h2>A weather station that runs on one 18650 cell</h2>
-    <p>An STM32F103 reads a BME280 and sends the values over LoRa (SX1278) to an ESP32 gateway, which passes them on over Wi-Fi and MQTT. I set up the server myself instead of using an existing one, so I could follow the data end to end: an MQTT broker on Ubuntu, Node-RED into InfluxDB, and Grafana for the graphs.</p>
-    <table>
-      <caption>Battery life on one Li-ion 18650</caption>
-      <tbody>
-        <tr><td>Calculated</td><td class="num">15 months</td></tr>
-        <tr><td>Measured</td><td class="num">9 months</td></tr>
-      </tbody>
-    </table>
-    <div class="pair portrait">
+<section id="simulations" class="section">
+  <h2 class="label">Simulations</h2>
+
+  <article class="project" id="rocket">
+    <div class="text">
+      <p class="meta"><span>PyBullet · Gymnasium</span><span>2026</span></p>
+      <h3>Landing a rocket in simulation</h3>
+      <p>A 5 m Falcon 9-style booster in PyBullet and Gymnasium. Mass falls from 3,000 kg to 300 kg as fuel burns, so thrust-to-weight goes from about 2 to about 20 and the same throttle input means something very different at the end of a flight than at the start.</p>
+      <p class="links"><a href="https://github.com/fitranurmayadi/RocketLander3D">Source</a></p>
+    </div>
+    <div class="media">
+      <div class="pair">
+        <figure>
+          <div class="frame cover r-4x3"><img src="assets/images/rocketlander3d_sim.png" alt="Rocket above terrain in the PyBullet window" loading="lazy" width="1025" height="776"></div>
+          <figcaption>The simulator.</figcaption>
+        </figure>
+        <figure>
+          <div class="frame white r-4x3"><img src="assets/images/rocketlander3d_report.png" alt="Flight report with plots of altitude, velocity and attitude" loading="lazy" width="1200" height="1200"></div>
+          <figcaption>A flight report.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </article>
+
+  <article class="project" id="lunar">
+    <div class="text">
+      <p class="meta"><span>PyBullet · Gymnasium</span><span>2026</span></p>
+      <h3>LunarLander3D</h3>
+      <p>A 6-DoF lunar lander for Gymnasium and PyBullet, simulated at 100 Hz. I started it to compare reinforcement learning with conventional flight control, and the 2D LunarLander in Gymnasium was too simple for that. The lander weighs about 5,100 kg, with a 22,000 N main engine and 20 RCS thrusters of up to 5,000 N each. Moon, Earth and Mars gravity are built in.</p>
+      <p>There are three controllers so far: decoupled PID loops driven by a state machine, direct thrust vectoring, and tracking a precomputed reference trajectory. The trajectory tracker lands best.</p>
+      <p class="links"><a href="https://github.com/fitranurmayadi/LunarLander3D">Source</a></p>
+    </div>
+    <div class="media">
       <figure>
-        <img src="assets/images/low-power-weather-parameters-monitoring-device_4.jpg" alt="Two 3D-printed enclosures with antennas, one white and one black" loading="lazy" width="961" height="1341">
-        <figcaption>The node and gateway enclosures.</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/images/low-power-weather-parameters-monitoring-device_5.png" alt="Grafana dashboard with weather graphs" loading="lazy" width="2560" height="1440">
-        <figcaption>Readings in Grafana.</figcaption>
+        <div class="frame cover r-4x3"><img src="assets/images/lunarlander3d_sim.png" alt="Lunar lander descending over grey procedurally generated terrain" loading="lazy" width="798" height="838"></div>
+        <figcaption>The lander over generated terrain.</figcaption>
       </figure>
     </div>
-  </div>
-</article>
+  </article>
 
-<article class="work" id="obb">
-  <div class="side">
-    <p>2026</p>
-  </div>
-  <div class="body">
-    <h2>YOLO11-OBB on three small computers</h2>
-    <p>I ran oriented object detection at three model sizes on a Khadas Edge 2, a Raspberry Pi 5 and a Jetson Orin Nano, and compared frame rate against peak power. The Khadas gave the most frames per watt at every size. The Pi dropped the furthest as the model grew.</p>
-    <table>
-      <caption>Frames per second per watt of peak power</caption>
-      <thead><tr><th>Model</th><th class="num">Khadas Edge 2</th><th class="num">Raspberry Pi 5</th><th class="num">Jetson Orin Nano</th></tr></thead>
-      <tbody>
-        <tr><td>nano</td><td class="num">3.84</td><td class="num">2.81</td><td class="num">1.51</td></tr>
-        <tr><td>small</td><td class="num">2.99</td><td class="num">1.48</td><td class="num">1.31</td></tr>
-        <tr><td>medium</td><td class="num">1.44</td><td class="num">0.53</td><td class="num">1.28</td></tr>
-      </tbody>
-    </table>
-    <figure>
-      <img src="assets/images/obb_benchmark_energy.png" alt="Scatter plot of frame rate against peak power for each board and model size" loading="lazy" width="3199" height="1655">
-      <figcaption>The same runs, frame rate against peak power.</figcaption>
-    </figure>
-  </div>
-</article>
-
-<article class="work" id="panel">
-  <div class="side">
-    <p>2023</p>
-    <p><a href="https://github.com/fitranurmayadi/smarthome-iot-dlcb">Source</a></p>
-  </div>
-  <div class="body">
-    <h2>Smart home teaching panel</h2>
-    <p>A wall panel for IoT lessons. Three boards talk MQTT to Home Assistant on a Raspberry Pi 4: an ESP32-S3 with a DHT22 and an 8-channel relay for the lights, fan, buzzer and solenoid, an ESP32-C3 reading a PZEM-004T power meter, and an ESP32-C6 with a PN532 RFID reader for door access.</p>
-    <div class="pair portrait">
-      <figure>
-        <img src="assets/images/smarthome-iot-dlcb_1.jpeg" alt="Wall-mounted panel with lamps, fan and controller boards" loading="lazy" width="792" height="902">
-        <figcaption>The panel.</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/images/smarthome-iot-dlcb_2.jpeg" alt="Home Assistant dashboard for the panel" loading="lazy" width="1600" height="796">
-        <figcaption>Its Home Assistant dashboard.</figcaption>
-      </figure>
+  <article class="project" id="spider">
+    <div class="text">
+      <p class="meta"><span>PyBullet · FreeCAD</span><span>2026</span></p>
+      <h3>Quadruped navigation in PyBullet</h3>
+      <p>A spider robot modelled in FreeCAD, with a closed-form inverse kinematics solver and a trot gait. I raced four navigation methods through the same obstacle course, from one corner of a 10 m square to the other.</p>
+      <p>MPC came last partly because its optimiser shared a single Python thread with the other three robots.</p>
+      <p class="links"><a href="https://github.com/fitranurmayadi/Quadrupped-Spider">Source</a></p>
     </div>
-  </div>
-</article>
-
-<article class="work" id="rocket">
-  <div class="side">
-    <p>2026, simulation</p>
-    <p><a href="https://github.com/fitranurmayadi/RocketLander3D">Source</a></p>
-  </div>
-  <div class="body">
-    <h2>Landing a rocket in simulation</h2>
-    <p>A 5 m Falcon 9-style booster in PyBullet and Gymnasium. Mass falls from 3,000 kg to 300 kg as fuel burns, so thrust-to-weight goes from about 2 to about 20 and the same throttle input means something very different at the end of a flight than at the start.</p>
-    <div class="pair">
-      <figure>
-        <img src="assets/images/rocketlander3d_sim.png" alt="Rocket above terrain in the PyBullet window" loading="lazy" width="1025" height="776">
-        <figcaption>The simulator.</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/images/rocketlander3d_report.png" alt="Flight report with plots of altitude, velocity and attitude" loading="lazy" width="1200" height="1200">
-        <figcaption>A flight report.</figcaption>
-      </figure>
+    <div class="media">
+      <table>
+        <caption>Time to reach the target</caption>
+        <thead><tr><th>Method</th><th class="num">Seconds</th></tr></thead>
+        <tbody>
+          <tr><td>Artificial potential field</td><td class="num">48.43</td></tr>
+          <tr><td>Dijkstra</td><td class="num">52.26</td></tr>
+          <tr><td>A*</td><td class="num">55.03</td></tr>
+          <tr><td>Hybrid MPC</td><td class="num">107.44</td></tr>
+        </tbody>
+      </table>
     </div>
-  </div>
-</article>
+  </article>
+</section>
 
-<article class="work" id="spider">
-  <div class="side">
-    <p>2026, simulation</p>
-    <p><a href="https://github.com/fitranurmayadi/Quadrupped-Spider">Source</a></p>
-  </div>
-  <div class="body">
-    <h2>Quadruped navigation in PyBullet</h2>
-    <p>A spider robot modelled in FreeCAD, with a closed-form inverse kinematics solver and a trot gait. I raced four navigation methods through the same obstacle course, from one corner of a 10 m square to the other.</p>
-    <table>
-      <caption>Time to reach the target</caption>
-      <thead><tr><th>Method</th><th class="num">Seconds</th></tr></thead>
-      <tbody>
-        <tr><td>Artificial potential field</td><td class="num">48.43</td></tr>
-        <tr><td>Dijkstra</td><td class="num">52.26</td></tr>
-        <tr><td>A*</td><td class="num">55.03</td></tr>
-        <tr><td>Hybrid MPC</td><td class="num">107.44</td></tr>
-      </tbody>
-    </table>
-    <p>MPC came last partly because its optimiser shared a single Python thread with the other three robots.</p>
-  </div>
-</article>
-
-<article class="work" id="lunar">
-  <div class="side">
-    <p>2026, simulation</p>
-    <p><a href="https://github.com/fitranurmayadi/LunarLander3D">Source</a></p>
-  </div>
-  <div class="body">
-    <h2>LunarLander3D</h2>
-    <p>A 6-DoF lunar lander for Gymnasium and PyBullet, simulated at 100 Hz. I started it to compare reinforcement learning with conventional flight control, and the 2D LunarLander in Gymnasium was too simple for that. The lander weighs about 5,100 kg, with a 22,000 N main engine and 20 RCS thrusters of up to 5,000 N each. Moon, Earth and Mars gravity are built in.</p>
-    <p>There are three controllers so far: decoupled PID loops driven by a state machine, direct thrust vectoring, and tracking a precomputed reference trajectory. The trajectory tracker lands best.</p>
-    <figure class="narrow">
-      <img src="assets/images/lunarlander3d_sim.png" alt="Lunar lander descending over grey procedurally generated terrain" loading="lazy" width="798" height="838">
-      <figcaption>The lander over generated terrain.</figcaption>
-    </figure>
-  </div>
-</article>
-
-<article class="work" id="arm">
-  <div class="side">
-    <p>2025</p>
-    <p><a href="https://github.com/fitranurmayadi/robotic_arm_yolo_pick_n_place">Source</a></p>
-  </div>
-  <div class="body">
-    <h2>A robot arm that sorts balls by colour</h2>
-    <p>Teaching material for AIoT and robotics. A USB camera and a YOLOv11 model pick out red, yellow and green balls, then a 3-DOF stepper arm with a vacuum end-effector moves them. An Arduino Mega drives the A4988 drivers and the pump, and a PyQt5 program on the PC runs the whole thing.</p>
-    <figure class="narrow">
-      <img src="assets/images/robotic_arm_1.jpeg" alt="Block diagram of the arm's hardware and software" loading="lazy" width="1058" height="583">
-      <figcaption>How the parts connect.</figcaption>
-    </figure>
-  </div>
-</article>
-
-<section class="older">
-  <h2>Older builds</h2>
+<section id="older" class="section">
+  <h2 class="label">Older builds</h2>
   <div class="grid">
     <figure>
-      <a href="https://github.com/fitranurmayadi/line-follower"><img class="whole" src="assets/images/line-follower_1.png" alt="Line follower schematic" loading="lazy" width="2341" height="1652"></a>
+      <a class="frame white" href="https://github.com/fitranurmayadi/line-follower"><img src="assets/images/line-follower_1.png" alt="Line follower schematic" loading="lazy" width="2341" height="1652"></a>
       <figcaption><a href="https://github.com/fitranurmayadi/line-follower">Line follower</a>. PID gains are tuned on the track from an LCD menu, no PC needed.</figcaption>
     </figure>
     <figure>
-      <a href="https://github.com/fitranurmayadi/stemi-robotika"><img src="assets/images/stemi-robotika_9.jpeg" alt="Round blue robot with LCD and yellow wheels" loading="lazy" width="1600" height="900"></a>
+      <a class="frame cover" href="https://github.com/fitranurmayadi/stemi-robotika"><img src="assets/images/stemi-robotika_9.jpeg" alt="Round blue robot with LCD and yellow wheels" loading="lazy" width="1600" height="900"></a>
       <figcaption><a href="https://github.com/fitranurmayadi/stemi-robotika">STEMI Robotika</a>. Line-following and obstacle-avoiding robots for teaching.</figcaption>
     </figure>
     <figure>
-      <a href="https://github.com/fitranurmayadi/muse-myo-arduino-js"><img src="assets/images/myo-to-arm-robot_3.jpeg" alt="Small robot arm on a round table" loading="lazy" width="1600" height="900"></a>
+      <a class="frame cover" href="https://github.com/fitranurmayadi/muse-myo-arduino-js"><img src="assets/images/myo-to-arm-robot_3.jpeg" alt="Small robot arm on a round table" loading="lazy" width="1600" height="900"></a>
       <figcaption><a href="https://github.com/fitranurmayadi/muse-myo-arduino-js">Myo armband to robot arm</a>. Forearm EMG through a Node.js bridge to the servos.</figcaption>
     </figure>
     <figure>
-      <a href="https://github.com/fitranurmayadi/ESP32C3-PowerMonitoring"><img src="assets/images/power-monitoring_2.jpeg" alt="Power monitor board with display lit" loading="lazy" width="1600" height="900"></a>
+      <a class="frame cover" href="https://github.com/fitranurmayadi/ESP32C3-PowerMonitoring"><img src="assets/images/power-monitoring_2.jpeg" alt="Power monitor board with display lit" loading="lazy" width="1600" height="900"></a>
       <figcaption><a href="https://github.com/fitranurmayadi/ESP32C3-PowerMonitoring">AC power monitor</a>. ESP32-C3 and PZEM-004T, with an OLED and MQTT.</figcaption>
     </figure>
     <figure>
-      <img class="whole" src="assets/images/esp01-ir-air-conditioner_3.jpeg" alt="Phone app screen for the air conditioner controller" loading="lazy" width="899" height="1599">
+      <div class="frame"><img src="assets/images/esp01-ir-air-conditioner_3.jpeg" alt="Phone app screen for the air conditioner controller" loading="lazy" width="899" height="1599"></div>
       <figcaption>Air conditioner controller. An ESP8266 sends IR commands, driven by an Android app through Firebase.</figcaption>
     </figure>
     <figure>
-      <img src="assets/images/vertical-hidroponic_1.jpeg" alt="Vertical hydroponic towers with a temperature display in front" loading="lazy" width="1600" height="900">
+      <div class="frame cover"><img src="assets/images/vertical-hidroponic_1.jpeg" alt="Vertical hydroponic towers with a temperature display in front" loading="lazy" width="1600" height="900"></div>
       <figcaption>Vertical hydroponics.</figcaption>
     </figure>
     <figure>
-      <img src="assets/images/biofloc-fish-pond_1.jpeg" alt="Round biofloc fish pond under a greenhouse roof" loading="lazy" width="900" height="1600">
+      <div class="frame cover"><img src="assets/images/biofloc-fish-pond_1.jpeg" alt="Round biofloc fish pond under a greenhouse roof" loading="lazy" width="900" height="1600"></div>
       <figcaption>Biofloc fish pond.</figcaption>
     </figure>
     <figure>
-      <img src="assets/images/aquascape-monitoring_1.jpeg" alt="Planted aquarium with a monitor mounted above it" loading="lazy" width="900" height="1600">
+      <div class="frame cover"><img src="assets/images/aquascape-monitoring_1.jpeg" alt="Planted aquarium with a monitor mounted above it" loading="lazy" width="900" height="1600"></div>
       <figcaption>Aquascape monitor.</figcaption>
     </figure>
     <figure>
-      <img src="assets/images/diy-robot_3.jpeg" alt="Small four-wheeled robot with white wheels on a laptop" loading="lazy" width="1280" height="720">
+      <div class="frame cover"><img src="assets/images/diy-robot_3.jpeg" alt="Small four-wheeled robot with white wheels on a laptop" loading="lazy" width="1280" height="720"></div>
       <figcaption>DIY robot.</figcaption>
     </figure>
   </div>
 </section>
 
-<section class="code">
-  <h2>Code only</h2>
-  <ul>
-    <li><a href="https://github.com/fitranurmayadi/twsbr-rl">Self-balancing robot controllers</a>. PPO, SAC, TD3 and A2C against LQR and PID, in PyBullet and MuJoCo.</li>
-  </ul>
-</section>
-
-<article class="work" id="microlm">
-  <div class="side">
-    <p>2026</p>
-    <p><a href="https://github.com/fitranurmayadi/esp32-microlm">Source</a><br>
-    <a href="https://github.com/fitranurmayadi/esp32-microlm/blob/main/BENCHMARK.md">Benchmarks</a><br>
-    <a href="https://github.com/fitranurmayadi/esp32-microlm/blob/main/JOURNEY.md">Design notes</a></p>
-  </div>
-  <div class="body">
-    <h2>A language model on an ESP32-S3</h2>
-    <p>A 1.84M-parameter INT8 model that generates text on the microcontroller, with no network. The inference engine is plain C++, without TFLite Micro or ONNX. Weights sit in octal PSRAM, working buffers in internal SRAM, and FreeRTOS splits the attention and feed-forward work across both cores.</p>
-    <table>
-      <caption>Generation speed on the board, by release</caption>
-      <thead><tr><th>Release</th><th>What changed</th><th class="num">Tokens/s</th></tr></thead>
-      <tbody>
-        <tr><td>v1.0</td><td>Single-core baseline</td><td class="num">about 12.3</td></tr>
-        <tr><td>v2.0</td><td>Dual-core FreeRTOS, 8-way unrolled FPU loop</td><td class="num">13.5–14.5</td></tr>
-        <tr><td>v3.0</td><td>Moved to native ESP-IDF, tasks pinned to cores</td><td class="num">14.5–15.4</td></tr>
-        <tr><td>v4.0</td><td>Dual-core with 8-way FP32 accumulators</td><td class="num">14.5–15.6</td></tr>
-      </tbody>
-    </table>
-    <p>v4.0 reaches the same speed on the ESP32-S3 DevKit N16R8, Arduino Nano ESP32 and Seeed XIAO ESP32-S3.</p>
-    <figure>
-      <img src="assets/images/esp32_microlm_terminal.png" alt="Terminal showing the model's boot log and a chat reply, 63 tokens in 4.05 seconds at 15.5 tokens per second" loading="lazy" width="648" height="357">
-      <figcaption>A chat over the serial port: 63 tokens in 4.05 s.</figcaption>
-    </figure>
-  </div>
-</article>
-
 </main>
 
-<footer>
-  <p><a href="mailto:fitra.nurmayadi@gmail.com">fitra.nurmayadi@gmail.com</a></p>
+<footer class="wrap">
+  <div class="footer">
+    <p>Fitra Nurmayadi · Medan, Indonesia</p>
+    <p class="footer-links">
+      <a href="mailto:fitra.nurmayadi@gmail.com">fitra.nurmayadi@gmail.com</a>
+      <a href="https://github.com/fitranurmayadi">GitHub</a>
+      <a href="https://www.linkedin.com/in/fitra-nurmayadi/">LinkedIn</a>
+    </p>
+  </div>
 </footer>
 
 </body>
